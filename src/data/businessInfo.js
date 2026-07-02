@@ -1,0 +1,25 @@
+export const businessInfo = {
+  name: 'New Era Construction',
+  location: 'Greater Des Moines Metro Area, Iowa',
+  phone: '(515) 328-4712',
+  phoneHref: 'tel:+15153284712',
+  email: 'info@neweraconstructioniowa.com',
+  logo: '/media/logo/new-era-logo.webp',
+  highlights: [
+    'Competitive Pricing',
+    'Se Habla Espanol',
+    'Free Estimates',
+    'Over 15 years of experience',
+    'Family-owned business',
+  ],
+  serviceArea: [
+    'Des Moines',
+    'Ankeny',
+    'Waukee',
+    'West Des Moines',
+    'Johnston',
+    'Urbandale',
+    'Norwalk',
+    'Central Iowa',
+  ],
+}

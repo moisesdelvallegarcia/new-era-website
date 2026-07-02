@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Concrete construction placeholder</title>
+  <desc id="desc">A stylized concrete jobsite placeholder image.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#3f3f46"/>
+      <stop offset="100%" stop-color="#18181b"/>
+    </linearGradient>
+    <linearGradient id="slab" x1="0" x2="1">
+      <stop offset="0%" stop-color="#d4d4d8"/>
+      <stop offset="100%" stop-color="#a1a1aa"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#sky)"/>
+  <path d="M0 630 L1200 500 L1200 900 L0 900 Z" fill="url(#slab)"/>
+  <path d="M120 660 L970 570" stroke="#71717a" stroke-width="10" opacity="0.55"/>
+  <path d="M230 755 L1130 625" stroke="#71717a" stroke-width="6" opacity="0.45"/>
+  <rect x="92" y="132" width="460" height="190" rx="8" fill="#ffffff" opacity="0.92"/>
+  <text x="130" y="205" fill="#18181b" font-family="Arial, sans-serif" font-size="42" font-weight="700">Project Photo</text>
+  <text x="130" y="263" fill="#52525b" font-family="Arial, sans-serif" font-size="25">Replace with real New Era work</text>
+  <circle cx="985" cy="215" r="70" fill="#ea580c"/>
+  <path d="M820 350 h220 v55 H820z" fill="#27272a"/>
+  <path d="M865 405 h130 v80 H865z" fill="#18181b"/>
+</svg>

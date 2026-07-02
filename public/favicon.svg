@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="New Era Construction">
+  <rect width="64" height="64" rx="10" fill="#18181b"/>
+  <path d="M10 42 L54 34 L54 52 L10 52 Z" fill="#a1a1aa"/>
+  <path d="M13 22h38v8H13z" fill="#ea580c"/>
+  <text x="32" y="28" fill="#fff" font-family="Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle">NE</text>
+</svg>
