@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import CTASection from '../components/CTASection.jsx'
 import GalleryGrid from '../components/GalleryGrid.jsx'
 import Hero from '../components/Hero.jsx'
+import HousecallProof from '../components/HousecallProof.jsx'
 import ProjectVideo from '../components/ProjectVideo.jsx'
 import ReviewCard from '../components/ReviewCard.jsx'
 import Section from '../components/Section.jsx'
@@ -15,6 +16,7 @@ function Home() {
   return (
     <>
       <Hero />
+      <HousecallProof />
       <Section
         eyebrow="Concrete services"
         title="Built for homes, businesses, and busy Iowa weather"
