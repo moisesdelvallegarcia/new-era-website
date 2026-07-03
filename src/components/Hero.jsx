@@ -16,6 +16,10 @@ function Hero() {
           <p className="mb-5 text-xs font-black uppercase tracking-[0.24em] text-orange-300">
             {businessInfo.location}
           </p>
+          <div className="mb-5 inline-flex flex-wrap items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm font-bold text-white backdrop-blur">
+            <span className="h-2 w-2 rounded-full bg-orange-400" />
+            English and Spanish estimates available
+          </div>
           <h1 className="max-w-4xl text-4xl font-black leading-[0.96] tracking-tight sm:text-6xl lg:text-7xl">
             Concrete Contractors Serving the Greater Des Moines Metro Area
           </h1>

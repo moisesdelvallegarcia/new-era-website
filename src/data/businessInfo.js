@@ -7,7 +7,7 @@ export const businessInfo = {
   logo: '/media/logo/new-era-logo.webp',
   highlights: [
     'Competitive Pricing',
-    'Se Habla Espanol',
+    'Se Habla Español',
     'Free Estimates',
     'Over 15 years of experience',
     'Family-owned business',

@@ -52,6 +52,9 @@ function Navbar() {
         </div>
 
         <div className="hidden items-center gap-3 lg:flex">
+          <span className="rounded-full border border-orange-200 bg-orange-50 px-4 py-2 text-sm font-black text-orange-800">
+            Se Habla Español
+          </span>
           <a
             href={businessInfo.phoneHref}
             className="rounded-full border border-zinc-200 bg-white/70 px-5 py-2.5 text-sm font-bold text-zinc-900 transition hover:border-zinc-400 hover:bg-white focus-visible:border-zinc-400"
@@ -96,6 +99,9 @@ function Navbar() {
             >
               Call {businessInfo.phone}
             </a>
+            <span className="rounded-full border border-orange-200 bg-orange-50 px-4 py-3 text-center text-sm font-black text-orange-800">
+              Se Habla Español
+            </span>
           </div>
         </div>
       )}
