@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
+import AreasServed from '../components/AreasServed.jsx'
 import CTASection from '../components/CTASection.jsx'
 import GalleryGrid from '../components/GalleryGrid.jsx'
 import Hero from '../components/Hero.jsx'
 import HousecallProof from '../components/HousecallProof.jsx'
+import ProjectHighlights from '../components/ProjectHighlights.jsx'
 import ProjectVideo from '../components/ProjectVideo.jsx'
 import ReviewCard from '../components/ReviewCard.jsx'
 import Section from '../components/Section.jsx'
@@ -17,6 +19,7 @@ function Home() {
     <>
       <Hero />
       <HousecallProof />
+      <AreasServed />
       <Section
         eyebrow="Concrete services"
         title="Built for homes, businesses, and busy Iowa weather"
@@ -72,6 +75,8 @@ function Home() {
       >
         <GalleryGrid items={galleryItems.slice(0, 3)} />
       </Section>
+
+      <ProjectHighlights />
 
       <Section className="bg-zinc-100">
         <ProjectVideo />
