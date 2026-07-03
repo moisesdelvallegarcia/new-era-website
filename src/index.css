@@ -20,8 +20,13 @@ body {
   margin: 0;
   min-width: 320px;
   background:
-    radial-gradient(circle at top left, rgba(234, 88, 12, 0.08), transparent 30rem),
+    linear-gradient(180deg, rgba(250, 250, 249, 0.92), rgba(255, 255, 255, 1) 26rem),
     #ffffff;
+}
+
+img,
+video {
+  max-width: 100%;
 }
 
 button,

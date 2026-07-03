@@ -12,10 +12,10 @@ const navItems = [
 ]
 
 function navClass({ isActive }) {
-  return `rounded px-3 py-2 text-sm font-semibold transition ${
+  return `rounded-full px-4 py-2 text-sm font-semibold transition ${
     isActive
-      ? 'bg-orange-600 text-white'
-      : 'text-zinc-700 hover:bg-zinc-100 hover:text-zinc-950 focus-visible:bg-zinc-100'
+      ? 'bg-zinc-950 text-white shadow-sm'
+      : 'text-zinc-600 hover:bg-zinc-100 hover:text-zinc-950 focus-visible:bg-zinc-100'
   }`
 }
 
@@ -23,16 +23,18 @@ function Navbar() {
   const [open, setOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-40 border-b border-zinc-200 bg-white/95 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-zinc-200/70 bg-white/85 backdrop-blur-xl">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-          <img
-            src={businessInfo.logo}
-            alt="New Era Construction logo"
-            className="h-12 w-12 rounded bg-white object-contain ring-1 ring-zinc-200"
-          />
+          <span className="grid h-[3.25rem] w-[3.25rem] place-items-center rounded-full bg-zinc-100/70 p-1.5 ring-1 ring-zinc-200/70">
+            <img
+              src={businessInfo.logo}
+              alt="New Era Construction logo"
+              className="h-full w-full rounded-full object-contain opacity-85 mix-blend-multiply"
+            />
+          </span>
           <span>
-            <span className="block text-base font-black leading-tight text-zinc-950">
+            <span className="block text-base font-black leading-tight tracking-tight text-zinc-950">
               New Era Construction
             </span>
             <span className="block text-xs font-semibold text-zinc-500">
@@ -52,13 +54,13 @@ function Navbar() {
         <div className="hidden items-center gap-3 lg:flex">
           <a
             href={businessInfo.phoneHref}
-            className="rounded border border-zinc-300 px-4 py-2 text-sm font-bold text-zinc-900 transition hover:border-orange-600 hover:text-orange-700 focus-visible:border-orange-600"
+            className="rounded-full border border-zinc-200 bg-white/70 px-5 py-2.5 text-sm font-bold text-zinc-900 transition hover:border-zinc-400 hover:bg-white focus-visible:border-zinc-400"
           >
             {businessInfo.phone}
           </a>
           <Link
             to="/contact"
-            className="rounded bg-orange-600 px-4 py-2 text-sm font-bold text-white transition hover:bg-orange-700 focus-visible:bg-orange-700"
+            className="rounded-full bg-zinc-950 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-orange-600 focus-visible:bg-orange-600"
           >
             Free Estimate
           </Link>
@@ -66,7 +68,7 @@ function Navbar() {
 
         <button
           type="button"
-          className="rounded border border-zinc-300 px-3 py-2 text-sm font-bold text-zinc-900 lg:hidden"
+          className="rounded-full border border-zinc-300 px-4 py-2 text-sm font-bold text-zinc-900 lg:hidden"
           onClick={() => setOpen((value) => !value)}
           aria-expanded={open}
           aria-controls="mobile-menu"
@@ -76,7 +78,7 @@ function Navbar() {
       </nav>
 
       {open && (
-        <div id="mobile-menu" className="border-t border-zinc-200 bg-white px-4 py-4 lg:hidden">
+        <div id="mobile-menu" className="border-t border-zinc-200 bg-white/95 px-4 py-4 backdrop-blur lg:hidden">
           <div className="mx-auto grid max-w-6xl gap-2">
             {navItems.map((item) => (
               <NavLink
@@ -90,7 +92,7 @@ function Navbar() {
             ))}
             <a
               href={businessInfo.phoneHref}
-              className="mt-2 rounded bg-zinc-950 px-4 py-3 text-center text-sm font-bold text-white"
+              className="mt-2 rounded-full bg-zinc-950 px-4 py-3 text-center text-sm font-bold text-white"
             >
               Call {businessInfo.phone}
             </a>

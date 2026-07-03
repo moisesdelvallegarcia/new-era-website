@@ -3,10 +3,10 @@ import { businessInfo } from '../data/businessInfo.js'
 
 function CTASection() {
   return (
-    <section className="bg-orange-600 px-4 py-14 text-white sm:px-6 lg:px-8">
-      <div className="mx-auto flex max-w-6xl flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+    <section className="bg-zinc-950 px-4 py-16 text-white sm:px-6 lg:px-8">
+      <div className="mx-auto flex max-w-6xl flex-col gap-7 rounded-[2rem] border border-white/10 bg-white/[0.03] p-7 lg:flex-row lg:items-center lg:justify-between lg:p-10">
         <div>
-          <p className="text-sm font-bold uppercase tracking-[0.18em] text-orange-100">
+          <p className="text-xs font-black uppercase tracking-[0.22em] text-orange-300">
             Free estimates
           </p>
           <h2 className="mt-2 text-3xl font-black tracking-tight sm:text-4xl">
@@ -19,13 +19,13 @@ function CTASection() {
         <div className="flex flex-col gap-3 sm:flex-row">
           <Link
             to="/contact"
-            className="rounded bg-white px-6 py-4 text-center font-black text-orange-700 transition hover:bg-zinc-100 focus-visible:bg-zinc-100"
+            className="rounded-full bg-white px-6 py-4 text-center font-black text-zinc-950 transition hover:bg-orange-500 hover:text-white focus-visible:bg-orange-500 focus-visible:text-white"
           >
             Request a Free Estimate
           </Link>
           <a
             href={businessInfo.phoneHref}
-            className="rounded border border-white/50 px-6 py-4 text-center font-black text-white transition hover:bg-white/10 focus-visible:bg-white/10"
+            className="rounded-full border border-white/20 px-6 py-4 text-center font-black text-white transition hover:bg-white/10 focus-visible:bg-white/10"
           >
             Call {businessInfo.phone}
           </a>
