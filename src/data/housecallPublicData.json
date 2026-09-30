@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-03T17:43:25.239Z",
+  "generatedAt": "2026-09-30T16:31:37.386Z",
   "source": "housecall_pro_public_views",
   "privacy": {
     "excludesCustomerNames": true,
@@ -8,51 +8,51 @@
     "excludesInvoiceNumbers": true
   },
   "overview": {
-    "completed_projects": 1501,
-    "cities_served": 65,
-    "driveway_projects": 558,
-    "patio_projects": 44,
-    "sidewalk_projects": 18,
+    "completed_projects": 1704,
+    "cities_served": 67,
+    "driveway_projects": 639,
+    "patio_projects": 53,
+    "sidewalk_projects": 39,
     "first_project_year": 2023,
     "latest_project_year": 2026,
-    "completed_revenue_dollars": "12925010"
+    "completed_revenue_dollars": "14340027"
   },
   "serviceStats": [
     {
       "service_label": "Garage and Basement Floors",
-      "completed_projects": 639,
-      "cities_served": 37,
-      "latest_project_date": "2026-07-01T13:00:00.000Z"
+      "completed_projects": 690,
+      "cities_served": 39,
+      "latest_project_date": "2026-09-23T13:00:00.000Z"
     },
     {
       "service_label": "Driveways",
-      "completed_projects": 558,
-      "cities_served": 35,
-      "latest_project_date": "2026-06-30T11:00:00.000Z"
+      "completed_projects": 639,
+      "cities_served": 37,
+      "latest_project_date": "2026-09-28T19:00:00.000Z"
     },
     {
       "service_label": "Concrete Construction",
-      "completed_projects": 215,
-      "cities_served": 36,
-      "latest_project_date": "2026-06-20T18:00:00.000Z"
+      "completed_projects": 255,
+      "cities_served": 38,
+      "latest_project_date": "2026-09-23T15:28:24.000Z"
     },
     {
       "service_label": "Patios",
-      "completed_projects": 44,
-      "cities_served": 15,
-      "latest_project_date": "2026-06-12T05:00:00.000Z"
+      "completed_projects": 53,
+      "cities_served": 19,
+      "latest_project_date": "2026-09-12T15:00:00.000Z"
     },
     {
       "service_label": "Sidewalks",
-      "completed_projects": 18,
-      "cities_served": 11,
-      "latest_project_date": "2026-03-20T13:00:00.000Z"
+      "completed_projects": 39,
+      "cities_served": 15,
+      "latest_project_date": "2026-09-12T13:00:00.000Z"
     },
     {
       "service_label": "Concrete Repair",
-      "completed_projects": 14,
+      "completed_projects": 15,
       "cities_served": 7,
-      "latest_project_date": "2026-05-26T18:00:00.000Z"
+      "latest_project_date": "2026-08-11T20:30:00.000Z"
     },
     {
       "service_label": "Concrete Footings",
@@ -63,88 +63,95 @@
   ],
   "cityStats": [
     {
-      "city": "Urbandale",
+      "city": "Johnston",
       "state": "IA",
-      "completed_projects": 283,
-      "service_types": 6,
-      "latest_project_date": "2026-06-30T11:00:00.000Z"
+      "completed_projects": 216,
+      "service_types": 7,
+      "latest_project_date": "2026-09-23T15:28:24.000Z"
     },
     {
       "city": "Des Moines",
       "state": "IA",
-      "completed_projects": 189,
+      "completed_projects": 204,
       "service_types": 5,
-      "latest_project_date": "2026-06-17T16:00:00.000Z"
-    },
-    {
-      "city": "Johnston",
-      "state": "IA",
-      "completed_projects": 177,
-      "service_types": 5,
-      "latest_project_date": "2026-06-26T11:00:00.000Z"
+      "latest_project_date": "2026-09-22T13:00:00.000Z"
     },
     {
       "city": "Ankeny",
       "state": "IA",
-      "completed_projects": 169,
+      "completed_projects": 201,
       "service_types": 5,
-      "latest_project_date": "2026-06-27T16:00:00.000Z"
+      "latest_project_date": "2026-09-11T12:00:00.000Z"
+    },
+    {
+      "city": "Urbandale",
+      "state": "IA",
+      "completed_projects": 146,
+      "service_types": 5,
+      "latest_project_date": "2026-09-24T16:00:00.000Z"
     },
     {
       "city": "Waukee",
       "state": "IA",
-      "completed_projects": 128,
-      "service_types": 3,
-      "latest_project_date": "2026-06-22T11:00:00.000Z"
+      "completed_projects": 127,
+      "service_types": 4,
+      "latest_project_date": "2026-08-14T21:00:00.000Z"
     },
     {
       "city": "Altoona",
       "state": "IA",
-      "completed_projects": 78,
-      "service_types": 5,
-      "latest_project_date": "2026-06-30T11:00:00.000Z"
+      "completed_projects": 100,
+      "service_types": 6,
+      "latest_project_date": "2026-09-23T13:00:00.000Z"
     },
     {
       "city": "West Des Moines",
       "state": "IA",
-      "completed_projects": 70,
+      "completed_projects": 69,
       "service_types": 7,
-      "latest_project_date": "2026-06-25T18:00:00.000Z"
-    },
-    {
-      "city": "Cumming",
-      "state": "IA",
-      "completed_projects": 61,
-      "service_types": 6,
-      "latest_project_date": "2026-06-20T18:00:00.000Z"
+      "latest_project_date": "2026-09-03T19:00:00.000Z"
     },
     {
       "city": "Polk City",
       "state": "IA",
-      "completed_projects": 56,
+      "completed_projects": 61,
       "service_types": 5,
-      "latest_project_date": "2026-06-16T14:00:00.000Z"
+      "latest_project_date": "2026-09-02T14:30:00.000Z"
     },
     {
       "city": "Bondurant",
       "state": "IA",
-      "completed_projects": 48,
-      "service_types": 4,
-      "latest_project_date": "2026-06-24T14:00:00.000Z"
+      "completed_projects": 59,
+      "service_types": 6,
+      "latest_project_date": "2026-09-01T16:00:00.000Z"
     },
     {
-      "city": "Clive",
+      "city": "Cumming",
       "state": "IA",
-      "completed_projects": 30,
-      "service_types": 4,
-      "latest_project_date": "2026-06-23T22:00:00.000Z"
+      "completed_projects": 48,
+      "service_types": 6,
+      "latest_project_date": "2026-08-20T18:00:00.000Z"
     },
     {
       "city": "Norwalk",
       "state": "IA",
-      "completed_projects": 22,
+      "completed_projects": 29,
       "service_types": 6,
-      "latest_project_date": "2026-07-01T13:00:00.000Z"
+      "latest_project_date": "2026-09-04T23:15:00.000Z"
+    },
+    {
+      "city": "Grimes",
+      "state": "IA",
+      "completed_projects": 25,
+      "service_types": 5,
+      "latest_project_date": "2026-09-18T13:00:00.000Z"
+    },
+    {
+      "city": "Indianola",
+      "state": "IA",
+      "completed_projects": 22,
+      "service_types": 5,
+      "latest_project_date": "2026-03-20T14:30:00.000Z"
     },
     {
       "city": "Manson",
@@ -154,18 +161,11 @@
       "latest_project_date": "2026-05-26T18:00:00.000Z"
     },
     {
-      "city": "Indianola",
-      "state": "IA",
-      "completed_projects": 19,
-      "service_types": 5,
-      "latest_project_date": "2026-03-20T14:30:00.000Z"
-    },
-    {
-      "city": "Grimes",
+      "city": "Clive",
       "state": "IA",
       "completed_projects": 18,
-      "service_types": 5,
-      "latest_project_date": "2026-06-01T13:00:00.000Z"
+      "service_types": 4,
+      "latest_project_date": "2026-09-04T12:30:00.000Z"
     },
     {
       "city": "Carlisle",
@@ -177,9 +177,30 @@
     {
       "city": "Pleasant Hill",
       "state": "IA",
-      "completed_projects": 9,
+      "completed_projects": 14,
+      "service_types": 4,
+      "latest_project_date": "2026-09-28T19:00:00.000Z"
+    },
+    {
+      "city": "Granger",
+      "state": "IA",
+      "completed_projects": 12,
       "service_types": 3,
-      "latest_project_date": "2026-06-24T15:00:00.000Z"
+      "latest_project_date": "2026-09-03T13:00:00.000Z"
+    },
+    {
+      "city": "Wdm",
+      "state": "IA",
+      "completed_projects": 10,
+      "service_types": 3,
+      "latest_project_date": "2026-09-18T19:00:00.000Z"
+    },
+    {
+      "city": "Adel",
+      "state": "IA",
+      "completed_projects": 8,
+      "service_types": 2,
+      "latest_project_date": "2026-07-16T23:00:00.000Z"
     },
     {
       "city": "Bondurant",
@@ -189,13 +210,6 @@
       "latest_project_date": "2024-09-26T20:00:00.000Z"
     },
     {
-      "city": "Adel",
-      "state": "IA",
-      "completed_projects": 6,
-      "service_types": 2,
-      "latest_project_date": "2026-05-14T19:00:00.000Z"
-    },
-    {
       "city": "Pleasant Hill",
       "state": "IOWA",
       "completed_projects": 6,
@@ -203,11 +217,11 @@
       "latest_project_date": "2024-10-16T13:00:00.000Z"
     },
     {
-      "city": "Granger",
+      "city": "Boone",
       "state": "IA",
       "completed_projects": 5,
-      "service_types": 3,
-      "latest_project_date": "2026-06-18T14:00:00.000Z"
+      "service_types": 2,
+      "latest_project_date": "2026-08-24T21:45:00.000Z"
     },
     {
       "city": "Cuming",
@@ -215,34 +229,38 @@
       "completed_projects": 3,
       "service_types": 2,
       "latest_project_date": "2024-07-15T22:00:00.000Z"
-    },
-    {
-      "city": "Mitchellville",
-      "state": "IA",
-      "completed_projects": 3,
-      "service_types": 2,
-      "latest_project_date": "2025-06-11T03:00:00.000Z"
-    },
-    {
-      "city": "Saint Charles",
-      "state": "IA",
-      "completed_projects": 3,
-      "service_types": 3,
-      "latest_project_date": "2026-05-22T20:00:00.000Z"
     }
   ],
   "projectHighlights": [
     {
-      "public_project_id": "9842b1c58b965d7f655d362f435fc8a2",
-      "service_label": "Garage and Basement Floors",
-      "city": "Norwalk",
+      "public_project_id": "1b3dd3feb96570b46d3c369e6caa35e5",
+      "service_label": "Driveways",
+      "city": "Pleasant Hill",
       "state": "IA",
       "project_year": 2026,
-      "display_location": "Norwalk, IA",
-      "public_title": "Interior concrete floor project"
+      "display_location": "Pleasant Hill, IA",
+      "public_title": "Concrete driveway project"
     },
     {
-      "public_project_id": "d0e42ddfa74a15abf1559f10fadc5636",
+      "public_project_id": "53b31caf2fbd9ff51bff22280bdd4b75",
+      "service_label": "Driveways",
+      "city": "Pleasant Hill",
+      "state": "IA",
+      "project_year": 2026,
+      "display_location": "Pleasant Hill, IA",
+      "public_title": "Concrete driveway project"
+    },
+    {
+      "public_project_id": "0fd390eb80c48a370b22de3624259b89",
+      "service_label": "Driveways",
+      "city": "Pleasant Hill",
+      "state": "IA",
+      "project_year": 2026,
+      "display_location": "Pleasant Hill, IA",
+      "public_title": "Concrete driveway project"
+    },
+    {
+      "public_project_id": "cb6570a61dfef316643e7211662a23ca",
       "service_label": "Driveways",
       "city": "Urbandale",
       "state": "IA",
@@ -251,16 +269,7 @@
       "public_title": "Concrete driveway project"
     },
     {
-      "public_project_id": "b839182a82ac1c09bbda427937f52e19",
-      "service_label": "Driveways",
-      "city": "Altoona",
-      "state": "IA",
-      "project_year": 2026,
-      "display_location": "Altoona, IA",
-      "public_title": "Concrete driveway project"
-    },
-    {
-      "public_project_id": "d0368cd4e417ed6c69140e67f1a61097",
+      "public_project_id": "d8581b9924f966d8b2e51c8fca44a7c7",
       "service_label": "Driveways",
       "city": "Urbandale",
       "state": "IA",
@@ -269,76 +278,67 @@
       "public_title": "Concrete driveway project"
     },
     {
-      "public_project_id": "315bc8dad49af12c029b925b45740bcb",
-      "service_label": "Garage and Basement Floors",
-      "city": "Ankeny",
-      "state": "IA",
-      "project_year": 2026,
-      "display_location": "Ankeny, IA",
-      "public_title": "Interior concrete floor project"
-    },
-    {
-      "public_project_id": "6265f68ea241309f52b6e909e90a361c",
-      "service_label": "Garage and Basement Floors",
-      "city": "Ankeny",
-      "state": "IA",
-      "project_year": 2026,
-      "display_location": "Ankeny, IA",
-      "public_title": "Interior concrete floor project"
-    },
-    {
-      "public_project_id": "52afa86118a85e9692a783709be80b04",
-      "service_label": "Garage and Basement Floors",
-      "city": "Ankeny",
-      "state": "IA",
-      "project_year": 2026,
-      "display_location": "Ankeny, IA",
-      "public_title": "Interior concrete floor project"
-    },
-    {
-      "public_project_id": "773fce9a3bb00535643fb45e24ab37b3",
-      "service_label": "Garage and Basement Floors",
+      "public_project_id": "bb59e4671f7a701874cf3982ca68dbd6",
+      "service_label": "Driveways",
       "city": "Urbandale",
       "state": "IA",
       "project_year": 2026,
       "display_location": "Urbandale, IA",
-      "public_title": "Interior concrete floor project"
+      "public_title": "Concrete driveway project"
     },
     {
-      "public_project_id": "7473f6555e144384b78656cca21357b8",
+      "public_project_id": "f18f0577fb0d1b4fa046378ceab36f34",
       "service_label": "Driveways",
+      "city": "Urbandale",
+      "state": "IA",
+      "project_year": 2026,
+      "display_location": "Urbandale, IA",
+      "public_title": "Concrete driveway project"
+    },
+    {
+      "public_project_id": "c8059022f9d9e3d7d687d50afa90a751",
+      "service_label": "Concrete Construction",
       "city": "Johnston",
       "state": "IA",
       "project_year": 2026,
       "display_location": "Johnston, IA",
-      "public_title": "Concrete driveway project"
+      "public_title": "Concrete construction project"
     },
     {
-      "public_project_id": "679579d21cc231ba7a9963f83c3e2d73",
-      "service_label": "Driveways",
-      "city": "Urbandale",
+      "public_project_id": "fcf0bb40ac1ce39c7c8bc709e3819a21",
+      "service_label": "Concrete Construction",
+      "city": "Johnston",
       "state": "IA",
       "project_year": 2026,
-      "display_location": "Urbandale, IA",
-      "public_title": "Concrete driveway project"
+      "display_location": "Johnston, IA",
+      "public_title": "Concrete construction project"
     },
     {
-      "public_project_id": "07c890a7a3b97e4a48adb3fee90069d3",
-      "service_label": "Driveways",
-      "city": "West Des Moines",
+      "public_project_id": "c2c61fc2c8bc415166884273f7cdaf08",
+      "service_label": "Garage and Basement Floors",
+      "city": "Altoona",
       "state": "IA",
       "project_year": 2026,
-      "display_location": "West Des Moines, IA",
-      "public_title": "Concrete driveway project"
+      "display_location": "Altoona, IA",
+      "public_title": "Interior concrete floor project"
     },
     {
-      "public_project_id": "9b9c73db082e453f4876dc40b08cde92",
-      "service_label": "Driveways",
-      "city": "Norwalk",
+      "public_project_id": "3a343a8faa5c8357e0817ed1681fa0cf",
+      "service_label": "Garage and Basement Floors",
+      "city": "Johnston",
       "state": "IA",
       "project_year": 2026,
-      "display_location": "Norwalk, IA",
-      "public_title": "Concrete driveway project"
+      "display_location": "Johnston, IA",
+      "public_title": "Interior concrete floor project"
+    },
+    {
+      "public_project_id": "65542fd80649d22f21c3838d7327b2b1",
+      "service_label": "Concrete Construction",
+      "city": "Johnston",
+      "state": "IA",
+      "project_year": 2026,
+      "display_location": "Johnston, IA",
+      "public_title": "Concrete construction project"
     }
   ]
 }

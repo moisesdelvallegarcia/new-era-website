@@ -1,4 +1,5 @@
-import housecallPublicData from './housecallPublicData.json'
+// Named imports so only these fields ship in the bundle (the JSON also holds revenue totals).
+import { cityStats, generatedAt, serviceStats, source } from './housecallPublicData.json'
 
 // Regenerate the JSON from nova-expense-ai:
 //   WEBSITE_PUBLIC_DATA_PATH=<this repo>/src/data/housecallPublicData.json npm run housecall:export:website
@@ -29,11 +30,11 @@ function mergeCities(cities) {
   return Array.from(cityMap.values()).sort((a, b) => b.completed_projects - a.completed_projects)
 }
 
-export const housecallCities = mergeCities(housecallPublicData.cityStats || [])
+export const housecallCities = mergeCities(cityStats || [])
 
-export const housecallServices = (housecallPublicData.serviceStats || [])
+export const housecallServices = (serviceStats || [])
   .filter((service) => Number(service.completed_projects) > 0)
   .sort((a, b) => b.completed_projects - a.completed_projects)
 
 export const housecallGeneratedAt =
-  housecallPublicData.source === 'fallback' ? null : housecallPublicData.generatedAt
+  source === 'fallback' ? null : generatedAt
