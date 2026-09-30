@@ -36,9 +36,27 @@ public/media/photos Project photography
 public/media/videos Project video assets
 ```
 
-## UAT Deployment Notes
+## Languages
 
-- Deploy the `uat` branch when Chris needs to review.
-- Run `npm run build` before promoting to UAT.
-- Review final image choices in `public/media` before production and swap in higher-resolution project photography when available.
-- The contact form currently logs the payload to the browser console and shows a success message. No backend, Nexus, Make, or Supabase connection is active yet.
+English lives at `/`, Spanish under `/es` (e.g. `/services` and `/es/services`). All page copy is in `src/i18n/en.js` and `src/i18n/es.js`; keep both files in sync when you change text.
+
+## Contact form
+
+Requests are emailed through [Web3Forms](https://web3forms.com). Set `VITE_WEB3FORMS_KEY` in Vercel (and in `.env` locally, see `.env.example`). Without the key the form asks people to call instead.
+
+## Housecall numbers
+
+`src/data/housecallPublicData.json` is generated in `nova-expense-ai`. Its default output path is out of date, so pass this repo's path:
+
+```bash
+cd ../nova-expense-ai
+WEBSITE_PUBLIC_DATA_PATH=../new-era-website/src/data/housecallPublicData.json npm run housecall:export:website
+```
+
+## Photos
+
+New jobsite photos are pending. Slots are listed in `photoSlots` in `src/data/gallery.js`; drop the file in `public/media/photos/` and set its `src`.
+
+## Before launch
+
+The site is not indexed yet: the domain (neconstructioniowa.com) is being transferred from Hibu. At launch, remove the `noindex` meta in `index.html`, the `X-Robots-Tag` header in `vercel.json`, and the `Disallow` in `public/robots.txt`, then add the domain in Vercel.

@@ -1,23 +1,20 @@
 import ContactForm from '../components/ContactForm.jsx'
 import Section from '../components/Section.jsx'
-import { businessInfo } from '../data/businessInfo.js'
+import { businessInfo, formatAddress } from '../data/businessInfo.js'
+import { useLanguage } from '../i18n/useLanguage.js'
 
 function Contact() {
+  const { t } = useLanguage()
+
   return (
-    <Section
-      eyebrow="Contact"
-      title="Request a free estimate"
-      description="Send your project details and the New Era Construction team will follow up soon."
-    >
+    <Section eyebrow={t.contact.eyebrow} title={t.contact.title} description={t.contact.description}>
       <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr]">
         <aside className="rounded-lg bg-zinc-950 p-6 text-white">
-          <h2 className="text-2xl font-black">Talk with the team</h2>
-          <p className="mt-4 leading-7 text-zinc-300">
-            Share the service, location, and rough timeline. Photos and measurements can be added later when the project moves forward.
-          </p>
+          <h2 className="text-2xl font-black">{t.contact.asideTitle}</h2>
+          <p className="mt-4 leading-7 text-zinc-300">{t.contact.asideText}</p>
           <dl className="mt-6 grid gap-4">
             <div>
-              <dt className="text-sm font-bold uppercase tracking-[0.16em] text-orange-300">Phone</dt>
+              <dt className="text-sm font-bold uppercase tracking-[0.16em] text-orange-300">{t.contact.phone}</dt>
               <dd className="mt-1">
                 <a href={businessInfo.phoneHref} className="text-lg font-black hover:text-orange-300">
                   {businessInfo.phone}
@@ -25,10 +22,15 @@ function Contact() {
               </dd>
             </div>
             <div>
-              <dt className="text-sm font-bold uppercase tracking-[0.16em] text-orange-300">Area</dt>
-              <dd className="mt-1 text-zinc-300">{businessInfo.location}</dd>
+              <dt className="text-sm font-bold uppercase tracking-[0.16em] text-orange-300">{t.contact.owner}</dt>
+              <dd className="mt-1 text-zinc-300">{businessInfo.owner}</dd>
+            </div>
+            <div>
+              <dt className="text-sm font-bold uppercase tracking-[0.16em] text-orange-300">{t.contact.office}</dt>
+              <dd className="mt-1 text-zinc-300">{formatAddress(businessInfo.address)}</dd>
             </div>
           </dl>
+          <p className="mt-6 text-sm font-bold text-orange-300">{t.nav.spanish}</p>
         </aside>
         <ContactForm />
       </div>
