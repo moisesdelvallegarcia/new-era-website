@@ -42,7 +42,7 @@ English lives at `/`, Spanish under `/es` (e.g. `/services` and `/es/services`).
 
 ## Contact form
 
-Requests are emailed through [Web3Forms](https://web3forms.com). Set `VITE_WEB3FORMS_KEY` in Vercel (and in `.env` locally, see `.env.example`). Without the key the form asks people to call instead.
+The form posts to `api/lead.js` (a Vercel function), which sends each request to a Telegram chat. Set `TELEGRAM_BOT_TOKEN` and `TELEGRAM_LEADS_CHAT_ID` in Vercel (see `.env.example`). If they are missing or Telegram fails, the form asks people to call. `npm run dev` does not run the function; test it on a Vercel preview.
 
 ## Housecall numbers
 

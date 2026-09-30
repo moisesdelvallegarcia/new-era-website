@@ -2,11 +2,12 @@ import { useState } from 'react'
 import { businessInfo } from '../data/businessInfo.js'
 import { housecallCities } from '../data/housecall.js'
 import { services } from '../data/services.js'
+import es from '../i18n/es.js'
 import { useLanguage } from '../i18n/useLanguage.js'
 
-// Web3Forms delivers each request by email to the inbox tied to this key.
-// Set VITE_WEB3FORMS_KEY in Vercel; without it the form asks people to call.
-const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY
+// The team reads requests in Spanish, whatever language the visitor used.
+const team = es.services
+const teamForm = es.contact.form
 
 const initialForm = {
   name: '',
@@ -42,49 +43,32 @@ function ContactForm() {
     setForm((current) => ({ ...current, [name]: value }))
   }
 
-  function label(group, value) {
-    return f[group]?.[value] || value
+  function teamLabel(group, value) {
+    return teamForm[group]?.[value] || value
   }
 
   async function handleSubmit(event) {
     event.preventDefault()
     if (status === 'sending') return
-
-    if (!WEB3FORMS_KEY) {
-      setStatus('error')
-      return
-    }
-
     setStatus('sending')
 
-    const serviceTitle =
-      form.service === 'other' ? t.services.other : t.services.items[form.service]?.title
-
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
+      // api/lead.js forwards the request to the team's Telegram chat.
+      const response = await fetch('/api/lead', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          access_key: WEB3FORMS_KEY,
-          subject: `New Era website: ${form.name} (${form.city || 'no city'})`,
-          from_name: 'New Era Construction website',
+          ...form,
           botcheck,
-          Name: form.name,
-          Phone: form.phone,
-          Email: form.email,
-          'Client type': label('clientTypes', form.clientType),
-          Company: form.company,
-          Service: serviceTitle,
-          City: form.city,
-          'Preferred language': label('languages', form.preferredLanguage || lang),
-          Timeline: label('timelines', form.timeline),
-          Message: form.message,
-          'Page language': lang,
+          clientType: teamLabel('clientTypes', form.clientType),
+          service: form.service === 'other' ? team.other : team.items[form.service]?.title,
+          preferredLanguage: teamLabel('languages', form.preferredLanguage || lang),
+          timeline: teamLabel('timelines', form.timeline),
         }),
       })
       const result = await response.json().catch(() => ({}))
 
-      if (!response.ok || !result.success) throw new Error(result.message || response.statusText)
+      if (!response.ok || !result.success) throw new Error(`HTTP ${response.status}`)
 
       setStatus('sent')
       setForm(initialForm)
@@ -189,7 +173,7 @@ function ContactForm() {
             placeholder={f.messagePlaceholder}
           />
         </label>
-        {/* Honeypot: hidden from people, bots fill it and Web3Forms drops the request. */}
+        {/* Honeypot: hidden from people, bots fill it and api/lead.js drops the request. */}
         <input
           type="checkbox"
           name="botcheck"
