@@ -28,7 +28,7 @@ const en = {
       jobs: 'jobs completed in the last 12 months',
       delivered: 'in concrete work delivered',
       peakYards: 'cubic yards placed in our peak month',
-      years: 'years pouring concrete in Iowa',
+      years: 'years of concrete experience',
     },
   },
   benefits: {
@@ -69,7 +69,7 @@ const en = {
       'Most of our work is basements and garage slabs for home builders, but we pour every kind of residential and commercial flatwork.',
     pageTitle: 'Concrete services',
     pageDescription:
-      'Tell us the work, the address and the date you need it. We will confirm scope, access and schedule before we pour.',
+      'Tell us the work, the address and the date you need it. We answer quotes within 48 hours, and the same day when it is urgent.',
     viewAll: 'View all services',
     request: 'Request a quote',
     other: 'Other / not sure',
@@ -171,13 +171,49 @@ const en = {
     eyebrow: 'About',
     title: 'A family team that runs like a system',
     intro:
-      'New Era Construction is a family-owned concrete company in Des Moines. For more than 15 years we have poured basements, garages, footings, driveways and flatwork for home builders, contractors and homeowners across Central Iowa.',
+      'New Era Construction is a family-owned concrete company in Des Moines, founded in 2019 and built on more than 15 years of concrete experience. We pour basements, garages, footings, driveways and flatwork for home builders, contractors and homeowners across Central Iowa.',
     ownerLabel: 'Owner',
     facts: [
-      { value: '15+', label: 'years of experience' },
+      { value: '15+', label: 'years of concrete experience' },
       { value: '20+', label: 'people in the field' },
       { value: '640+', label: 'jobs in the last 12 months' },
     ],
+    why: {
+      eyebrow: 'Why we exist',
+      quote:
+        'We understand what builders and subcontractors need: partners who grow together, not just fill their own pockets. We bring solutions and peace of mind, and we want to be an asset to our trade partners, not a headache.',
+      closing: 'We know how much responsibility a builder carries. Our goal is to help carry that load.',
+    },
+    values: ['Punctuality', 'Clean jobsites', 'Communication', 'Quality', 'Responsibility', 'Speed', 'Solutions'],
+    crews: {
+      eyebrow: 'How we are organized',
+      title: 'Four crews, each with its own job',
+      items: [
+        { value: '2 × 7', title: 'Pour crews', text: 'Prepare and pour most of our projects.' },
+        { value: '5', title: 'Repair crew', text: 'Repairs, replacements and smaller jobs.' },
+        { value: '3', title: 'Finishing and support', text: 'Saw cutting, cleanup and extra hands on high-volume pours.' },
+        { value: '1', title: 'Logistics', text: 'Keeps crews, concrete and equipment where they need to be.' },
+      ],
+      capacity:
+        'Each pour crew can pour up to 3 houses a day, basements or driveways. On streets, parking lots and warehouses, two crews can place up to 300 yards in a day.',
+      equipment: 'Our own skid loaders and power trowels; heavy machinery is rented as each job needs it.',
+    },
+    company: {
+      title: 'Company details',
+      rows: [
+        ['Legal name', 'Outdoor Modern Concepts LLC, doing business as New Era Construction'],
+        ['Founded', '2019'],
+        ['Warranty', '1 year on our work. We still look into any claim after that year; there is always something to learn.'],
+        ['Insurance', 'General liability ($1M) and workers’ compensation'],
+        ['Safety', 'Crew safety meetings every two weeks'],
+        ['Certifications', 'DBE certification in progress'],
+      ],
+    },
+    proud: {
+      eyebrow: 'A project we are proud of',
+      title: 'Edgeland, Bondurant',
+      text: 'Street and unit flatwork across the Edgeland development. Every project makes us proud, because we keep finding ways to do the next one better.',
+    },
     areaTitle: 'Service area',
     areaMore: 'and all of Central Iowa',
     photos: {
@@ -194,6 +230,8 @@ const en = {
     asideTitle: 'Talk with us',
     asideText: 'Share the work, the address and your dates. Plans, photos and measurements can come later.',
     phone: 'Phone',
+    email: 'Email',
+    response: 'We answer quotes within 48 hours, and the same day when it is urgent.',
     office: 'Office',
     owner: 'Owner',
     form: {
@@ -241,6 +279,7 @@ const en = {
     contact: 'Contact',
     owner: 'Owner',
     rights: 'All rights reserved.',
+    legal: 'Outdoor Modern Concepts LLC, doing business as New Era Construction.',
   },
   mobileCall: 'Call now',
 }
