@@ -49,6 +49,10 @@ function Footer() {
               {businessInfo.phone}
             </a>
             <br />
+            <a className="transition hover:text-orange-300" href={businessInfo.emailHref}>
+              {businessInfo.email}
+            </a>
+            <br />
             {address.street}
             <br />
             {address.city}, {address.state} {address.zip}
@@ -56,6 +60,7 @@ function Footer() {
           <p className="mt-4 text-sm text-zinc-500">
             © {new Date().getFullYear()} New Era Construction. {t.footer.rights}
           </p>
+          <p className="mt-1 text-xs text-zinc-600">{t.footer.legal}</p>
         </div>
       </div>
     </footer>

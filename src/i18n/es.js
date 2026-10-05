@@ -28,7 +28,7 @@ const es = {
       jobs: 'trabajos completados en los últimos 12 meses',
       delivered: 'en obra de concreto entregada',
       peakYards: 'yardas cúbicas coladas en nuestro mejor mes',
-      years: 'años colando concreto en Iowa',
+      years: 'años de experiencia en concreto',
     },
   },
   benefits: {
@@ -69,7 +69,7 @@ const es = {
       'La mayor parte de nuestro trabajo son sótanos y losas de garaje para constructores, pero hacemos todo tipo de flatwork residencial y comercial.',
     pageTitle: 'Servicios de concreto',
     pageDescription:
-      'Díganos el trabajo, la dirección y la fecha que lo necesita. Confirmamos alcance, acceso y fecha antes de colar.',
+      'Díganos el trabajo, la dirección y la fecha que lo necesita. Respondemos cotizaciones en 48 horas, y el mismo día si es urgente.',
     viewAll: 'Ver todos los servicios',
     request: 'Pedir cotización',
     other: 'Otro / no estoy seguro',
@@ -171,13 +171,49 @@ const es = {
     eyebrow: 'Nosotros',
     title: 'Un equipo familiar que trabaja como sistema',
     intro:
-      'New Era Construction es una empresa familiar de concreto en Des Moines. Desde hace más de 15 años colamos sótanos, garajes, footings, driveways y flatwork para constructores, contratistas y dueños de casa en todo el centro de Iowa.',
+      'New Era Construction es una empresa familiar de concreto en Des Moines, fundada en 2019 y con más de 15 años de experiencia en concreto. Colamos sótanos, garajes, footings, driveways y flatwork para constructores, contratistas y dueños de casa en todo el centro de Iowa.',
     ownerLabel: 'Dueño',
     facts: [
-      { value: '15+', label: 'años de experiencia' },
+      { value: '15+', label: 'años de experiencia en concreto' },
       { value: '20+', label: 'personas en campo' },
       { value: '640+', label: 'trabajos en los últimos 12 meses' },
     ],
+    why: {
+      eyebrow: 'Por qué existimos',
+      quote:
+        'Entendemos lo que necesitan los subcontratistas y las empresas: enfocarse en crecer juntos, no solo en llenar nuestros propios bolsillos. Aportamos soluciones y paz mental, y queremos ser un apoyo para nuestros socios, no un dolor de cabeza.',
+      closing: 'Entendemos toda la responsabilidad que carga un constructor. Nuestro objetivo es ayudar con esa carga.',
+    },
+    values: ['Puntualidad', 'Limpieza', 'Comunicación', 'Calidad', 'Responsabilidad', 'Rapidez', 'Soluciones'],
+    crews: {
+      eyebrow: 'Cómo estamos organizados',
+      title: 'Cuatro cuadrillas, cada una con su trabajo',
+      items: [
+        { value: '2 × 7', title: 'Cuadrillas de colado', text: 'Preparan y cuelan la mayoría de los proyectos.' },
+        { value: '5', title: 'Cuadrilla de reparaciones', text: 'Reparaciones, reemplazos y trabajos pequeños.' },
+        { value: '3', title: 'Acabado y apoyo', text: 'Cortes de junta, limpieza y apoyo en colados grandes.' },
+        { value: '1', title: 'Logística', text: 'Que cuadrillas, concreto y equipo estén donde deben.' },
+      ],
+      capacity:
+        'Cada cuadrilla de colado puede colar hasta 3 casas al día, sótanos o driveways. En calles, estacionamientos y bodegas, dos cuadrillas pueden colar hasta 300 yardas en un día.',
+      equipment: 'Minicargadores y allanadoras propias; la maquinaria pesada se renta según la obra.',
+    },
+    company: {
+      title: 'Datos de la empresa',
+      rows: [
+        ['Razón social', 'Outdoor Modern Concepts LLC, que opera como New Era Construction'],
+        ['Fundada', '2019'],
+        ['Garantía', '1 año en nuestro trabajo. Aun pasado el año revisamos cualquier reclamo; siempre hay algo que aprender.'],
+        ['Seguros', 'Responsabilidad civil ($1M) y compensación laboral'],
+        ['Seguridad', 'Juntas de seguridad con las cuadrillas cada dos semanas'],
+        ['Certificaciones', 'Certificación DBE en proceso'],
+      ],
+    },
+    proud: {
+      eyebrow: 'Una obra de la que estamos orgullosos',
+      title: 'Edgeland, Bondurant',
+      text: 'Flatwork de calles y unidades en todo el desarrollo Edgeland. Cada proyecto nos enorgullece, porque no nos conformamos y seguimos mejorando.',
+    },
     areaTitle: 'Zona de servicio',
     areaMore: 'y todo el centro de Iowa',
     photos: {
@@ -194,6 +230,8 @@ const es = {
     asideTitle: 'Hable con nosotros',
     asideText: 'Díganos el trabajo, la dirección y sus fechas. Planos, fotos y medidas pueden venir después.',
     phone: 'Teléfono',
+    email: 'Correo',
+    response: 'Respondemos cotizaciones en 48 horas, y el mismo día si es urgente.',
     office: 'Oficina',
     owner: 'Dueño',
     form: {
@@ -241,6 +279,7 @@ const es = {
     contact: 'Contacto',
     owner: 'Dueño',
     rights: 'Todos los derechos reservados.',
+    legal: 'Outdoor Modern Concepts LLC, que opera como New Era Construction.',
   },
   mobileCall: 'Llamar ahora',
 }

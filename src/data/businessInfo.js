@@ -1,8 +1,13 @@
 export const businessInfo = {
   name: 'New Era Construction',
+  legalName: 'Outdoor Modern Concepts LLC',
+  founded: 2019,
+  siteUrl: 'https://neweraiowa.com',
   owner: 'Christian Rubio',
   phone: '(515) 328-4712',
   phoneHref: 'tel:+15153284712',
+  email: 'office@neweraiowa.com',
+  emailHref: 'mailto:office@neweraiowa.com',
   address: {
     street: '2520 River Meadows Dr',
     city: 'Des Moines',
@@ -29,8 +34,8 @@ export const businessInfo = {
     'Grimes',
     'West Des Moines',
   ],
-  // Keep false until Christian approves publishing builder names (questionnaire, "Página web").
-  showBuilderNames: false,
+  // Christian approved publishing every name (questionnaire, 5-oct-2026).
+  showBuilderNames: true,
   builders: [
     'Hubbell Homes',
     'Drake Homes',

@@ -57,6 +57,8 @@ WEBSITE_PUBLIC_DATA_PATH=../new-era-website/src/data/housecallPublicData.json np
 
 New jobsite photos are pending. Slots are listed in `photoSlots` in `src/data/gallery.js`; drop the file in `public/media/photos/` and set its `src`.
 
-## Before launch
+## Domain
 
-The site is not indexed yet: the domain (neconstructioniowa.com) is being transferred from Hibu. At launch, remove the `noindex` meta in `index.html`, the `X-Robots-Tag` header in `vercel.json`, and the `Disallow` in `public/robots.txt`, then add the domain in Vercel.
+The public site is **neweraiowa.com** (GoDaddy; email runs on Google Workspace, so its MX/TXT records must not change). Canonical links, hreflang and `public/sitemap.xml` point there. Vercel preview URLs (`*.vercel.app`) send `X-Robots-Tag: noindex` from `vercel.json` so they never compete with it.
+
+neconstructioniowa.com (the old Hibu site) is being transferred out of Hibu and expires 2026-11-18. When it arrives, add it in Vercel as a redirect to neweraiowa.com.
