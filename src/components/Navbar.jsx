@@ -41,7 +41,7 @@ function Navbar() {
   const close = () => setOpen(false)
 
   return (
-    <header className="sticky top-0 z-40 border-b border-zinc-200/70 bg-white/85 backdrop-blur-xl">
+    <header className="print:hidden sticky top-0 z-40 border-b border-zinc-200/70 bg-white/85 backdrop-blur-xl">
       <nav className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
         <Link to={to('/')} className="flex items-center gap-3" onClick={close}>
           <span className="grid h-[3.25rem] w-[3.25rem] shrink-0 place-items-center rounded-full bg-zinc-100/70 p-1.5 ring-1 ring-zinc-200/70">

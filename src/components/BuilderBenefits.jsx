@@ -1,8 +1,9 @@
+import { Link } from 'react-router-dom'
 import { useLanguage } from '../i18n/useLanguage.js'
 import Section from './Section.jsx'
 
-function BuilderBenefits() {
-  const { t } = useLanguage()
+function BuilderBenefits({ showPageLink = false }) {
+  const { t, to } = useLanguage()
 
   return (
     <Section eyebrow={t.benefits.eyebrow} title={t.benefits.title}>
@@ -17,6 +18,14 @@ function BuilderBenefits() {
           </article>
         ))}
       </div>
+      {showPageLink && (
+        <Link
+          to={to('/builders')}
+          className="mt-8 inline-flex rounded border border-zinc-300 px-5 py-3 font-black text-zinc-900 transition hover:border-orange-600 hover:text-orange-700"
+        >
+          {t.buildersPage.homeLink}
+        </Link>
+      )}
     </Section>
   )
 }

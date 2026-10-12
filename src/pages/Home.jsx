@@ -20,7 +20,7 @@ function Home() {
   return (
     <>
       <Hero />
-      <BuilderBenefits />
+      <BuilderBenefits showPageLink />
       <ProcessSteps />
 
       <Section eyebrow={t.services.eyebrow} title={t.services.title} description={t.services.description}>

@@ -6,6 +6,7 @@ import Navbar from './components/Navbar.jsx'
 import { businessInfo } from './data/businessInfo.js'
 import { localizePath, splitPath, useLanguage } from './i18n/useLanguage.js'
 import About from './pages/About.jsx'
+import Builders from './pages/Builders.jsx'
 import Contact from './pages/Contact.jsx'
 import Gallery from './pages/Gallery.jsx'
 import Home from './pages/Home.jsx'
@@ -16,6 +17,7 @@ const pages = [
   ['/services', Services],
   ['/gallery', Gallery],
   ['/about', About],
+  ['/builders', Builders],
   ['/contact', Contact],
 ]
 

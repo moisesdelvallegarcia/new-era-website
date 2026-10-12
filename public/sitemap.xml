@@ -50,4 +50,14 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://neweraiowa.com/contact" />
     <xhtml:link rel="alternate" hreflang="es" href="https://neweraiowa.com/es/contact" />
   </url>
+  <url>
+    <loc>https://neweraiowa.com/builders</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://neweraiowa.com/builders" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://neweraiowa.com/es/builders" />
+  </url>
+  <url>
+    <loc>https://neweraiowa.com/es/builders</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://neweraiowa.com/builders" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://neweraiowa.com/es/builders" />
+  </url>
 </urlset>
