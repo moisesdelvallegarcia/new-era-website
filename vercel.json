@@ -24,6 +24,15 @@
           "value": "noindex, nofollow"
         }
       ]
+    },
+    {
+      "source": "/licitaciones",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     }
   ]
 }
