@@ -6,6 +6,7 @@ const links = [
   ['services', '/services'],
   ['gallery', '/gallery'],
   ['about', '/about'],
+  ['builders', '/builders'],
   ['contact', '/contact'],
 ]
 
@@ -14,7 +15,7 @@ function Footer() {
   const { address } = businessInfo
 
   return (
-    <footer className="bg-zinc-950 px-4 pb-24 pt-12 text-white sm:px-6 sm:pb-12 lg:px-8">
+    <footer className="print:hidden bg-zinc-950 px-4 pb-24 pt-12 text-white sm:px-6 sm:pb-12 lg:px-8">
       <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-[1.2fr_0.8fr_1fr]">
         <div>
           <div className="flex items-center gap-3">

@@ -41,3 +41,11 @@ select {
   background: #ea580c;
   color: #ffffff;
 }
+
+/* "Download PDF" on /builders prints the page; keep the dark sections dark. */
+@media print {
+  html {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
