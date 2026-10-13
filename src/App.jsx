@@ -9,6 +9,7 @@ import About from './pages/About.jsx'
 import Contact from './pages/Contact.jsx'
 import Gallery from './pages/Gallery.jsx'
 import Home from './pages/Home.jsx'
+import Licitaciones from './pages/Licitaciones.jsx'
 import Services from './pages/Services.jsx'
 
 const pages = [
@@ -63,6 +64,7 @@ function App() {
               <Route key={`${lang}${path}`} path={localizePath(path, lang)} element={<Page />} />
             ))
           )}
+          <Route path="/licitaciones" element={<Licitaciones />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
