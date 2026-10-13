@@ -27,7 +27,7 @@ const es = {
     photoAlt: 'Cuadrilla de New Era Construction dando acabado a un driveway de concreto',
     stats: {
       jobs: 'trabajos completados en los últimos 12 meses',
-      delivered: 'en obra de concreto entregada',
+      yearYards: 'yardas cúbicas coladas en 2026 (ene–oct)',
       peakYards: 'yardas cúbicas coladas en nuestro mejor mes',
       years: 'años de experiencia en concreto',
     },

@@ -27,7 +27,7 @@ const en = {
     photoAlt: 'New Era Construction crew finishing a concrete driveway',
     stats: {
       jobs: 'jobs completed in the last 12 months',
-      delivered: 'in concrete work delivered',
+      yearYards: 'cubic yards placed in 2026 (Jan–Oct)',
       peakYards: 'cubic yards placed in our peak month',
       years: 'years of concrete experience',
     },

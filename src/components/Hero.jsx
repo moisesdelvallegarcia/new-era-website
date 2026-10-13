@@ -4,7 +4,7 @@ import { photoSlots } from '../data/gallery.js'
 import { useLanguage } from '../i18n/useLanguage.js'
 import PhotoSlot from './PhotoSlot.jsx'
 
-const statKeys = ['jobs', 'delivered', 'peakYards', 'years']
+const statKeys = ['jobs', 'yearYards', 'peakYards', 'years']
 
 function Hero() {
   const { t, to } = useLanguage()

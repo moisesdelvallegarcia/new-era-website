@@ -10,7 +10,7 @@ import { useLanguage } from '../i18n/useLanguage.js'
 
 // The builder presentation (capability statement + deck) as a page builders can
 // be sent to. "Download PDF" prints it; print styles drop the site chrome.
-const statKeys = ['jobs', 'delivered', 'peakYards', 'years']
+const statKeys = ['jobs', 'yearYards', 'peakYards', 'years']
 
 function Builders() {
   const { t, to } = useLanguage()
