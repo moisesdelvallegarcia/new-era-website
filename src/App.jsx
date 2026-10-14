@@ -11,6 +11,7 @@ import Contact from './pages/Contact.jsx'
 import Gallery from './pages/Gallery.jsx'
 import Home from './pages/Home.jsx'
 import Licitaciones from './pages/Licitaciones.jsx'
+import Portal from './pages/Portal.jsx'
 import Services from './pages/Services.jsx'
 
 const pages = [
@@ -68,6 +69,7 @@ function App() {
             ))
           )}
           <Route path="/licitaciones" element={<Licitaciones />} />
+          <Route path="/portal/:token" element={<Portal />} />
           <Route path="/es/*" element={<Navigate to="/es" replace />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
