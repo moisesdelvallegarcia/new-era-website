@@ -2,7 +2,33 @@ const en = {
   meta: {
     title: 'New Era Construction | Concrete Contractor in Des Moines, Iowa',
     description:
-      'Basements, garage slabs, footings, driveways and flatwork for home builders, contractors and homeowners across the Greater Des Moines area. Family-owned, 15+ years, se habla español.',
+      'Up to 3 houses a day per crew. Basements, garage slabs, footings, driveways and flatwork for home builders and contractors across Central Iowa. Family-owned, se habla español.',
+    pages: {
+      '/services': {
+        title: 'Concrete Services in Des Moines | New Era Construction',
+        description:
+          'Basement and garage slabs, footings, driveways, sidewalks, patios, pool decks, parking lots and curb and gutter across the Des Moines area.',
+      },
+      '/gallery': {
+        title: 'Project Gallery | New Era Construction',
+        description: 'Driveways, patios, walkways and finish work by New Era Construction around Central Iowa.',
+      },
+      '/about': {
+        title: 'About Us | New Era Construction',
+        description:
+          'Family-owned concrete company in Des Moines since 2019: four crews, 20+ people in the field and 15+ years of experience.',
+      },
+      '/builders': {
+        title: 'For Home Builders and Contractors | New Era Construction',
+        description:
+          'How we work with builders: from your PO to the invoice in six steps, crew capacity, insurance and company details.',
+      },
+      '/contact': {
+        title: 'Get a Concrete Quote | New Era Construction',
+        description:
+          'Request a concrete quote in the Des Moines area. We answer within 48 hours, and the same day when it is urgent. (515) 328-4712.',
+      },
+    },
   },
   nav: {
     home: 'Home',

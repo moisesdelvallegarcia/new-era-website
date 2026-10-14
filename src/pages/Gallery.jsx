@@ -10,7 +10,7 @@ function Gallery() {
 
   return (
     <>
-      <Section eyebrow={t.gallery.eyebrow} title={t.gallery.pageTitle} description={t.gallery.pageDescription}>
+      <Section pageTitle eyebrow={t.gallery.eyebrow} title={t.gallery.pageTitle} description={t.gallery.pageDescription}>
         <GalleryGrid items={galleryItems} />
       </Section>
       <Section className="bg-zinc-100">

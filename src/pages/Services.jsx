@@ -10,7 +10,7 @@ function Services() {
 
   return (
     <>
-      <Section
+      <Section pageTitle
         eyebrow={t.services.eyebrow}
         title={t.services.pageTitle}
         description={t.services.pageDescription}

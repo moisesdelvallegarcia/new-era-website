@@ -42,9 +42,10 @@ function DocumentHead() {
 
   useEffect(() => {
     const { basePath } = splitPath(pathname)
+    const meta = t.meta.pages[basePath] ?? t.meta
     document.documentElement.lang = lang
-    document.title = t.meta.title
-    document.querySelector('meta[name="description"]')?.setAttribute('content', t.meta.description)
+    document.title = meta.title
+    document.querySelector('meta[name="description"]')?.setAttribute('content', meta.description)
     setHeadLink('canonical', pathname)
     setHeadLink('alternate', localizePath(basePath, 'en'), 'en')
     setHeadLink('alternate', localizePath(basePath, 'es'), 'es')
@@ -67,6 +68,7 @@ function App() {
             ))
           )}
           <Route path="/licitaciones" element={<Licitaciones />} />
+          <Route path="/es/*" element={<Navigate to="/es" replace />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>

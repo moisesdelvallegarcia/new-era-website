@@ -7,7 +7,7 @@ function Contact() {
   const { t } = useLanguage()
 
   return (
-    <Section eyebrow={t.contact.eyebrow} title={t.contact.title} description={t.contact.description}>
+    <Section pageTitle eyebrow={t.contact.eyebrow} title={t.contact.title} description={t.contact.description}>
       <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr]">
         <aside className="rounded-lg bg-zinc-950 p-6 text-white">
           <h2 className="text-2xl font-black">{t.contact.asideTitle}</h2>
