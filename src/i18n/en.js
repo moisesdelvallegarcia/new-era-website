@@ -36,7 +36,7 @@ const en = {
     gallery: 'Gallery',
     about: 'About',
     contact: 'Contact',
-    builders: 'For builders',
+    builders: 'Builders',
     estimate: 'Get a quote',
     menu: 'Menu',
     switchTo: 'Español',

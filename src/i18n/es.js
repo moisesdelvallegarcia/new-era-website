@@ -36,7 +36,7 @@ const es = {
     gallery: 'Galería',
     about: 'Nosotros',
     contact: 'Contacto',
-    builders: 'Para constructores',
+    builders: 'Constructores',
     estimate: 'Pedir cotización',
     menu: 'Menú',
     switchTo: 'English',
