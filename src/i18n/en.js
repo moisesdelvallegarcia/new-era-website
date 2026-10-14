@@ -19,12 +19,17 @@ const en = {
     spanish: 'Se habla español',
   },
   hero: {
-    eyebrow: 'Concrete contractor · Greater Des Moines, Iowa',
-    title: 'Concrete done right, on your schedule.',
-    lead: 'Basements, garages, driveways and flatwork for home builders and general contractors. Family-owned, 15+ years, se habla español.',
+    eyebrow: 'For home builders and general contractors',
+    title: 'Up to 3 houses a day, per crew.',
+    lead: 'Basements and garage slabs on your schedule. We get your PO, book the crew, confirm with your super and pour.',
+    trusted: 'Builders who keep calling us back',
+    capacity: [
+      ['3', 'houses a day per pour crew'],
+      ['300', 'yards a day on streets and lots'],
+      ['48 h', 'to answer any quote'],
+    ],
     primary: 'Get a quote',
     secondary: 'Call',
-    photoAlt: 'New Era Construction crew finishing a concrete driveway',
     stats: {
       jobs: 'jobs completed in the last 12 months',
       yearYards: 'cubic yards placed in 2026 (Jan–Oct)',
