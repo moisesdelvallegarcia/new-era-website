@@ -19,12 +19,17 @@ const es = {
     spanish: 'Se habla español',
   },
   hero: {
-    eyebrow: 'Contratista de concreto · Des Moines, Iowa',
-    title: 'Concreto bien hecho, a tiempo con su calendario.',
-    lead: 'Sótanos, garajes, driveways y flatwork para constructores de vivienda y contratistas generales. Empresa familiar, más de 15 años, se habla español.',
+    eyebrow: 'Para constructores y contratistas generales',
+    title: 'Hasta 3 casas al día, por cuadrilla.',
+    lead: 'Sótanos y pisos de garaje en su calendario. Recibimos su PO, apartamos la cuadrilla, confirmamos con su supervisor y colamos.',
+    trusted: 'Constructores que nos siguen llamando',
+    capacity: [
+      ['3', 'casas al día por cuadrilla'],
+      ['300', 'yardas al día en calles y estacionamientos'],
+      ['48 h', 'para responder cualquier cotización'],
+    ],
     primary: 'Pedir cotización',
     secondary: 'Llamar',
-    photoAlt: 'Cuadrilla de New Era Construction dando acabado a un driveway de concreto',
     stats: {
       jobs: 'trabajos completados en los últimos 12 meses',
       yearYards: 'yardas cúbicas coladas en 2026 (ene–oct)',
