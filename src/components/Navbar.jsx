@@ -8,11 +8,12 @@ const navItems = [
   ['services', '/services'],
   ['gallery', '/gallery'],
   ['about', '/about'],
+  ['builders', '/builders'],
   ['contact', '/contact'],
 ]
 
 function navClass({ isActive }) {
-  return `rounded-full px-4 py-2 text-sm font-semibold transition ${
+  return `whitespace-nowrap rounded-full px-3 py-2 text-sm font-semibold transition xl:px-4 ${
     isActive
       ? 'bg-zinc-950 text-white shadow-sm'
       : 'text-zinc-600 hover:bg-zinc-100 hover:text-zinc-950 focus-visible:bg-zinc-100'

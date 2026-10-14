@@ -14,7 +14,7 @@ function About() {
 
   return (
     <>
-      <Section eyebrow={t.about.eyebrow} title={t.about.title}>
+      <Section pageTitle eyebrow={t.about.eyebrow} title={t.about.title}>
         <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
           <div className="grid gap-8">
             <p className="text-lg leading-8 text-zinc-700">{t.about.intro}</p>

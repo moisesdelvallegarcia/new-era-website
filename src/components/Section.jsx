@@ -1,4 +1,5 @@
-function Section({ children, className = '', eyebrow, title, description }) {
+function Section({ children, className = '', eyebrow, title, description, pageTitle = false }) {
+  const Heading = pageTitle ? 'h1' : 'h2'
   return (
     <section className={`px-4 py-16 sm:px-6 lg:px-8 lg:py-24 ${className}`}>
       <div className="mx-auto max-w-6xl">
@@ -10,9 +11,9 @@ function Section({ children, className = '', eyebrow, title, description }) {
               </p>
             )}
             {title && (
-              <h2 className="text-3xl font-black leading-tight tracking-tight text-zinc-950 sm:text-5xl">
+              <Heading className="text-3xl font-black leading-tight tracking-tight text-zinc-950 sm:text-5xl">
                 {title}
-              </h2>
+              </Heading>
             )}
             {description && (
               <p className="mt-4 text-base leading-7 text-zinc-600 sm:text-lg">

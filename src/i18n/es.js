@@ -2,7 +2,33 @@ const es = {
   meta: {
     title: 'New Era Construction | Contratista de concreto en Des Moines, Iowa',
     description:
-      'Sótanos, losas de garaje, footings, driveways y flatwork para constructores, contratistas y dueños de casa en el área de Des Moines. Empresa familiar, más de 15 años, se habla español.',
+      'Hasta 3 casas al día por cuadrilla. Sótanos, losas de garaje, footings, driveways y flatwork para constructores y contratistas en el centro de Iowa. Empresa familiar, se habla español.',
+    pages: {
+      '/services': {
+        title: 'Servicios de concreto en Des Moines | New Era Construction',
+        description:
+          'Losas de sótano y garaje, footings, driveways, banquetas, patios, decks de alberca, estacionamientos y guarniciones en el área de Des Moines.',
+      },
+      '/gallery': {
+        title: 'Galería de obras | New Era Construction',
+        description: 'Driveways, patios, banquetas y acabados de New Era Construction en el centro de Iowa.',
+      },
+      '/about': {
+        title: 'Nosotros | New Era Construction',
+        description:
+          'Empresa familiar de concreto en Des Moines desde 2019: cuatro cuadrillas, más de 20 personas en campo y más de 15 años de experiencia.',
+      },
+      '/builders': {
+        title: 'Para constructores y contratistas | New Era Construction',
+        description:
+          'Cómo trabajamos con constructores: del PO a la factura en seis pasos, capacidad de las cuadrillas, seguros y datos de la empresa.',
+      },
+      '/contact': {
+        title: 'Pida una cotización de concreto | New Era Construction',
+        description:
+          'Pida una cotización de concreto en el área de Des Moines. Respondemos en 48 horas, y el mismo día si es urgente. (515) 328-4712.',
+      },
+    },
   },
   nav: {
     home: 'Inicio',
@@ -10,7 +36,7 @@ const es = {
     gallery: 'Galería',
     about: 'Nosotros',
     contact: 'Contacto',
-    builders: 'Para constructores',
+    builders: 'Constructores',
     estimate: 'Pedir cotización',
     menu: 'Menú',
     switchTo: 'English',
