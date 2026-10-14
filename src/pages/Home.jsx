@@ -1,10 +1,11 @@
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import AreasServed from '../components/AreasServed.jsx'
 import BuilderBenefits from '../components/BuilderBenefits.jsx'
 import BuildersList from '../components/BuildersList.jsx'
 import CTASection from '../components/CTASection.jsx'
 import GalleryGrid from '../components/GalleryGrid.jsx'
 import Hero from '../components/Hero.jsx'
+import { HeroA, HeroB, HeroC, OptionSwitcher } from '../components/HeroOptions.jsx'
 import HousecallProof from '../components/HousecallProof.jsx'
 import ProcessSteps from '../components/ProcessSteps.jsx'
 import ProjectVideo from '../components/ProjectVideo.jsx'
@@ -17,12 +18,14 @@ import { useLanguage } from '../i18n/useLanguage.js'
 function Home() {
   const { t, to } = useLanguage()
 
-  return (
-    <>
-      <Hero />
-      <BuilderBenefits showPageLink />
-      <ProcessSteps />
+  const [params] = useSearchParams()
+  const opcion = params.get('opcion')
 
+  const blocks = {
+    hero: <Hero />,
+    benefits: <BuilderBenefits showPageLink />,
+    process: <ProcessSteps />,
+    services: (
       <Section eyebrow={t.services.eyebrow} title={t.services.title} description={t.services.description}>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {services.slice(0, 4).map((slug) => (
@@ -36,27 +39,21 @@ function Home() {
           {t.services.viewAll}
         </Link>
       </Section>
-
-      <HousecallProof />
-      <AreasServed />
-      <BuildersList />
-
+    ),
+    proof: <HousecallProof />,
+    areas: <AreasServed />,
+    builders: <BuildersList />,
+    spanish: (
       <Section className="bg-white">
         <div className="grid gap-6 lg:grid-cols-2">
           <div className="rounded-[2rem] bg-zinc-950 p-7 text-white shadow-xl shadow-zinc-200/70 lg:p-10">
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-orange-300">
-              {t.spanish.eyebrow}
-            </p>
-            <h2 className="mt-3 text-3xl font-black leading-tight tracking-tight sm:text-4xl">
-              {t.spanish.title}
-            </h2>
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-orange-300">{t.spanish.eyebrow}</p>
+            <h2 className="mt-3 text-3xl font-black leading-tight tracking-tight sm:text-4xl">{t.spanish.title}</h2>
             <p className="mt-4 text-lg leading-8 text-zinc-300">{t.spanish.text}</p>
           </div>
           <div className="flex flex-col justify-between gap-6 rounded-[2rem] border border-zinc-200 bg-zinc-50 p-7 lg:p-10">
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.22em] text-orange-700">
-                {t.homeowners.eyebrow}
-              </p>
+              <p className="text-xs font-black uppercase tracking-[0.22em] text-orange-700">{t.homeowners.eyebrow}</p>
               <h2 className="mt-3 text-3xl font-black leading-tight tracking-tight text-zinc-950 sm:text-4xl">
                 {t.homeowners.title}
               </h2>
@@ -71,7 +68,8 @@ function Home() {
           </div>
         </div>
       </Section>
-
+    ),
+    gallery: (
       <Section
         className="bg-zinc-100"
         eyebrow={t.gallery.eyebrow}
@@ -83,8 +81,27 @@ function Home() {
           <ProjectVideo />
         </div>
       </Section>
+    ),
+    cta: <CTASection />,
+  }
+  if (opcion === 'a') blocks.hero = <HeroA />
+  if (opcion === 'b') blocks.hero = <HeroB />
+  if (opcion === 'c') blocks.hero = <HeroC />
 
-      <CTASection />
+  // Section order per option (preview only).
+  const order =
+    {
+      a: ['hero', 'gallery', 'benefits', 'services', 'proof', 'builders', 'cta'],
+      b: ['hero', 'process', 'benefits', 'proof', 'services', 'areas', 'cta'],
+      c: ['hero', 'spanish', 'benefits', 'process', 'gallery', 'builders', 'cta'],
+    }[opcion] ?? Object.keys(blocks)
+
+  return (
+    <>
+      {order.map((key) => (
+        <div key={key}>{blocks[key]}</div>
+      ))}
+      {opcion && <OptionSwitcher current={opcion} />}
     </>
   )
 }
