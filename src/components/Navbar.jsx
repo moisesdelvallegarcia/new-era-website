@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { businessInfo } from '../data/businessInfo.js'
 import { useLanguage } from '../i18n/useLanguage.js'
 
@@ -22,6 +22,10 @@ function navClass({ isActive }) {
 
 function LanguageSwitch({ onClick, className = '' }) {
   const { lang, t, otherLangPath } = useLanguage()
+  const { pathname } = useLocation()
+
+  // The builder portal is English only; switching would leave it.
+  if (pathname.startsWith('/portal/')) return null
 
   return (
     <Link

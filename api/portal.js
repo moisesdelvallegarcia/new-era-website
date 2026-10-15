@@ -1,5 +1,6 @@
 // Vercel function: concrete schedule for one builder's private portal (/portal/<token>).
-// Reads new_era.portal_hubbell (nova-expense-ai migration 20261014_portal_hubbell.sql):
+// Reads new_era.portal_hubbell_rows() (nova-expense-ai migrations 20261014_portal_hubbell.sql
+// and 20261015_portal_hubbell_fn.sql):
 // Hubbell's ECI calendar joined with our Housecall jobs. No prices or payments.
 // Env (Vercel → Settings → Environment Variables):
 //   PORTAL_DATABASE_URL   Supabase pooler URL for the read-only role web_portal
@@ -8,7 +9,7 @@
 import { timingSafeEqual } from 'node:crypto'
 import pg from 'pg'
 
-const BUILDERS = [{ name: 'Hubbell Homes', tokenEnv: 'PORTAL_HUBBELL_TOKEN', view: 'new_era.portal_hubbell' }]
+const BUILDERS = [{ name: 'Hubbell Homes', tokenEnv: 'PORTAL_HUBBELL_TOKEN', view: 'new_era.portal_hubbell_rows()' }]
 
 // Last 30 days for "poured", everything ahead for "upcoming". Past work that never
 // got a crew is left out: it means the link to Housecall is missing, not that we
@@ -20,6 +21,10 @@ const sqlFor = (view) => `
   WHERE estado <> 'cancelado'
     AND (fecha_hubbell >= current_date OR (estado = 'colado' AND fecha_hubbell >= current_date - 30))
   ORDER BY fecha_hubbell, direccion`
+
+// The view takes ~6 s, so keep each builder's rows for a few minutes per instance.
+const CACHE_MS = 5 * 60 * 1000
+const cache = new Map()
 
 let pool
 
@@ -59,7 +64,13 @@ export default async function handler(req, res) {
   if (!builder) return res.status(401).json({ success: false })
 
   try {
-    const { rows } = await getPool().query(sqlFor(builder.view))
+    let entry = cache.get(builder.name)
+    if (!entry || Date.now() - entry.at > CACHE_MS) {
+      const { rows } = await getPool().query(sqlFor(builder.view))
+      entry = { at: Date.now(), rows }
+      cache.set(builder.name, entry)
+    }
+    const { rows } = entry
     return res.status(200).json({ success: true, builder: builder.name, rows })
   } catch (error) {
     console.error('portal: query failed', error)
