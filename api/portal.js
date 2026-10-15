@@ -22,7 +22,7 @@ const sqlFor = (view) => `
     AND (fecha_hubbell >= current_date OR (estado = 'colado' AND fecha_hubbell >= current_date - 30))
   ORDER BY fecha_hubbell, direccion`
 
-// The view takes ~6 s, so keep each builder's rows for a few minutes per instance.
+// The view takes 6-10 s (nexus_street_only scans hcp_jobs per row), so keep each builder's rows for a few minutes per instance.
 const CACHE_MS = 5 * 60 * 1000
 const cache = new Map()
 
@@ -66,7 +66,20 @@ export default async function handler(req, res) {
   try {
     let entry = cache.get(builder.name)
     if (!entry || Date.now() - entry.at > CACHE_MS) {
-      const { rows } = await getPool().query(sqlFor(builder.view))
+      // The role's 10 s limit is too tight for a cold read; lift it for this query only.
+      const client = await getPool().connect()
+      let rows
+      try {
+        await client.query('BEGIN')
+        await client.query("SET LOCAL statement_timeout = '25s'")
+        ;({ rows } = await client.query(sqlFor(builder.view)))
+        await client.query('COMMIT')
+      } catch (error) {
+        await client.query('ROLLBACK').catch(() => {})
+        throw error
+      } finally {
+        client.release()
+      }
       entry = { at: Date.now(), rows }
       cache.set(builder.name, entry)
     }
