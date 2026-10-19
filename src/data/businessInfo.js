@@ -2,7 +2,7 @@ export const businessInfo = {
   name: 'New Era Construction',
   legalName: 'Outdoor Modern Concepts LLC',
   founded: 2019,
-  siteUrl: 'https://neweraiowa.com',
+  siteUrl: 'https://neconstructioniowa.com',
   owner: 'Christian Rubio',
   phone: '(515) 328-4712',
   phoneHref: 'tel:+15153284712',
