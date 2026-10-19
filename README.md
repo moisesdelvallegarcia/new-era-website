@@ -59,6 +59,6 @@ New jobsite photos are pending. Slots are listed in `photoSlots` in `src/data/ga
 
 ## Domain
 
-The public site is **neweraiowa.com** (GoDaddy; email runs on Google Workspace, so its MX/TXT records must not change). Canonical links, hreflang and `public/sitemap.xml` point there. Vercel preview URLs (`*.vercel.app`) send `X-Robots-Tag: noindex` from `vercel.json` so they never compete with it.
+The public site is **neconstructioniowa.com** (transferred from Hibu to Vercel on 2026-10-19; DNS is on Vercel). Canonical links, hreflang and `public/sitemap.xml` point there. Vercel preview URLs (`*.vercel.app`) send `X-Robots-Tag: noindex` from `vercel.json` so they never compete with it.
 
-neconstructioniowa.com (the old Hibu site) is being transferred out of Hibu and expires 2026-11-18. When it arrives, add it in Vercel as a redirect to neweraiowa.com.
+neweraiowa.com stays at GoDaddy only for its Google Workspace email (office@neweraiowa.com); do not change its MX/TXT records.
