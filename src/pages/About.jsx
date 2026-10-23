@@ -6,7 +6,7 @@ import { businessInfo } from '../data/businessInfo.js'
 import { photoSlots } from '../data/gallery.js'
 import { useLanguage } from '../i18n/useLanguage.js'
 
-const photoKeys = ['team', 'finishing', 'equipment', 'basement']
+const photoKeys = ['team', 'finishing', 'pour', 'edge']
 
 function About() {
   const { t } = useLanguage()

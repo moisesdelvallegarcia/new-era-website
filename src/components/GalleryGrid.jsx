@@ -13,12 +13,27 @@ function GalleryGrid({ items }) {
             key={item.key}
             className="group overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm shadow-zinc-200/70"
           >
-            <img
-              src={item.image}
-              alt={title}
-              loading="lazy"
-              className="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-105"
-            />
+            {item.video ? (
+              <video
+                aria-label={title}
+                className="aspect-[4/3] w-full bg-zinc-950 object-cover"
+                controls
+                muted
+                playsInline
+                preload="none"
+                poster={item.poster}
+              >
+                <source src={item.video} type="video/mp4" />
+                {t.video.fallback}
+              </video>
+            ) : (
+              <img
+                src={item.image}
+                alt={title}
+                loading="lazy"
+                className="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-105"
+              />
+            )}
             <figcaption className="p-4">
               <p className="text-xs font-black uppercase tracking-[0.18em] text-orange-700">
                 {category}
