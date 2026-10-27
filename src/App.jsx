@@ -5,7 +5,9 @@ import MobileCallButton from './components/MobileCallButton.jsx'
 import Navbar from './components/Navbar.jsx'
 import { businessInfo } from './data/businessInfo.js'
 import { localizePath, splitPath, useLanguage } from './i18n/useLanguage.js'
+import { areaMeta, findArea } from './data/areas.js'
 import About from './pages/About.jsx'
+import Area from './pages/Area.jsx'
 import Builders from './pages/Builders.jsx'
 import Contact from './pages/Contact.jsx'
 import Gallery from './pages/Gallery.jsx'
@@ -43,7 +45,8 @@ function DocumentHead() {
 
   useEffect(() => {
     const { basePath } = splitPath(pathname)
-    const meta = t.meta.pages[basePath] ?? t.meta
+    const area = basePath.startsWith('/areas/') && findArea(basePath.slice('/areas/'.length))
+    const meta = area ? areaMeta(t, area.city) : (t.meta.pages[basePath] ?? t.meta)
     document.documentElement.lang = lang
     document.title = meta.title
     document.querySelector('meta[name="description"]')?.setAttribute('content', meta.description)
@@ -68,6 +71,9 @@ function App() {
               <Route key={`${lang}${path}`} path={localizePath(path, lang)} element={<Page />} />
             ))
           )}
+          {['en', 'es'].map((lang) => (
+            <Route key={`${lang}-area`} path={localizePath('/areas/:slug', lang)} element={<Area />} />
+          ))}
           <Route path="/licitaciones" element={<Licitaciones />} />
           <Route path="/portal/:token" element={<Portal />} />
           <Route path="/es/*" element={<Navigate to="/es" replace />} />

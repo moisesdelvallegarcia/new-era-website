@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { areas } from '../data/areas.js'
 import { businessInfo } from '../data/businessInfo.js'
 import { useLanguage } from '../i18n/useLanguage.js'
 
@@ -16,7 +17,7 @@ function Footer() {
 
   return (
     <footer className="print:hidden bg-zinc-950 px-4 pb-24 pt-12 text-white sm:px-6 sm:pb-12 lg:px-8">
-      <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-[1.2fr_0.8fr_1fr]">
+      <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-2 lg:grid-cols-[1.2fr_0.7fr_0.8fr_1fr]">
         <div>
           <div className="flex items-center gap-3">
             <img
@@ -36,6 +37,18 @@ function Footer() {
               <li key={href}>
                 <Link className="text-zinc-400 transition hover:text-orange-300" to={to(href)}>
                   {t.nav[key]}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h3 className="font-black">{t.footer.areas}</h3>
+          <ul className="mt-4 grid gap-2">
+            {areas.map(({ city, slug }) => (
+              <li key={slug}>
+                <Link className="text-zinc-400 transition hover:text-orange-300" to={to(`/areas/${slug}`)}>
+                  {city}
                 </Link>
               </li>
             ))}
