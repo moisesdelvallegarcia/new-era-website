@@ -10,11 +10,11 @@ const es = {
           'Losas de sótano y garaje, footings, driveways, banquetas, patios, decks de alberca, estacionamientos y guarniciones en el área de Des Moines.',
       },
       '/gallery': {
-        title: 'Galería de obras | New Era Construction',
+        title: 'Galería de obras de concreto en Des Moines | New Era Construction',
         description: 'Driveways, patios, banquetas y acabados de New Era Construction en el centro de Iowa.',
       },
       '/about': {
-        title: 'Nosotros | New Era Construction',
+        title: 'Nosotros | Empresa de concreto en Des Moines | New Era Construction',
         description:
           'Empresa familiar de concreto en Des Moines desde 2019: cuatro cuadrillas, más de 20 personas en campo y más de 15 años de experiencia.',
       },
@@ -161,6 +161,18 @@ const es = {
     title: 'Obra de concreto en todo el centro de Iowa',
     lead: 'Trabajos completados por ciudad desde 2023. Si su obra está en el centro de Iowa, llegamos.',
     jobs: 'trabajos completados',
+  },
+  area: {
+    eyebrow: 'Zona de servicio',
+    title: 'Contratista de concreto en {city}, Iowa',
+    lead: '{jobs} trabajos de concreto terminados en {city} desde 2023. Sótanos, losas de garaje, footings, driveways, patios y banquetas para constructores, contratistas y dueños de casa.',
+    leadNoJobs: 'Sótanos, losas de garaje, footings, driveways, patios y banquetas en {city} y en todo el área de Des Moines, para constructores, contratistas y dueños de casa.',
+    servicesTitle: 'Lo que colamos en {city}',
+    builders: 'Constructores con los que trabajamos en {city} y el área: {builders}.',
+    otherAreas: 'Otras zonas donde trabajamos',
+    metaTitle: 'Contratista de concreto en {city}, IA | New Era Construction',
+    metaDescription:
+      'Contratista de concreto en {city}, Iowa: sótanos, losas de garaje, footings, driveways, patios y banquetas. Empresa familiar, se habla español. Cotización en 48 horas: (515) 328-4712.',
   },
   builders: {
     eyebrow: 'Constructores con los que trabajamos',
@@ -332,6 +344,7 @@ const es = {
   footer: {
     about: 'Concreto para constructores, contratistas y dueños de casa en el área de Des Moines.',
     navigation: 'Navegación',
+    areas: 'Zonas de servicio',
     contact: 'Contacto',
     owner: 'Dueño',
     rights: 'Todos los derechos reservados.',

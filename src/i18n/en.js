@@ -10,11 +10,11 @@ const en = {
           'Basement and garage slabs, footings, driveways, sidewalks, patios, pool decks, parking lots and curb and gutter across the Des Moines area.',
       },
       '/gallery': {
-        title: 'Project Gallery | New Era Construction',
+        title: 'Concrete Project Gallery in Des Moines | New Era Construction',
         description: 'Driveways, patios, walkways and finish work by New Era Construction around Central Iowa.',
       },
       '/about': {
-        title: 'About Us | New Era Construction',
+        title: 'About Us | Des Moines Concrete Company | New Era Construction',
         description:
           'Family-owned concrete company in Des Moines since 2019: four crews, 20+ people in the field and 15+ years of experience.',
       },
@@ -161,6 +161,18 @@ const en = {
     title: 'Concrete work across Central Iowa',
     lead: 'Completed jobs by city since 2023. If your job is in Central Iowa, we can get there.',
     jobs: 'jobs completed',
+  },
+  area: {
+    eyebrow: 'Service area',
+    title: 'Concrete contractor in {city}, Iowa',
+    lead: '{jobs} concrete jobs completed in {city} since 2023. Basements, garage slabs, footings, driveways, patios and sidewalks for home builders, contractors and homeowners.',
+    leadNoJobs: 'Basements, garage slabs, footings, driveways, patios and sidewalks in {city} and across the Des Moines metro, for home builders, contractors and homeowners.',
+    servicesTitle: 'What we pour in {city}',
+    builders: 'Builders we pour for in {city} and around the metro: {builders}.',
+    otherAreas: 'Other areas we serve',
+    metaTitle: 'Concrete Contractor in {city}, IA | New Era Construction',
+    metaDescription:
+      'Concrete contractor in {city}, Iowa: basements, garage slabs, footings, driveways, patios and sidewalks. Family-owned, se habla español. Quotes within 48 hours: (515) 328-4712.',
   },
   builders: {
     eyebrow: 'Builders we work with',
@@ -332,6 +344,7 @@ const en = {
   footer: {
     about: 'Concrete for home builders, contractors and homeowners across the Greater Des Moines area.',
     navigation: 'Navigation',
+    areas: 'Service areas',
     contact: 'Contact',
     owner: 'Owner',
     rights: 'All rights reserved.',
