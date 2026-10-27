@@ -17,6 +17,47 @@ const FIELDS = [
 
 const MAX_LENGTH = 2000
 
+// Spam is only labeled, never dropped, so a real customer is never lost.
+// Phrases seen in sales pitches and "send me your email for the plans" scams.
+const SPAM_PHRASES = [
+  'seo',
+  'traffic',
+  'google ranking',
+  'first page of google',
+  'web design',
+  'website design',
+  'marketing',
+  'leads for your',
+  'best email',
+  'email address to send',
+  'send you the',
+  'send over the',
+  'plans and documents',
+  'documents for review',
+  'recommended your company',
+  'recommended you',
+  'my friend recommended',
+]
+
+// Towns we work in or near (Housecall + service area). A city outside this list
+// that doesn't mention Iowa is a strong hint the lead is not local.
+const LOCAL_CITIES = [
+  'adel', 'altoona', 'ames', 'ankeny', 'bondurant', 'boone', 'carlisle', 'clive', 'cumming',
+  'dallas center', 'des moines', 'granger', 'grimes', 'indianola', 'johnston', 'manson',
+  'mitchellville', 'norwalk', 'pleasant hill', 'polk city', 'urbandale', 'van meter',
+  'waukee', 'wdm', 'west des moines', 'windsor heights',
+]
+
+function spamReasons(data, message) {
+  const text = ` ${message} ${data.company} `.toLowerCase()
+  const reasons = SPAM_PHRASES.filter((phrase) => new RegExp(`\\b${phrase}\\b`).test(text))
+  const city = data.city.toLowerCase()
+  if (city && !/\b(iowa|ia)\b/.test(city) && !LOCAL_CITIES.some((name) => city.includes(name))) {
+    reasons.push(`ciudad fuera de Iowa (${data.city})`)
+  }
+  return reasons
+}
+
 function clean(value) {
   return String(value ?? '').trim().slice(0, MAX_LENGTH)
 }
@@ -45,8 +86,10 @@ export default async function handler(req, res) {
     return res.status(400).json({ success: false })
   }
 
+  const reasons = spamReasons(data, message)
   const lines = [
-    '🟠 NUEVO CLIENTE DESDE LA PÁGINA WEB',
+    reasons.length ? '⚪ PROBABLE SPAM DESDE LA PÁGINA WEB' : '🟠 NUEVO CLIENTE DESDE LA PÁGINA WEB',
+    ...(reasons.length ? [`Por: ${reasons.join(', ')}`] : []),
     '',
     ...FIELDS.filter(([key]) => data[key]).map(([key, label]) => `${label}: ${data[key]}`),
     '',
