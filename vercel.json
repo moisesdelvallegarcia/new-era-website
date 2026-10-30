@@ -46,6 +46,24 @@
           "value": "noindex, nofollow"
         }
       ]
+    },
+    {
+      "source": "/vcards/(.*)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/vcard; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/card/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
     }
   ]
 }

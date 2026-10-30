@@ -5,6 +5,7 @@
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { areaMeta, areas } from '../src/data/areas.js'
 import { businessInfo } from '../src/data/businessInfo.js'
+import { team } from '../src/data/team.js'
 import en from '../src/i18n/en.js'
 import es from '../src/i18n/es.js'
 import { localizePath } from '../src/i18n/useLanguage.js'
@@ -49,6 +50,25 @@ for (const lang of ['en', 'es']) {
     writeFileSync(`${dir}/index.html`, render(page, lang))
   }
 }
+// Business cards: the preview WhatsApp shows when Bernardo sends his link.
+// Not in the sitemap (noindex).
+for (const person of team) {
+  const path = `/card/${person.slug}`
+  const title = escape(`${person.name} · ${person.title}`)
+  const description = escape(`${businessInfo.name} · Concrete flatwork in the Des Moines metro. Tap to call or save my contact.`)
+  const html = template
+    .replace(/<title>[\s\S]*?<\/title>/, `<title>${title}</title>`)
+    .replace(/(<meta\s+name="description"\s+content=")[^"]*(")/, `$1${description}$2`)
+    .replace(/(<link rel="canonical" href=")[^"]*(")/, `$1${url(path)}$2`)
+    .replace(/(<meta property="og:url" content=")[^"]*(")/, `$1${url(path)}$2`)
+    .replace(/(<meta property="og:title" content=")[^"]*(")/, `$1${title}$2`)
+    .replace(/(<meta\s+property="og:description"\s+content=")[^"]*(")/, `$1${description}$2`)
+    .replace(/(<meta property="og:image" content=")[^"]*(")/, `$1${url('/media/photos/obra-2026-10-crew-screed-1200w.jpg')}$2`)
+    .replace('</head>', '  <meta name="robots" content="noindex" />\n  </head>')
+  mkdirSync(`dist${path}`, { recursive: true })
+  writeFileSync(`dist${path}/index.html`, html)
+}
+
 const today = new Date().toISOString().slice(0, 10)
 const entries = pages.flatMap((page) =>
   ['en', 'es'].map((lang) => {
@@ -62,4 +82,4 @@ writeFileSync(
   'dist/sitemap.xml',
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${entries.join('\n')}\n</urlset>\n`
 )
-console.log(`page-heads: ${pages.length * 2} pages and sitemap.xml written`)
+console.log(`page-heads: ${pages.length * 2} pages, ${team.length} cards and sitemap.xml written`)
