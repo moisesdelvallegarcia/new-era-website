@@ -9,6 +9,7 @@ import { areaMeta, findArea } from './data/areas.js'
 import About from './pages/About.jsx'
 import Area from './pages/Area.jsx'
 import Builders from './pages/Builders.jsx'
+import Card from './pages/Card.jsx'
 import Contact from './pages/Contact.jsx'
 import Gallery from './pages/Gallery.jsx'
 import Home from './pages/Home.jsx'
@@ -60,10 +61,13 @@ function DocumentHead() {
 }
 
 function App() {
+  // Business cards are opened on a phone from a QR or a link: no menu, footer or call bar.
+  const isCard = useLocation().pathname.startsWith('/card/')
+
   return (
     <div className="min-h-screen bg-white text-zinc-900">
       <DocumentHead />
-      <Navbar />
+      {!isCard && <Navbar />}
       <main>
         <Routes>
           {['en', 'es'].flatMap((lang) =>
@@ -76,12 +80,13 @@ function App() {
           ))}
           <Route path="/licitaciones" element={<Licitaciones />} />
           <Route path="/portal/:token" element={<Portal />} />
+          <Route path="/card/:slug" element={<Card />} />
           <Route path="/es/*" element={<Navigate to="/es" replace />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
-      <Footer />
-      <MobileCallButton />
+      {!isCard && <Footer />}
+      {!isCard && <MobileCallButton />}
     </div>
   )
 }
