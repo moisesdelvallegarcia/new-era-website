@@ -57,6 +57,15 @@
       ]
     },
     {
+      "source": "/presentation",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    },
+    {
       "source": "/card/(.*)",
       "headers": [
         {
