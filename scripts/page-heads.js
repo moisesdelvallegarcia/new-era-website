@@ -69,6 +69,24 @@ for (const person of team) {
   writeFileSync(`dist${path}/index.html`, html)
 }
 
+// Company presentation: the preview builders see when we send them the link.
+// Not in the sitemap (noindex).
+{
+  const title = escape(`${businessInfo.name} · Concrete for builders`)
+  const description = escape('Basements, garages, driveways and flatwork for builders across Greater Des Moines. See how we work and request a quote.')
+  const html = template
+    .replace(/<title>[\s\S]*?<\/title>/, `<title>${title}</title>`)
+    .replace(/(<meta\s+name="description"\s+content=")[^"]*(")/, `$1${description}$2`)
+    .replace(/(<link rel="canonical" href=")[^"]*(")/, `$1${url('/presentation')}$2`)
+    .replace(/(<meta property="og:url" content=")[^"]*(")/, `$1${url('/presentation')}$2`)
+    .replace(/(<meta property="og:title" content=")[^"]*(")/, `$1${title}$2`)
+    .replace(/(<meta\s+property="og:description"\s+content=")[^"]*(")/, `$1${description}$2`)
+    .replace(/(<meta property="og:image" content=")[^"]*(")/, `$1${url('/media/photos/obra-2026-10-crew-screed-1200w.jpg')}$2`)
+    .replace('</head>', '  <meta name="robots" content="noindex" />\n  </head>')
+  mkdirSync('dist/presentation', { recursive: true })
+  writeFileSync('dist/presentation/index.html', html)
+}
+
 const today = new Date().toISOString().slice(0, 10)
 const entries = pages.flatMap((page) =>
   ['en', 'es'].map((lang) => {

@@ -1,0 +1,706 @@
+/* Company presentation (/presentation). Direction "The dark room" from the
+   design-taste-frontend skill: one dark field, lit photographs, Archivo, the
+   brand orange only on the primary action. Every class is prefixed pz-. */
+
+.pz {
+  --bg: #1e2427;
+  --surface: #2a3236;
+  --paper: #e9edee;
+  --ink: #eef1f2;
+  --muted: #b9c1c4;
+  --ink-dark: #1e2427;
+  --accent: #e07a1f;
+  --accent-press: #c96a14;
+  --margin: clamp(20px, 2.4vw, 32px);
+  --gap: clamp(120px, 14vw, 200px);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --step-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+  --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --step-head: clamp(2rem, 1.3rem + 3.2vw, 4rem);
+  --step-display: clamp(3rem, 5.4vw, 5rem);
+  --step-big: clamp(4rem, 11vw, 9rem);
+
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Archivo, ui-sans-serif, system-ui, sans-serif;
+  font-size: var(--step-body);
+  line-height: 1.55;
+  min-height: 100svh;
+}
+.pz h1,
+.pz h2,
+.pz h3 {
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin: 0;
+}
+.pz p {
+  margin: 0;
+}
+.pz img,
+.pz video {
+  display: block;
+  filter: brightness(0.85) contrast(1.05);
+}
+.pz-muted {
+  color: var(--muted);
+}
+
+/* The one solid light element: the primary action. Square corners. */
+.pz-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0 28px;
+  background: var(--accent);
+  color: var(--ink-dark);
+  font-weight: 600;
+  text-decoration: none;
+  border: 0;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    transform 160ms var(--ease-out);
+}
+.pz-action:hover {
+  background: var(--accent-press);
+}
+.pz-action:active {
+  transform: scale(0.97);
+}
+.pz a:not(.pz-action),
+.pz button:not(.pz-action) {
+  color: inherit;
+}
+.pz-link {
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+.pz-link:hover,
+.pz-link:focus-visible {
+  color: var(--accent);
+}
+
+/* Header: wordmark and three plain links, no bar chrome. */
+.pz-header {
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--margin);
+  font-size: var(--step-small);
+}
+.pz-header nav {
+  display: flex;
+  gap: 24px;
+}
+.pz-wordmark {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.pz-wordmark img {
+  width: 36px;
+  height: 36px;
+  filter: none;
+  background: var(--paper);
+  border-radius: 50%;
+  padding: 3px;
+}
+
+/* Hero: ring of real job photos around the headline. */
+.pz-hero {
+  position: relative;
+  height: 100svh;
+  min-height: 640px;
+  overflow: clip;
+}
+.pz-ring img {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--w);
+  aspect-ratio: var(--r);
+  object-fit: cover;
+  transform: translate(-50%, -50%) rotate(var(--a));
+  transition:
+    filter 240ms ease,
+    opacity 240ms ease;
+}
+.pz-ring:hover img {
+  opacity: 0.45;
+}
+.pz-ring img:hover {
+  opacity: 1;
+  filter: none;
+}
+.pz-core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(620px, calc(100vw - 2 * var(--margin)));
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.pz-core h1 {
+  font-size: var(--step-display);
+  line-height: 0.95;
+}
+.pz-core p {
+  margin-top: 24px;
+  max-width: 40ch;
+  font-size: var(--step-body);
+}
+.pz-core .pz-action {
+  margin-top: 28px;
+}
+@media (max-width: 760px) {
+  .pz-ring img {
+    left: var(--xm);
+    top: var(--ym);
+    width: var(--wm);
+  }
+  .pz-ring img.pz-wide-only {
+    display: none;
+  }
+  .pz-core h1 {
+    font-size: 10.5vw;
+  }
+
+  .pz-core .pz-action {
+    width: 100%;
+  }
+  .pz-header nav {
+    display: none;
+  }
+}
+
+/* Masked headline: each authored line rises from behind its baseline. */
+.pz-lines .pz-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.pz-lines [data-line] {
+  display: block;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .js .pz-lines [data-line] {
+    transform: translateY(105%);
+    animation: pz-line-up 900ms var(--ease-out) forwards;
+    animation-delay: calc(var(--i) * 110ms + 150ms);
+  }
+  .js .pz-after-lines {
+    opacity: 0;
+    animation: pz-fade-up 600ms var(--ease-out) 650ms forwards;
+  }
+}
+@keyframes pz-line-up {
+  to {
+    transform: none;
+  }
+}
+@keyframes pz-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Section entrances: parts rise once as their section enters. */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-rise] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 700ms var(--ease-out),
+      transform 700ms var(--ease-out);
+    transition-delay: calc(var(--d, 0) * 80ms);
+  }
+  .js [data-rise].pz-in {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* What builders get: one sticky picture, statements that step. */
+.pz-scene {
+  position: relative;
+  height: 450vh;
+}
+.pz-scene-stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: clip;
+}
+.pz-scene-stage > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.pz-scene-scrim {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 55%;
+  background: rgba(30, 36, 39, 0.82);
+}
+.pz-statements {
+  position: absolute;
+  left: 50%;
+  top: clamp(72px, 12vh, 120px);
+  transform: translateX(-50%);
+  width: min(560px, calc(100vw - 2 * var(--margin)));
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: var(--step-lead);
+  line-height: 1.3;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.pz-statements h2,
+.pz-statements li {
+  color: var(--muted);
+  font-size: inherit;
+  letter-spacing: 0;
+  line-height: inherit;
+  transition: color 300ms ease;
+}
+.pz-statements .pz-on {
+  color: var(--ink);
+  font-weight: 600;
+}
+.pz-pair img {
+  position: absolute;
+  object-fit: cover;
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 500ms var(--ease-out),
+    transform 500ms var(--ease-out);
+}
+.pz-pair.pz-on img {
+  opacity: 1;
+  transform: none;
+}
+.pz-pair img:first-child {
+  left: 8vw;
+  top: 58%;
+  width: clamp(160px, 15vw, 240px);
+  aspect-ratio: 3 / 4;
+}
+.pz-pair img:last-child {
+  right: 8vw;
+  top: 66%;
+  width: clamp(160px, 15vw, 220px);
+  aspect-ratio: 4 / 3;
+}
+.pz-marker {
+  height: 70vh;
+}
+@media (max-width: 760px) {
+  .pz-scene-scrim {
+    inset: auto 0 0 0;
+    height: 48%;
+  }
+  .pz-statements {
+    top: auto;
+    bottom: 40px;
+    left: var(--margin);
+    transform: none;
+    text-align: left;
+    font-size: var(--step-body);
+  }
+  .pz-pair img:first-child {
+    left: auto;
+    right: 16px;
+    top: 16px;
+    width: 44vw;
+  }
+  .pz-pair img:last-child {
+    display: none;
+  }
+}
+
+/* From PO to invoice: a drag row of moments. */
+.pz-section {
+  padding: var(--gap) var(--margin) 0;
+}
+.pz-row-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 24px;
+}
+.pz-row-top h2 {
+  font-size: var(--step-head);
+}
+.pz-row-buttons {
+  display: flex;
+  gap: 8px;
+}
+.pz-row-buttons button {
+  width: 48px;
+  height: 48px;
+  border: 0;
+  background: var(--surface);
+  font-size: 20px;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    transform 160ms var(--ease-out);
+}
+.pz-row-buttons button:hover {
+  background: #36404a;
+}
+.pz-row-buttons button:active {
+  transform: scale(0.94);
+}
+.pz-progress {
+  margin-top: 24px;
+  height: 6px;
+  background: var(--surface);
+}
+.pz-progress span {
+  display: block;
+  height: 100%;
+  background: var(--ink);
+  transform-origin: left;
+  transition: transform 120ms linear;
+}
+.pz-row {
+  display: flex;
+  gap: 32px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  margin: 40px 0 0;
+  padding: 0 0 8px;
+  scrollbar-width: none;
+}
+.pz-row::-webkit-scrollbar {
+  display: none;
+}
+.pz-row li {
+  flex: 0 0 280px;
+  scroll-snap-align: start;
+  list-style: none;
+}
+.pz-row h3 {
+  font-size: var(--step-body);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.3;
+}
+.pz-row p {
+  margin-top: 8px;
+  font-size: var(--step-body);
+  color: var(--muted);
+}
+.pz-row img {
+  margin-top: var(--space);
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+@media (max-width: 760px) {
+  .pz-row {
+    gap: 16px;
+  }
+  .pz-row li {
+    flex-basis: 72vw;
+  }
+  .pz-row img {
+    margin-top: calc(var(--space) / 2.2);
+  }
+  .pz-row-buttons {
+    display: none;
+  }
+}
+
+/* How fast we pour: the one live thing. */
+.pz-capacity {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.pz-capacity h2 {
+  font-size: var(--step-head);
+}
+.pz-capacity label {
+  display: block;
+  margin-top: 32px;
+  font-weight: 600;
+}
+.pz-capacity input[type='range'] {
+  width: 100%;
+  margin-top: 16px;
+  accent-color: var(--accent);
+  height: 32px;
+}
+.pz-result {
+  background: var(--surface);
+  padding: clamp(28px, 4vw, 56px);
+}
+.pz-result .pz-result-number {
+  margin-top: 0;
+  font-size: var(--step-big);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+.pz-result p {
+  margin-top: 16px;
+  font-size: var(--step-lead);
+  line-height: 1.35;
+}
+.pz-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin: 48px 0 0;
+}
+.pz-stats dd {
+  margin: 0;
+  font-size: var(--step-lead);
+  font-variant-numeric: tabular-nums;
+}
+.pz-stats dt {
+  font-size: var(--step-small);
+  color: var(--muted);
+}
+@media (max-width: 760px) {
+  .pz-capacity {
+    grid-template-columns: 1fr;
+  }
+  .pz-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Our crews: the title holds the left columns, the crews fill the right. */
+.pz-crews {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 48px;
+  align-items: start;
+}
+.pz-crews h2 {
+  font-size: var(--step-big);
+  line-height: 0.85;
+}
+.pz-crews > div > p {
+  margin-top: 32px;
+  max-width: 34ch;
+  font-size: var(--step-lead);
+  line-height: 1.35;
+}
+.pz-crews-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.pz-crews-list li:nth-child(even) {
+  margin-top: 96px;
+}
+.pz-crews-list img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+.pz-crews-list h3 {
+  margin-top: 16px;
+  font-size: var(--step-body);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.3;
+}
+.pz-crews-list .pz-role {
+  font-size: var(--step-small);
+  color: var(--muted);
+}
+.pz-crews-list p:last-child {
+  margin-top: 8px;
+  font-size: var(--step-body);
+}
+@media (max-width: 760px) {
+  .pz-crews {
+    grid-template-columns: 1fr;
+  }
+  .pz-crews-list {
+    gap: 32px 16px;
+  }
+  .pz-crews-list li:nth-child(even) {
+    margin-top: 48px;
+  }
+}
+
+/* Builders: names as one sentence, one lit at a time. */
+.pz-names {
+  font-size: clamp(24px, 2.6vw, 36px);
+  line-height: 1.25;
+  max-width: 30em;
+  color: var(--muted);
+}
+.pz-names h2 {
+  display: inline;
+  font-size: inherit;
+  letter-spacing: 0;
+  line-height: inherit;
+  color: var(--ink);
+}
+.pz-names span {
+  transition: color 400ms ease;
+}
+.pz-names span.pz-on {
+  color: var(--ink);
+}
+
+/* Contact: a card on the moving picture, then the quote form. */
+.pz-visit {
+  position: relative;
+  margin-top: var(--gap);
+  height: 100svh;
+}
+.pz-visit video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.pz-card {
+  position: absolute;
+  top: 60px;
+  right: 60px;
+  width: 380px;
+  padding: 32px;
+  background: var(--paper);
+  color: var(--ink-dark);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.pz-card h2 {
+  font-size: var(--step-lead);
+}
+.pz-card .pz-action {
+  margin-top: 8px;
+  width: 100%;
+}
+.pz-card a:not(.pz-action) {
+  color: var(--ink-dark);
+}
+@media (max-width: 760px) {
+  .pz-visit {
+    height: auto;
+  }
+  .pz-visit video {
+    position: relative;
+    height: 70svh;
+  }
+  .pz-card {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: auto;
+    margin: -80px 16px 0;
+  }
+  .pz-card .pz-action {
+    min-height: 56px;
+  }
+}
+.pz-quote {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 48px;
+}
+.pz-quote h2 {
+  font-size: var(--step-head);
+}
+.pz-quote > div > p {
+  margin-top: 24px;
+  max-width: 34ch;
+  font-size: var(--step-lead);
+  line-height: 1.4;
+}
+.pz-form form {
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  background: transparent;
+}
+.pz-form select,
+.pz-form input,
+.pz-form textarea {
+  max-width: 100%;
+  min-width: 0;
+}
+.pz-form {
+  background: var(--paper);
+  color: var(--ink-dark);
+  padding: clamp(20px, 3vw, 40px);
+  border-radius: 8px;
+}
+@media (max-width: 1024px) {
+  .pz-quote {
+    grid-template-columns: 1fr;
+  }
+  .pz-quote > * {
+    min-width: 0;
+  }
+}
+.pz-footer {
+  padding: var(--gap) var(--margin) var(--margin);
+}
+.pz-footer p:first-child {
+  font-size: var(--step-big);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+}
+.pz-footer p:last-child {
+  margin-top: 24px;
+  max-width: 60ch;
+  font-size: var(--step-small);
+  color: var(--muted);
+}
+/* The form keeps its fields; its send button takes the page's one action style. */
+.pz-form button[type='submit'] {
+  background: var(--accent);
+  color: var(--ink-dark);
+  border-radius: 0;
+  box-shadow: none;
+  min-height: 52px;
+}
+.pz-form button[type='submit']:hover {
+  background: var(--accent-press);
+}
+.pz-form input,
+.pz-form select,
+.pz-form textarea {
+  border-radius: 0;
+}

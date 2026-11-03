@@ -25,3 +25,6 @@ dist-ssr
 
 # Local env
 .env
+
+# Working files of the design-taste-frontend skill
+.taste-skill

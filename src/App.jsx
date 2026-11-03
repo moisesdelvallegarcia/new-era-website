@@ -15,6 +15,7 @@ import Gallery from './pages/Gallery.jsx'
 import Home from './pages/Home.jsx'
 import Licitaciones from './pages/Licitaciones.jsx'
 import Portal from './pages/Portal.jsx'
+import Presentation from './pages/Presentation.jsx'
 import Services from './pages/Services.jsx'
 
 const pages = [
@@ -61,8 +62,9 @@ function DocumentHead() {
 }
 
 function App() {
-  // Business cards are opened on a phone from a QR or a link: no menu, footer or call bar.
-  const isCard = useLocation().pathname.startsWith('/card/')
+  // Business cards and the presentation are opened from a link: no menu, footer or call bar.
+  const { pathname } = useLocation()
+  const isCard = pathname.startsWith('/card/') || pathname === '/presentation'
 
   return (
     <div className="min-h-screen bg-white text-zinc-900">
@@ -81,6 +83,7 @@ function App() {
           <Route path="/licitaciones" element={<Licitaciones />} />
           <Route path="/portal/:token" element={<Portal />} />
           <Route path="/card/:slug" element={<Card />} />
+          <Route path="/presentation" element={<Presentation />} />
           <Route path="/es/*" element={<Navigate to="/es" replace />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
