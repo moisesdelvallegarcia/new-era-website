@@ -1,29 +1,33 @@
-/* Company presentation (/presentation). Direction "The name as a monument"
-   from the design-taste-frontend skill: the promise POUR DATE / DOESN'T MOVE
-   as wide as the screen in Bebas Neue, the job video set into the space
-   between the words, EB Garamond for the text, sand ground and charcoal ink,
-   moss green only on the actions and the builders band. Every class is
-   prefixed pv-. */
+/* Company presentation (/presentation), v4. Direction "The monument" from the
+   design-taste-frontend skill: the promise POUR DATE / DOESN'T MOVE as wide as
+   the screen in Bebas Neue with the job video poured between the words, EB
+   Garamond for the text, sand ground and charcoal ink, moss green on the
+   actions and the builders field. Fields change by section (sand, charcoal,
+   a darker sand, moss) instead of lines or cards. Every class is prefixed pv-. */
 
 .pv {
   --bg: #ddd6c6;
   --surface: #d2cab8;
   --ink: #2a2a26;
-  --muted: #59574e;
+  --muted: #55534a;
   --accent: #4f6238;
   --accent-press: #3e4e2b;
   --accent-ink: #ffffff;
   --field: #3f5a2a;
   --field-ink: #ffffff;
-  --margin: clamp(16px, 2vw, 32px);
-  --gap: clamp(120px, 14vw, 200px);
-  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --on-dark: #ddd6c6;
+  --margin: clamp(16px, 2.2vw, 32px);
+  --gap: clamp(96px, 12vw, 200px);
+  --col-gap: clamp(16px, 1.6vw, 24px);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   --display: 'Bebas Neue', Impact, 'Arial Narrow', sans-serif;
-  --step-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+  --step-small: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
   --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
   --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --step-sub: clamp(1.875rem, 1.4rem + 1.4vw, 2.75rem);
   --step-head: clamp(2.5rem, 1.6rem + 3.4vw, 4.5rem);
+  --step-figure: clamp(3.5rem, 2rem + 5vw, 7.5rem);
 
   background: var(--bg);
   color: var(--ink);
@@ -32,13 +36,12 @@
   line-height: 1.45;
   overflow-x: clip;
 }
-.pv h1,
-.pv h2,
-.pv p,
-.pv figure,
-.pv dl,
-.pv dd {
+.pv :where(h1, h2, h3, p, figure, dl, dd, ol, ul) {
   margin: 0;
+}
+.pv :where(ol, ul) {
+  list-style: none;
+  padding: 0;
 }
 .pv img,
 .pv video {
@@ -47,18 +50,28 @@
 .pv a:not(.pv-action) {
   color: inherit;
 }
+.pv-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px; /* taste-skill-ignore: visually hidden text for screen readers, not a rule */
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
 .pv-head {
   font-family: var(--display);
   font-weight: 400;
   font-size: var(--step-head);
-  line-height: 0.9;
+  line-height: 0.92;
   letter-spacing: -0.01em;
   text-transform: uppercase;
+  text-wrap: balance;
   padding-top: 0.2em; /* keeps the glyphs inside the heading's own box */
 }
 .pv-lead {
   font-size: var(--step-lead);
   line-height: 1.3;
+  text-wrap: pretty;
 }
 
 /* Actions: solid, square, one shape on the whole page. */
@@ -105,22 +118,32 @@
   .pv-link:hover {
     color: var(--accent);
   }
+  .pv-cost .pv-link:hover,
   .pv-date .pv-link:hover,
   .pv-footer .pv-link:hover {
     color: #b9c99f;
   }
 }
 .pv a:focus-visible,
+.pv button:focus-visible,
 .pv input:focus-visible {
   outline: 3px solid var(--accent);
   outline-offset: 3px;
+}
+.pv-date a:focus-visible,
+.pv-date button:focus-visible,
+.pv-date input:focus-visible,
+.pv-footer a:focus-visible,
+.pv-bar a:focus-visible,
+.pv-builders a:focus-visible {
+  outline-color: var(--on-dark);
 }
 
 /* ---------- Hero: the monument ---------- */
 .pv-hero {
   container-type: inline-size;
   min-height: 100svh;
-  padding: 20px var(--margin) 28px;
+  padding: 20px var(--margin) 32px;
   display: grid;
   grid-template-rows: auto 1fr auto;
   row-gap: 24px;
@@ -129,13 +152,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 16px;
   font-size: var(--step-small);
 }
 .pv-wordmark {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: var(--step-small);
   font-weight: 500;
   text-decoration: none;
 }
@@ -144,12 +167,12 @@
   height: 32px;
   object-fit: contain;
 }
+.pv-for {
+  font-weight: 500;
+}
 .pv-nav-links {
   display: flex;
   gap: clamp(20px, 3vw, 48px);
-}
-.pv-narrow-only {
-  display: none;
 }
 
 /* Both lines share one size, fitted so DOESN'T MOVE runs margin to margin
@@ -161,8 +184,8 @@
   text-transform: uppercase;
   letter-spacing: -0.03em;
   line-height: 0.84;
-  font-size: min(calc(100vw / 4.3), 38svh);
-  font-size: min(calc(100cqw / 4.06), 38svh);
+  font-size: min(calc(100vw / 4.3), 36svh);
+  font-size: min(calc(100cqw / 4.06), 36svh);
 }
 .pv-row {
   display: flex;
@@ -195,171 +218,345 @@
 }
 .pv-slab-phone {
   display: block;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
   background: var(--ink);
 }
 .pv-hero-foot {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  column-gap: 20px;
+  column-gap: var(--col-gap);
   align-items: end;
 }
-.pv-hero-foot p {
+.pv-hero-copy {
   grid-column: 1 / 7;
-  max-width: 46ch;
+  display: grid;
+  gap: 12px;
+}
+.pv-hero-lead {
+  max-width: 44ch;
+  font-size: var(--step-lead);
+  line-height: 1.3;
+  text-wrap: pretty;
+}
+.pv-hero-proof {
+  color: var(--muted);
 }
 .pv-hero-actions {
   grid-column: 8 / 13;
   display: flex;
-  justify-content: flex-end;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
   align-items: center;
   gap: 28px;
   white-space: nowrap;
 }
 
-/* ---------- The numbers: quiet figure lines ---------- */
-.pv-numbers {
-  margin-top: var(--gap);
-  padding: 0 var(--margin);
+/* ---------- The cost of a late pour: a schedule that slips ---------- */
+.pv-cost {
+  container-type: inline-size;
+  margin-top: clamp(48px, 6vw, 96px);
+  padding: var(--gap) var(--margin);
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  column-gap: 20px;
+  column-gap: var(--col-gap);
+  row-gap: clamp(48px, 6vw, 88px);
+  background: var(--ink);
+  color: var(--on-dark);
 }
-.pv-numbers-text {
-  grid-column: 2 / 8;
-}
-.pv-numbers-text h2 {
-  padding-left: calc(clamp(140px, 16vw, 240px) + 28px);
-}
-.pv-numbers dl {
-  margin-top: 56px;
+.pv-cost-text {
+  grid-column: 1 / -1;
   display: grid;
-  gap: 28px;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--col-gap);
+  row-gap: 28px;
+  align-items: end;
 }
-.pv-numbers dl div {
+.pv-cost-text h2 {
+  grid-column: 1 / 8;
+}
+.pv-cost-text .pv-lead {
+  grid-column: 8 / 13;
+  max-width: 32ch;
+}
+/* Each consequence starts one step later than the one before it. */
+.pv-slip {
+  grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: clamp(140px, 16vw, 240px) 1fr;
-  column-gap: 28px;
-  align-items: baseline;
-}
-.pv-numbers dt {
-  text-align: right;
+  gap: 0.08em;
   font-family: var(--display);
-  font-size: var(--step-head);
-  line-height: 0.9;
-  font-variant-numeric: tabular-nums;
+  font-size: var(--step-figure);
+  line-height: 0.95;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+.pv-slip li {
+  --step: 13cqw;
+  padding-left: calc(var(--n) * var(--step));
   white-space: nowrap;
 }
-.pv-numbers dd {
-  max-width: 40ch;
+.pv-slip li:last-child {
+  color: #b9c99f;
 }
-.pv-numbers-photo {
-  grid-column: 9 / 13;
-  margin-top: calc(var(--step-head) + 136px);
-  aspect-ratio: 1;
-  overflow: hidden;
-}
-.pv-numbers-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.pv-cost-turn {
+  grid-column: 7 / 13;
+  max-width: 34ch;
+  font-size: var(--step-lead);
+  line-height: 1.3;
+  text-wrap: pretty;
 }
 
-/* ---------- Work: loose scatter with pauses ---------- */
-.pv-work {
+/* ---------- The season in numbers ---------- */
+.pv-season {
   container-type: inline-size;
   margin-top: var(--gap);
   padding: 0 var(--margin);
-}
-.pv-scatter {
-  list-style: none;
-  margin: 56px 0 0;
-  padding: 0;
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  column-gap: 20px;
+  column-gap: var(--col-gap);
 }
-.pv-place-name {
-  margin-bottom: 10px;
-  font-size: var(--step-small);
+.pv-season-top {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px 40px;
+}
+.pv-season-top p {
+  max-width: 34ch;
   color: var(--muted);
 }
-.pv-place-text {
-  margin-top: 12px;
+.pv-yards {
+  grid-column: 1 / -1;
+  margin-top: clamp(32px, 4vw, 56px);
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 8px clamp(24px, 3vw, 48px);
 }
-.pv-place-frame {
+.pv-yards-figure {
+  font-family: var(--display);
+  font-size: min(calc(100cqw / 4.06), 36svh);
+  line-height: 0.8;
+  letter-spacing: -0.03em;
+  padding-top: 0.08em;
+}
+.pv-yards-label {
+  max-width: 18ch;
+  padding-bottom: 0.4em;
+  font-size: var(--step-lead);
+  line-height: 1.25;
+}
+.pv-figures {
+  grid-column: 1 / -1;
+  margin-top: clamp(56px, 7vw, 112px);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px var(--col-gap);
+}
+.pv-figures dt {
+  font-family: var(--display);
+  font-size: var(--step-figure);
+  line-height: 0.9;
+  padding-top: 0.08em;
+}
+.pv-figures dd {
+  margin-top: 8px;
+  max-width: 22ch;
+}
+.pv-count {
+  display: inline-grid;
+  font-variant-numeric: tabular-nums;
+}
+.pv-count-room,
+.pv-count-live {
+  grid-area: 1 / 1;
+}
+.pv-count-room {
+  visibility: hidden;
+}
+
+/* ---------- The one rest: a picture the width of the screen ---------- */
+.pv-wide {
+  margin-top: var(--gap);
+}
+.pv-wide-frame {
+  aspect-ratio: 21 / 9;
   overflow: hidden;
   background: var(--surface);
 }
-.pv-place-frame img,
-.pv-place-frame video {
+.pv-wide-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 60%;
+}
+.pv-wide figcaption {
+  padding: 12px var(--margin) 0;
+  font-size: var(--step-small);
+  color: var(--muted);
+}
+
+/* ---------- Process: PO to invoice ---------- */
+.pv-process {
+  margin-top: var(--gap);
+  padding: var(--gap) var(--margin);
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--col-gap);
+  background: var(--surface);
+}
+.pv-process-media {
+  grid-column: 1 / 6;
+  display: flex;
+}
+/* The clip takes the full height of the steps beside it. */
+.pv-process-frame {
+  position: relative;
+  flex: 1;
+  min-height: 480px;
+  overflow: hidden;
+  background: var(--ink);
+}
+.pv-process-frame video {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.pv-place-0 {
-  grid-column: 1 / 7;
+.pv-process-text {
+  grid-column: 6 / 13;
+  padding-left: clamp(0px, 3vw, 48px);
+  display: grid;
+  align-content: start;
+  gap: 28px;
 }
-.pv-place-0 .pv-place-frame {
-  aspect-ratio: 3 / 2;
+.pv-steps {
+  margin-top: 24px;
+  display: grid;
+  gap: clamp(32px, 3.4vw, 52px);
 }
-.pv-place-1 {
-  grid-column: 9 / 13;
-  /* Starts 80px above where the left picture ends, so the two overlap. */
-  margin-top: calc(33cqw - 80px);
+.pv-steps h3 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: var(--step-sub);
+  line-height: 0.95;
+  text-transform: uppercase;
+  padding-top: 0.1em;
 }
-.pv-place-1 .pv-place-frame {
-  aspect-ratio: 4 / 5;
+.pv-steps li {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  column-gap: var(--col-gap);
+  align-items: baseline;
 }
-.pv-place-2 {
-  grid-column: 3 / 10;
-  margin-top: 16vh;
-}
-.pv-place-2 .pv-place-frame {
-  aspect-ratio: 16 / 9;
-}
-.pv-place-0:not(:first-child) {
-  margin-top: 16vh;
-}
-/* The left and right pictures of each set share a row; the inset gets its own. */
-.pv-scatter > :nth-child(1),
-.pv-scatter > :nth-child(2) {
-  grid-row: 1;
-}
-.pv-scatter > :nth-child(3) {
-  grid-row: 3;
-}
-.pv-scatter > :nth-child(4),
-.pv-scatter > :nth-child(5) {
-  grid-row: 4;
-}
-.pv-scatter > :nth-child(6) {
-  grid-row: 5;
-}
-.pv-remark {
-  grid-column: 2 / 6;
-  grid-row: 2;
-  align-self: start;
-  margin-top: -18vh;
-}
-.pv-remark p {
-  font-size: var(--step-lead);
-  line-height: 1.3;
-  max-width: 24ch;
+.pv-steps p {
+  max-width: 36ch;
 }
 
-/* ---------- Builders: names running off the edges ---------- */
+/* ---------- What we pour: the list beside the pictures ---------- */
+.pv-work {
+  margin-top: var(--gap);
+  padding: 0 var(--margin);
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--col-gap);
+}
+.pv-work-text {
+  grid-column: 1 / 7;
+  display: grid;
+  align-content: start;
+  gap: 28px;
+}
+.pv-work-text .pv-lead {
+  max-width: 30ch;
+}
+.pv-services {
+  margin-top: 16px;
+  display: grid;
+  gap: 22px;
+}
+.pv-services li {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  column-gap: var(--col-gap);
+  align-items: baseline;
+}
+.pv-services h3 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: var(--step-sub);
+  line-height: 0.95;
+  text-transform: uppercase;
+  padding-top: 0.1em;
+}
+.pv-services p {
+  color: var(--muted);
+}
+/* The pictures take exactly the height of the list beside them. */
+.pv-mosaic {
+  grid-column: 7 / 13;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: minmax(0, 1fr) minmax(0, 1.3fr);
+  gap: var(--col-gap);
+}
+.pv-tile {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.pv-tile-wide {
+  grid-column: 1 / -1;
+}
+.pv-tile-frame {
+  position: relative;
+  flex: 1;
+  min-height: 180px;
+  overflow: hidden;
+  background: var(--surface);
+}
+.pv-tile-frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.pv-tile figcaption {
+  margin-top: 10px;
+  font-size: var(--step-small);
+  color: var(--muted);
+}
+
+/* ---------- Builders: one moss field, the names running through it ---------- */
 .pv-builders {
   margin-top: var(--gap);
-}
-.pv-band {
-  min-height: 34vh;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
+  padding: clamp(72px, 9vw, 144px) 0;
   background: var(--field);
   color: var(--field-ink);
+  overflow: hidden;
+}
+.pv-builders-text {
+  padding: 0 var(--margin);
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--col-gap);
+  row-gap: 20px;
+}
+.pv-builders-text h2 {
+  grid-column: 1 / 8;
+}
+.pv-builders-text p {
+  grid-column: 1 / 7;
+  max-width: 34ch;
+}
+.pv-band {
+  margin-top: clamp(48px, 6vw, 88px);
+  display: flex;
+  overflow: hidden;
 }
 .pv-track {
   display: flex;
@@ -377,31 +574,75 @@
 }
 .pv-dot {
   display: inline-block;
-  width: 0.23em;
-  height: 0.23em;
+  width: 0.2em;
+  height: 0.2em;
   margin: 0 0.35em;
   border-radius: 50%;
   background: currentColor;
   transform: translateY(-0.06em);
 }
-.pv-builders-line {
-  padding: 24px var(--margin) 0;
-  font-weight: 400;
-  font-size: var(--step-lead);
-  line-height: 1.3;
+
+/* ---------- The risk stays with us ---------- */
+.pv-promise {
+  margin-top: var(--gap);
+  padding: 0 var(--margin);
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--col-gap);
+}
+.pv-promise-photo {
+  grid-column: 1 / 6;
+  display: flex;
+}
+.pv-promise-frame {
+  position: relative;
+  flex: 1;
+  min-height: 420px;
+  overflow: hidden;
+  background: var(--surface);
+}
+.pv-promise-frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 62% 50%;
+}
+.pv-promise-text {
+  grid-column: 7 / 13;
+  display: grid;
+  align-content: start;
+  gap: clamp(36px, 4vw, 56px);
+}
+.pv-promises {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(36px, 4vw, 56px) var(--col-gap);
+}
+.pv-promises dt {
+  font-family: var(--display);
+  font-size: var(--step-sub);
+  line-height: 0.95;
+  text-transform: uppercase;
+  padding-top: 0.1em;
+}
+.pv-promises dd {
+  margin-top: 12px;
+  max-width: 30ch;
 }
 
-/* ---------- Pour date: the reader's own date as display type ---------- */
+/* ---------- Book your pour date: the reader's own date as display type ---------- */
 .pv-date {
   container-type: inline-size;
   margin-top: var(--gap);
   min-height: 100svh;
-  padding: 40px var(--margin) 28px;
+  padding: clamp(48px, 6vw, 88px) var(--margin) clamp(36px, 4vw, 56px);
   display: grid;
-  grid-template-rows: auto 1fr auto auto;
-  row-gap: 32px;
+  grid-template-rows: auto 1fr auto;
+  row-gap: 40px;
   background: var(--ink);
-  color: var(--bg);
+  color: var(--on-dark);
 }
 .pv-date-top {
   display: flex;
@@ -410,19 +651,18 @@
   gap: 32px;
   flex-wrap: wrap;
 }
-.pv-date-top p {
-  margin-top: 16px;
-  max-width: 40ch;
+.pv-date-intro p {
+  margin-top: 20px;
+  max-width: 38ch;
   font-size: var(--step-lead);
   line-height: 1.3;
 }
-.pv-date-field {
+.pv-date-controls {
   display: flex;
-  align-items: center;
-  gap: 16px;
-  font-size: var(--step-body);
+  gap: var(--col-gap);
+  flex-wrap: wrap;
 }
-.pv-date-field input {
+.pv-date-controls input {
   min-height: 56px;
   padding: 0 16px;
   border: 0;
@@ -433,12 +673,53 @@
   font-size: var(--step-lead);
   color-scheme: light;
 }
+.pv-stepper {
+  display: flex;
+  align-items: stretch;
+  min-height: 56px;
+  background: var(--bg);
+  color: var(--ink);
+}
+.pv-stepper button {
+  width: 56px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: var(--step-lead);
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    transform 160ms var(--ease-out);
+}
+.pv-stepper button:active:not(:disabled) {
+  transform: scale(0.92);
+}
+.pv-stepper button:disabled {
+  color: #8d887b;
+  cursor: default;
+}
+@media (hover: hover) and (pointer: fine) {
+  .pv-stepper button:hover:not(:disabled) {
+    background: var(--surface);
+  }
+}
+.pv-stepper output {
+  min-width: 5.5em;
+  padding: 0 8px;
+  display: grid;
+  place-items: center;
+  font-size: var(--step-lead);
+  font-variant-numeric: tabular-nums;
+}
 .pv-date-big {
   align-self: end;
   overflow: hidden;
   font-family: var(--display);
-  font-size: calc(100vw / 3.7);
-  font-size: calc(100cqw / 3.5);
+  font-size: min(calc(100vw / 4.3), 36svh);
+  font-size: min(calc(100cqw / 4.06), 36svh);
   line-height: 0.84;
   letter-spacing: -0.03em;
   white-space: nowrap;
@@ -453,30 +734,41 @@
   gap: 28px;
   flex-wrap: wrap;
 }
-.pv-date-foot {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-  font-size: var(--step-small);
-}
 
 /* ---------- Quote ---------- */
 .pv-quote {
   padding: var(--gap) var(--margin) 0;
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  column-gap: 20px;
+  column-gap: var(--col-gap);
 }
 .pv-quote > * {
   min-width: 0;
 }
 .pv-quote-text {
   grid-column: 1 / 6;
+  display: flex;
+  flex-direction: column;
+}
+/* The picture takes whatever height the form leaves beside the contact. */
+.pv-quote-photo {
+  position: relative;
+  flex: 1;
+  min-height: 220px;
+  margin-top: 48px;
+  overflow: hidden;
+  background: var(--surface);
+}
+.pv-quote-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .pv-quote-text .pv-lead {
   margin-top: 28px;
-  max-width: 30ch;
+  max-width: 28ch;
 }
 .pv-owner {
   margin-top: 40px;
@@ -532,7 +824,7 @@
   margin-top: var(--gap);
   padding: 40px var(--margin) 0;
   background: var(--ink);
-  color: var(--bg);
+  color: var(--on-dark);
   overflow: hidden;
 }
 .pv-footer-line {
@@ -552,7 +844,7 @@
 }
 
 /* ---------- Action bar: call, WhatsApp and quote ---------- */
-/* Top-right corner on a computer; along the bottom on a phone, under the thumb. */
+/* Top-right corner on a computer; across the top edge on a phone. */
 .pv-bar {
   position: fixed;
   top: 12px;
@@ -563,7 +855,7 @@
   gap: 8px;
   padding: 8px 8px 8px 18px;
   background: var(--ink);
-  color: var(--bg);
+  color: var(--on-dark);
   transform: translateY(calc(-100% - 12px));
   transition: transform 400ms var(--ease-out);
 }
@@ -579,13 +871,107 @@
   padding: 0 20px;
 }
 
-/* ---------- Phone ---------- */
+/* ---------- Tablet and phone ---------- */
+@media (max-width: 820px) {
+  .pv-cost-text,
+  .pv-cost-turn,
+  .pv-builders-text h2,
+  .pv-builders-text p {
+    grid-column: 1 / -1;
+  }
+  .pv-cost-text h2,
+  .pv-cost-text .pv-lead {
+    grid-column: 1 / -1;
+  }
+  .pv-slip {
+    font-size: var(--step-head);
+  }
+  .pv-slip li {
+    --step: 7cqw;
+  }
+
+  .pv-yards-label {
+    max-width: 26ch;
+    padding-bottom: 0;
+  }
+  .pv-steps li {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 8px;
+  }
+  .pv-process-text {
+    padding-left: 0;
+  }
+  .pv-figures {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .pv-wide-frame {
+    aspect-ratio: 4 / 3;
+  }
+  .pv-process,
+  .pv-work,
+  .pv-promise,
+  .pv-quote {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 48px;
+  }
+  .pv-process-media,
+  .pv-process-text,
+  .pv-work-text,
+  .pv-mosaic,
+  .pv-promise-photo,
+  .pv-promise-text,
+  .pv-quote-text,
+  .pv-form {
+    grid-column: 1;
+  }
+  .pv-process-media,
+  .pv-promise-photo {
+    order: 2;
+  }
+  .pv-process-frame {
+    flex: none;
+    width: 100%;
+    min-height: 0;
+    aspect-ratio: 1;
+  }
+  .pv-mosaic {
+    grid-template-rows: auto auto;
+  }
+  .pv-tile-frame {
+    flex: none;
+    aspect-ratio: 3 / 4;
+    min-height: 0;
+  }
+  .pv-tile-wide .pv-tile-frame {
+    aspect-ratio: 4 / 3;
+  }
+  .pv-promise-frame {
+    flex: none;
+    width: 100%;
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+  .pv-date {
+    min-height: auto;
+  }
+  .pv-quote-photo {
+    display: none;
+  }
+  .pv-date-big {
+    margin-top: 24px;
+  }
+}
+
 @media (max-width: 700px) {
   .pv-wide-only {
     display: none;
   }
-  .pv-narrow-only {
-    display: inline;
+  .pv-nav {
+    flex-wrap: wrap;
+  }
+  .pv-for {
+    order: 3;
+    width: 100%;
   }
   .pv-hero {
     min-height: auto;
@@ -593,7 +979,7 @@
     row-gap: 20px;
   }
   .pv-monument {
-    margin-top: 6svh;
+    margin-top: 3svh;
     font-size: calc(100cqw / 4.06);
   }
   /* Without the video in it, POUR DATE is fitted on its own line. */
@@ -603,87 +989,44 @@
     font-size: 1.27em;
   }
   .pv-hero-foot {
-    display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     row-gap: 24px;
   }
-  .pv-hero-foot p,
+  .pv-hero-copy,
   .pv-hero-actions {
     grid-column: 1;
   }
+  .pv-hero-lead {
+    font-size: var(--step-body);
+    line-height: 1.4;
+  }
   .pv-hero-actions {
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: stretch;
     gap: 16px;
     text-align: center;
   }
-}
-
-@media (max-width: 820px) {
-  .pv-numbers {
-    grid-template-columns: 1fr;
+  .pv-services li {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 4px;
   }
-  .pv-numbers-text,
-  .pv-numbers-photo {
-    grid-column: 1;
-  }
-  .pv-numbers-text h2 {
-    padding-left: 0;
-  }
-  .pv-numbers dl {
-    margin-top: 40px;
-  }
-  .pv-numbers dl div {
-    grid-template-columns: 116px 1fr;
-    column-gap: 16px;
-  }
-  .pv-numbers-photo {
-    margin-top: 56px;
-    width: 56%;
-    justify-self: end;
-  }
-  .pv-scatter {
-    display: flex;
-    flex-direction: column;
-    gap: 72px;
-  }
-  .pv-scatter > li {
-    margin-top: 0 !important;
-  }
-  .pv-place-0 {
-    width: 100%;
-  }
-  .pv-place-1 {
-    width: 68%;
-    align-self: flex-end;
-  }
-  .pv-place-2 {
-    width: 82%;
-  }
-  .pv-place-2 .pv-place-frame {
-    aspect-ratio: 4 / 3;
-  }
-  .pv-remark {
-    order: 2;
-  }
-  .pv-place:nth-child(n + 3) {
-    order: 3;
-  }
-  .pv-band {
-    min-height: 22vh;
-  }
+  /* The names run at the monument's own size. */
   .pv-track {
-    font-size: 22vw;
+    font-size: calc((100vw - 2 * var(--margin)) / 4.06);
   }
-  .pv-date {
-    min-height: auto;
+  .pv-promises {
+    grid-template-columns: minmax(0, 1fr);
   }
-  .pv-date-field {
+  .pv-date-controls,
+  .pv-date-controls input,
+  .pv-stepper {
     width: 100%;
   }
-  .pv-date-field input {
-    flex: 1;
+  .pv-date-controls input {
     min-width: 0;
+  }
+  .pv-stepper output {
+    flex: 1;
   }
   .pv-date-actions {
     flex-direction: column;
@@ -691,27 +1034,15 @@
     gap: 16px;
     text-align: center;
   }
-  .pv-date-foot {
-    flex-direction: column;
-    gap: 12px;
-  }
-  .pv-quote {
-    grid-template-columns: 1fr;
-    row-gap: 40px;
-  }
-  .pv-quote-text,
-  .pv-form {
-    grid-column: 1;
-  }
-  .pv-footer {
-    padding-bottom: 84px; /* room for the action bar */
-  }
+  /* On a phone the bar spans the top edge, like a product page's buy bar,
+     so it never sits over the text being read at the bottom of the screen. */
   .pv-bar {
-    top: auto;
+    top: 0;
     right: 0;
-    bottom: 0;
     left: 0;
-    transform: translateY(100%);
+    padding: 8px var(--margin);
+    padding-top: max(8px, env(safe-area-inset-top));
+    transform: translateY(-100%);
   }
   .pv-bar p {
     display: none;
@@ -732,7 +1063,7 @@
   }
   .js .pv-after {
     opacity: 0;
-    animation: pv-fade 700ms var(--ease-out) 750ms forwards;
+    animation: pv-fade 700ms var(--ease-out) 700ms forwards;
   }
   /* Signature move: the video opens from the bottom edge like concrete
      filling the forms, settling from 1.12 scale. */
@@ -765,6 +1096,27 @@
   .js [data-rise].pv-in {
     opacity: 1;
     transform: none;
+  }
+  /* The schedule slips: the lines start in step, then each one is pushed
+     one step later than the one before it. */
+  .js .pv-slip[data-rise] {
+    transform: none;
+  }
+  .js .pv-slip li {
+    transform: translateX(calc(var(--n) * var(--step) * -1));
+    transition: transform 1100ms var(--ease-in-out);
+    transition-delay: calc(500ms + var(--n) * 160ms);
+  }
+  .js .pv-slip.pv-in li {
+    transform: none;
+  }
+  /* The wide picture settles as it crosses the screen. */
+  @supports (animation-timeline: view()) {
+    .pv-wide-frame img {
+      animation: pv-settle linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 60%;
+    }
   }
   /* The builders run slowly to the left. */
   .pv-track {
@@ -799,6 +1151,14 @@
     transform: none;
   }
 }
+@keyframes pv-settle {
+  from {
+    transform: scale(1.14);
+  }
+  to {
+    transform: none;
+  }
+}
 @keyframes pv-run {
   to {
     transform: translateX(-50%);
@@ -808,4 +1168,9 @@
   .pv-bar {
     transition: none;
   }
+}
+
+/* A jump from a link lands below the action bar. */
+.pv section[id] {
+  scroll-margin-top: 72px;
 }

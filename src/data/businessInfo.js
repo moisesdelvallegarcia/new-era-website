@@ -16,10 +16,10 @@ export const businessInfo = {
   },
   logo: '/media/logo/new-era-logo.webp',
   // Figures from the capability statement (last 12 months, Housecall + DeliveryGo + Connecteam).
-  // yearYards: DeliveryGo load_size, Jan 1 – Oct 12, 2026.
+  // yearYards: DeliveryGo tickets load_size, Jan 1 – Oct 30, 2026.
   stats: {
     jobs: '640+',
-    yearYards: '12,700+',
+    yearYards: '13,600+',
     peakYards: '2,100',
     years: '15+',
     fieldCrew: '20+',
