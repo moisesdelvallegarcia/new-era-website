@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { businessInfo } from '../data/businessInfo.js'
 import { housecallCities } from '../data/housecall.js'
 import { services } from '../data/services.js'
+import en from '../i18n/en.js'
 import es from '../i18n/es.js'
 import { useLanguage } from '../i18n/useLanguage.js'
 
@@ -31,8 +32,12 @@ const fieldClass =
   'rounded-xl border border-zinc-300 px-4 py-3 font-normal text-zinc-950 transition focus:border-orange-600 focus:outline-none focus:ring-4 focus:ring-orange-100'
 const labelClass = 'grid gap-2 text-sm font-bold text-zinc-800'
 
-function ContactForm() {
-  const { lang, t } = useLanguage()
+// `lang` is optional: pages that pick their language without the /es path
+// (the presentation, ?lang=es) pass it; everywhere else it follows the path.
+function ContactForm({ lang: forcedLang } = {}) {
+  const page = useLanguage()
+  const lang = forcedLang || page.lang
+  const t = forcedLang ? { en, es }[forcedLang] : page.t
   const f = t.contact.form
   const [form, setForm] = useState(initialForm)
   const [botcheck, setBotcheck] = useState(false)
