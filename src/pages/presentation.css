@@ -1,56 +1,72 @@
-/* Company presentation (/presentation), v4. Direction "The monument" from the
-   design-taste-frontend skill: the promise POUR DATE / DOESN'T MOVE as wide as
-   the screen in Bebas Neue with the job video poured between the words, EB
-   Garamond for the text, sand ground and charcoal ink, moss green on the
-   actions and the builders field. Fields change by section (sand, charcoal,
-   a darker sand, moss) instead of lines or cards. Every class is prefixed pv-. */
+/* Company presentation (/presentation), v5 option D: the monument (giant
+   Bebas Neue type, video inside the letters, the builders band, the giant
+   footer, the date as display type) combined with the contact sheet (a pour
+   day in justified rows of frames and fact cells, grey prints that develop
+   into colour, the pour planner). Archivo for the text.
 
-.pv {
-  --bg: #ddd6c6;
-  --surface: #d2cab8;
-  --ink: #2a2a26;
-  --muted: #55534a;
-  --accent: #4f6238;
-  --accent-press: #3e4e2b;
-  --accent-ink: #ffffff;
-  --field: #3f5a2a;
-  --field-ink: #ffffff;
-  --on-dark: #ddd6c6;
+   Palette "Buzzcocks" from Adobe Color, mapped to roles:
+     #202020 near-black  → --night, the dark ground
+     #404241 charcoal    → --charcoal, a surface on dark, quiet buttons
+     #B04D1B rust        → --rust, the one action (cream on rust 5.09:1)
+     #518584 teal        → --teal, the builders field (black on teal 5.04:1)
+     #FFFADE cream       → --cream, ink on dark (15.5:1) and the light ground
+   Derived: --pit #000 (the contact sheet and the knockout letters), --rust-press
+   (hover, 6.62:1), --teal-light (focus and small accents on dark, 7.89:1),
+   --cream-dim (secondary text on dark, 9.88:1), --stone (a surface on cream,
+   charcoal on it 8.07:1), --line (field borders on cream, 4.97:1).
+   Fields alternate dark and light by section instead of lines or cards.
+   Every class is prefixed pd-. */
+
+.pd {
+  --pit: #000000;
+  --night: #202020;
+  --charcoal: #404241;
+  --charcoal-up: #4f524f;
+  --rust: #b04d1b;
+  --rust-press: #963f14;
+  --teal: #518584;
+  --teal-light: #8fbdbb;
+  --cream: #fffade;
+  --cream-dim: #cfcab0;
+  --stone: #ede6c6;
+  --line: #6b6d6a;
+
   --margin: clamp(16px, 2.2vw, 32px);
-  --gap: clamp(96px, 12vw, 200px);
+  --pad: clamp(88px, 10vw, 168px);
   --col-gap: clamp(16px, 1.6vw, 24px);
+  --cell-gap: clamp(6px, 0.6vw, 10px);
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   --display: 'Bebas Neue', Impact, 'Arial Narrow', sans-serif;
-  --step-small: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
-  --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
-  --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
-  --step-sub: clamp(1.875rem, 1.4rem + 1.4vw, 2.75rem);
-  --step-head: clamp(2.5rem, 1.6rem + 3.4vw, 4.5rem);
-  --step-figure: clamp(3.5rem, 2rem + 5vw, 7.5rem);
+  --step-small: 0.9375rem;
+  --step-body: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --step-lead: clamp(1.1875rem, 1.05rem + 0.6vw, 1.5rem);
+  --step-sub: clamp(1.75rem, 1.35rem + 1.3vw, 2.625rem);
+  --step-head: clamp(2.75rem, 1.6rem + 3.8vw, 5rem);
+  --step-monument: min(calc(100cqw / 4.06), 37svh);
 
-  background: var(--bg);
-  color: var(--ink);
-  font-family: 'EB Garamond', Georgia, serif;
+  background: var(--pit);
+  color: var(--cream);
+  font-family: Archivo, 'Helvetica Neue', Arial, sans-serif;
   font-size: var(--step-body);
-  line-height: 1.45;
+  line-height: 1.5;
   overflow-x: clip;
 }
-.pv :where(h1, h2, h3, p, figure, dl, dd, ol, ul) {
+.pd :where(h1, h2, h3, p, figure, dl, dd, ol, ul) {
   margin: 0;
 }
-.pv :where(ol, ul) {
+.pd :where(ol, ul) {
   list-style: none;
   padding: 0;
 }
-.pv img,
-.pv video {
+.pd img,
+.pd video {
   display: block;
 }
-.pv a:not(.pv-action) {
+.pd a:not(.pd-action) {
   color: inherit;
 }
-.pv-sr {
+.pd-sr {
   position: absolute;
   width: 1px;
   height: 1px; /* taste-skill-ignore: visually hidden text for screen readers, not a rule */
@@ -58,34 +74,70 @@
   clip-path: inset(50%);
   white-space: nowrap;
 }
-.pv-head {
+
+/* Fields. Each section owns its ground and its own padding, so the colours
+   meet edge to edge and the page never shows a gap between them. */
+.pd-pit {
+  background: var(--pit);
+  color: var(--cream);
+}
+.pd-dark {
+  background: var(--night);
+  color: var(--cream);
+}
+.pd-light {
+  background: var(--cream);
+  color: var(--night);
+}
+
+.pd-head {
   font-family: var(--display);
   font-weight: 400;
   font-size: var(--step-head);
   line-height: 0.92;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.005em;
   text-transform: uppercase;
   text-wrap: balance;
-  padding-top: 0.2em; /* keeps the glyphs inside the heading's own box */
+  padding-top: 0.12em; /* keeps the glyphs inside the heading's own box */
 }
-.pv-lead {
+.pd-lead {
   font-size: var(--step-lead);
-  line-height: 1.3;
+  line-height: 1.35;
   text-wrap: pretty;
 }
+.pd-note {
+  color: var(--cream-dim);
+}
 
-/* Actions: solid, square, one shape on the whole page. */
-.pv-action {
+/* A heading on the left with its sentence on the right, the opening of most
+   sections, so every section starts the same way. */
+.pd-split {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--col-gap);
+  row-gap: 24px;
+  align-items: end;
+}
+.pd-split > :first-child {
+  grid-column: 1 / 8;
+}
+.pd-split > :nth-child(2) {
+  grid-column: 9 / 13;
+  max-width: 34ch;
+}
+
+/* Actions: solid rust, square, one shape on the whole page. */
+.pd-action {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 52px;
   padding: 0 28px;
-  background: var(--accent);
-  color: var(--accent-ink);
+  background: var(--rust);
+  color: var(--cream);
   font-family: inherit;
   font-size: var(--step-body);
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: none;
   border: 0;
   cursor: pointer;
@@ -93,156 +145,156 @@
     background-color 160ms ease,
     transform 160ms var(--ease-out);
 }
-.pv-action:active {
+.pd-action:active {
   transform: scale(0.97);
 }
-.pv-action-quiet {
-  background: #45453f;
+.pd-action-quiet {
+  background: var(--charcoal);
 }
-.pv-link {
+.pd-link {
   text-decoration: none;
   transition: color 160ms ease;
 }
-.pv-underline {
+.pd-underline {
   text-decoration: underline;
-  text-decoration-thickness: 0.06em;
-  text-underline-offset: 0.2em;
+  text-decoration-thickness: 0.07em;
+  text-underline-offset: 0.22em;
 }
 @media (hover: hover) and (pointer: fine) {
-  .pv-action:hover {
-    background: var(--accent-press);
+  .pd-action:hover {
+    background: var(--rust-press);
   }
-  .pv-action-quiet:hover {
-    background: #56564f;
+  .pd-action-quiet:hover {
+    background: var(--charcoal-up);
   }
-  .pv-link:hover {
-    color: var(--accent);
+  .pd-link:hover {
+    color: var(--teal-light);
   }
-  .pv-cost .pv-link:hover,
-  .pv-date .pv-link:hover,
-  .pv-footer .pv-link:hover {
-    color: #b9c99f;
+  .pd-light .pd-link:hover {
+    color: var(--rust);
   }
 }
-.pv a:focus-visible,
-.pv button:focus-visible,
-.pv input:focus-visible {
-  outline: 3px solid var(--accent);
+.pd a:focus-visible,
+.pd button:focus-visible,
+.pd input:focus-visible,
+.pd select:focus-visible,
+.pd textarea:focus-visible,
+.pd [tabindex]:focus-visible {
+  outline: 3px solid var(--teal-light);
   outline-offset: 3px;
 }
-.pv-date a:focus-visible,
-.pv-date button:focus-visible,
-.pv-date input:focus-visible,
-.pv-footer a:focus-visible,
-.pv-bar a:focus-visible,
-.pv-builders a:focus-visible {
-  outline-color: var(--on-dark);
+.pd-light a:focus-visible,
+.pd-light button:focus-visible,
+.pd-light input:focus-visible,
+.pd-light select:focus-visible,
+.pd-light textarea:focus-visible,
+.pd-builders a:focus-visible {
+  outline-color: var(--night);
 }
 
-/* ---------- Hero: the monument ---------- */
-.pv-hero {
+/* ---------- Hero: the monument, then the contact sheet ---------- */
+.pd-hero {
+  background: var(--pit);
+  color: var(--cream);
+}
+/* The first screen leaves the top of the sheet showing, so the next thing
+   is already in view. */
+.pd-hero-top {
   container-type: inline-size;
-  min-height: 100svh;
-  padding: 20px var(--margin) 32px;
+  min-height: calc(100svh - 56px);
+  padding: 20px var(--margin) clamp(24px, 3svh, 40px);
   display: grid;
   grid-template-rows: auto 1fr auto;
   row-gap: 24px;
 }
-.pv-nav {
+.pd-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 16px;
   font-size: var(--step-small);
 }
-.pv-wordmark {
+.pd-wordmark {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: none;
 }
-.pv-wordmark img {
+.pd-wordmark img {
   width: 32px;
   height: 32px;
+  padding: 3px;
+  border-radius: 50%;
+  background: var(--cream);
   object-fit: contain;
 }
-.pv-for {
-  font-weight: 500;
+.pd-for {
+  font-weight: 600;
+  color: var(--teal-light);
 }
-.pv-nav-links {
+.pd-nav-links {
   display: flex;
   gap: clamp(20px, 3vw, 48px);
 }
 
-/* Both lines share one size, fitted so DOESN'T MOVE runs margin to margin
-   (4.01em wide at this tracking); the video fills what is left of line one. */
-.pv-monument {
+/* The knockout: the letters are white on black and multiplied over the
+   clip, so the footage shows only inside them. */
+.pd-knock {
+  position: relative;
   align-self: center;
-  font-family: var(--display);
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: -0.03em;
-  line-height: 0.84;
-  font-size: min(calc(100vw / 4.3), 36svh);
-  font-size: min(calc(100cqw / 4.06), 36svh);
-}
-.pv-row {
-  display: flex;
-  align-items: baseline;
-  gap: 0.07em;
-}
-.pv-row-top {
-  justify-content: space-between;
-}
-.pv-mask {
-  display: block;
+  isolation: isolate;
   overflow: hidden;
-  padding-top: 0.06em;
+  background: var(--pit);
 }
-.pv-mask [data-line] {
-  display: block;
-  white-space: nowrap;
-}
-.pv-slab {
-  flex: 1;
-  height: 0.7em;
-  overflow: hidden;
-  background: var(--ink);
-}
-.pv-slab video,
-.pv-slab-phone video {
+.pd-knock-clip {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 50% 55%;
+  filter: brightness(1.12) saturate(1.1);
 }
-.pv-slab-phone {
+.pd-monument {
+  position: relative;
+  background: #000000;
+  color: #ffffff;
+  mix-blend-mode: multiply;
+  font-family: var(--display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 0.76;
+  font-size: var(--step-monument);
+}
+.pd-mask {
   display: block;
-  aspect-ratio: 16 / 10;
   overflow: hidden;
-  background: var(--ink);
+  padding-top: 0.04em;
 }
-.pv-hero-foot {
+.pd-mask [data-line] {
+  display: block;
+  white-space: nowrap;
+}
+/* POUR DATE is fitted to the same width as DOESN'T MOVE. */
+.pd-line-top {
+  font-size: 1.3em;
+}
+.pd-hero-foot {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   column-gap: var(--col-gap);
   align-items: end;
 }
-.pv-hero-copy {
+.pd-hero-lead {
   grid-column: 1 / 7;
-  display: grid;
-  gap: 12px;
-}
-.pv-hero-lead {
-  max-width: 44ch;
+  max-width: 46ch;
   font-size: var(--step-lead);
-  line-height: 1.3;
+  line-height: 1.35;
   text-wrap: pretty;
 }
-.pv-hero-proof {
-  color: var(--muted);
-}
-.pv-hero-actions {
+.pd-hero-actions {
   grid-column: 8 / 13;
   display: flex;
   flex-direction: row-reverse;
@@ -252,193 +304,233 @@
   white-space: nowrap;
 }
 
-/* ---------- The cost of a late pour: a schedule that slips ---------- */
-.pv-cost {
+/* The contact sheet: justified rows, every cell with its strip under it. */
+.pd-sheet {
+  padding: 0 var(--margin) var(--pad);
+}
+.pd-sheet-rows {
+  display: grid;
+  gap: var(--cell-gap);
+}
+.pd-sheet-row {
+  display: flex;
+  gap: var(--cell-gap);
+}
+.pd-cell {
+  flex: var(--r) 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.pd-cell-frame {
+  position: relative;
+  aspect-ratio: var(--r);
+  overflow: hidden;
+  background: var(--charcoal);
+}
+.pd-cell-frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.pd-strip {
+  padding: 8px 2px 4px;
+  font-size: var(--step-small);
+  line-height: 1.3;
+  color: var(--cream-dim);
+}
+/* A fact printed as a cell: the figure in display type on a field. */
+.pd-fact .pd-cell-frame {
   container-type: inline-size;
-  margin-top: clamp(48px, 6vw, 96px);
-  padding: var(--gap) var(--margin);
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  column-gap: var(--col-gap);
-  row-gap: clamp(48px, 6vw, 88px);
-  background: var(--ink);
-  color: var(--on-dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 6px;
+  padding: clamp(10px, 1.2vw, 18px);
 }
-.pv-cost-text {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  column-gap: var(--col-gap);
-  row-gap: 28px;
-  align-items: end;
-}
-.pv-cost-text h2 {
-  grid-column: 1 / 8;
-}
-.pv-cost-text .pv-lead {
-  grid-column: 8 / 13;
-  max-width: 32ch;
-}
-/* Each consequence starts one step later than the one before it. */
-.pv-slip {
-  grid-column: 1 / -1;
-  display: grid;
-  gap: 0.08em;
+.pd-fact-figure {
   font-family: var(--display);
-  font-size: var(--step-figure);
+  font-size: var(--step-sub);
+  line-height: 0.9;
+  letter-spacing: -0.01em;
+  padding-top: 0.06em;
+  white-space: nowrap;
+}
+.pd-fact-unit {
+  font-size: var(--step-small);
+  line-height: 1.25;
+  font-weight: 500;
+}
+.pd-fact-rust .pd-cell-frame {
+  background: var(--rust);
+  color: var(--cream);
+}
+.pd-fact-cream .pd-cell-frame {
+  background: var(--cream);
+  color: var(--night);
+}
+.pd-fact-teal .pd-cell-frame {
+  background: var(--teal);
+  color: var(--pit);
+}
+.pd-fact-charcoal .pd-cell-frame {
+  background: var(--charcoal);
+  color: var(--cream);
+}
+
+/* ---------- The cost of a late pour: a schedule that slips ---------- */
+.pd-cost {
+  container-type: inline-size;
+  padding: var(--pad) var(--margin);
+  display: grid;
+  row-gap: clamp(48px, 6vw, 88px);
+}
+.pd-slip {
+  display: grid;
+  gap: 0.06em;
+  font-family: var(--display);
+  font-size: var(--step-head);
   line-height: 0.95;
   text-transform: uppercase;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.005em;
 }
-.pv-slip li {
+.pd-slip li {
   --step: 13cqw;
   padding-left: calc(var(--n) * var(--step));
   white-space: nowrap;
 }
-.pv-slip li:last-child {
-  color: #b9c99f;
+.pd-slip li:last-child {
+  color: var(--rust);
 }
-.pv-cost-turn {
-  grid-column: 7 / 13;
-  max-width: 34ch;
+.pd-cost-turn {
+  justify-self: end;
+  width: min(100%, 36ch);
   font-size: var(--step-lead);
-  line-height: 1.3;
+  line-height: 1.35;
   text-wrap: pretty;
 }
 
-/* ---------- The season in numbers ---------- */
-.pv-season {
+/* ---------- The season in numbers, closing on the one wide picture ---------- */
+.pd-season {
   container-type: inline-size;
-  margin-top: var(--gap);
-  padding: 0 var(--margin);
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  column-gap: var(--col-gap);
+  padding: var(--pad) var(--margin) 0;
 }
-.pv-season-top {
-  grid-column: 1 / -1;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  flex-wrap: wrap;
-  gap: 16px 40px;
-}
-.pv-season-top p {
-  max-width: 34ch;
-  color: var(--muted);
-}
-.pv-yards {
-  grid-column: 1 / -1;
+.pd-yards {
   margin-top: clamp(32px, 4vw, 56px);
   display: flex;
   align-items: flex-end;
   flex-wrap: wrap;
   gap: 8px clamp(24px, 3vw, 48px);
 }
-.pv-yards-figure {
+.pd-yards-figure {
   font-family: var(--display);
-  font-size: min(calc(100cqw / 4.06), 36svh);
+  font-size: var(--step-monument);
   line-height: 0.8;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   padding-top: 0.08em;
+  color: var(--cream);
 }
-.pv-yards-label {
+.pd-yards-label {
   max-width: 18ch;
   padding-bottom: 0.4em;
   font-size: var(--step-lead);
-  line-height: 1.25;
+  line-height: 1.3;
 }
-.pv-figures {
-  grid-column: 1 / -1;
+.pd-figures {
   margin-top: clamp(56px, 7vw, 112px);
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 32px var(--col-gap);
 }
-.pv-figures dt {
+.pd-figures dt {
   font-family: var(--display);
-  font-size: var(--step-figure);
+  font-size: var(--step-head);
   line-height: 0.9;
   padding-top: 0.08em;
+  color: var(--teal-light);
 }
-.pv-figures dd {
+.pd-figures dd {
   margin-top: 8px;
   max-width: 22ch;
 }
-.pv-count {
+.pd-count {
   display: inline-grid;
   font-variant-numeric: tabular-nums;
 }
-.pv-count-room,
-.pv-count-live {
+.pd-count-room,
+.pd-count-live {
   grid-area: 1 / 1;
 }
-.pv-count-room {
+.pd-count-room {
   visibility: hidden;
 }
-
-/* ---------- The one rest: a picture the width of the screen ---------- */
-.pv-wide {
-  margin-top: var(--gap);
+.pd-wide {
+  margin: var(--pad) calc(var(--margin) * -1) 0;
 }
-.pv-wide-frame {
+.pd-wide-frame {
   aspect-ratio: 21 / 9;
   overflow: hidden;
-  background: var(--surface);
+  background: var(--charcoal);
 }
-.pv-wide-frame img {
+.pd-wide-frame img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: 50% 60%;
 }
-.pv-wide figcaption {
-  padding: 12px var(--margin) 0;
+.pd-wide figcaption {
+  padding: 14px var(--margin) 18px;
   font-size: var(--step-small);
-  color: var(--muted);
+  color: var(--cream-dim);
 }
 
 /* ---------- Process: PO to invoice ---------- */
-.pv-process {
-  margin-top: var(--gap);
-  padding: var(--gap) var(--margin);
+.pd-process {
+  padding: var(--pad) var(--margin);
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   column-gap: var(--col-gap);
-  background: var(--surface);
 }
-.pv-process-media {
+.pd-process-media {
   grid-column: 1 / 6;
   display: flex;
 }
 /* The clip takes the full height of the steps beside it. */
-.pv-process-frame {
+.pd-process-frame {
   position: relative;
   flex: 1;
   min-height: 480px;
   overflow: hidden;
-  background: var(--ink);
+  background: var(--night);
 }
-.pv-process-frame video {
+.pd-process-frame video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.pv-process-text {
+.pd-process-text {
   grid-column: 6 / 13;
   padding-left: clamp(0px, 3vw, 48px);
   display: grid;
   align-content: start;
   gap: 28px;
 }
-.pv-steps {
+.pd-process-text .pd-lead {
+  max-width: 34ch;
+}
+.pd-steps {
   margin-top: 24px;
   display: grid;
-  gap: clamp(32px, 3.4vw, 52px);
+  gap: clamp(28px, 3vw, 44px);
 }
-.pv-steps h3 {
+.pd-steps h3,
+.pd-services h3,
+.pd-promises dt,
+.pd-run-line h3 {
   font-family: var(--display);
   font-weight: 400;
   font-size: var(--step-sub);
@@ -446,162 +538,142 @@
   text-transform: uppercase;
   padding-top: 0.1em;
 }
-.pv-steps li {
+.pd-steps li {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
   column-gap: var(--col-gap);
   align-items: baseline;
 }
-.pv-steps p {
+.pd-steps p {
   max-width: 36ch;
 }
 
-/* ---------- What we pour: the list beside the pictures ---------- */
-.pv-work {
-  margin-top: var(--gap);
-  padding: 0 var(--margin);
+/* ---------- What we pour: the list beside the runs of frames ---------- */
+.pd-work {
+  padding: var(--pad) var(--margin);
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   column-gap: var(--col-gap);
 }
-.pv-work-text {
-  grid-column: 1 / 7;
+.pd-rail {
+  grid-column: 1 / 5;
+  align-self: start;
+  position: sticky;
+  top: 88px;
   display: grid;
-  align-content: start;
-  gap: 28px;
+  gap: 24px;
 }
-.pv-work-text .pv-lead {
+.pd-rail .pd-lead {
   max-width: 30ch;
 }
-.pv-services {
+.pd-services {
   margin-top: 16px;
   display: grid;
-  gap: 22px;
+  gap: 16px;
 }
-.pv-services li {
+.pd-services p {
+  color: var(--cream-dim);
+}
+.pd-runs {
+  grid-column: 6 / 13;
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  column-gap: var(--col-gap);
-  align-items: baseline;
+  gap: clamp(40px, 5vw, 72px);
 }
-.pv-services h3 {
-  font-family: var(--display);
-  font-weight: 400;
-  font-size: var(--step-sub);
-  line-height: 0.95;
-  text-transform: uppercase;
-  padding-top: 0.1em;
-}
-.pv-services p {
-  color: var(--muted);
-}
-/* The pictures take exactly the height of the list beside them. */
-.pv-mosaic {
-  grid-column: 7 / 13;
+.pd-run-frames {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: minmax(0, 1fr) minmax(0, 1.3fr);
-  gap: var(--col-gap);
+  gap: var(--cell-gap);
 }
-.pv-tile {
+.pd-run-row {
   display: flex;
-  flex-direction: column;
-  min-height: 0;
+  gap: var(--cell-gap);
 }
-.pv-tile-wide {
-  grid-column: 1 / -1;
-}
-.pv-tile-frame {
-  position: relative;
-  flex: 1;
-  min-height: 180px;
-  overflow: hidden;
-  background: var(--surface);
-}
-.pv-tile-frame img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+.pd-run-row img {
+  flex: var(--r) 1 0;
+  min-width: 0;
+  aspect-ratio: var(--r);
   object-fit: cover;
+  background: var(--charcoal);
+  filter: grayscale(1) contrast(1.05) brightness(0.8);
+  transition: filter 500ms ease;
 }
-.pv-tile figcaption {
-  margin-top: 10px;
-  font-size: var(--step-small);
-  color: var(--muted);
+.pd-run.pd-lit img {
+  filter: none;
+}
+.pd-run-line {
+  margin-top: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px 24px;
+  flex-wrap: wrap;
+}
+.pd-run-line p {
+  color: var(--cream-dim);
+}
+.pd-run.pd-lit .pd-run-line h3 {
+  color: var(--teal-light);
+}
+.pd-run-line h3 {
+  transition: color 300ms ease;
 }
 
-/* ---------- Builders: one moss field, the names running through it ---------- */
-.pv-builders {
-  margin-top: var(--gap);
-  padding: clamp(72px, 9vw, 144px) 0;
-  background: var(--field);
-  color: var(--field-ink);
+/* ---------- Builders: one teal field, the names running through it ---------- */
+.pd-builders {
+  padding: var(--pad) 0;
+  background: var(--teal);
+  color: var(--pit);
   overflow: hidden;
 }
-.pv-builders-text {
+.pd-builders .pd-split {
   padding: 0 var(--margin);
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  column-gap: var(--col-gap);
-  row-gap: 20px;
 }
-.pv-builders-text h2 {
-  grid-column: 1 / 8;
-}
-.pv-builders-text p {
-  grid-column: 1 / 7;
-  max-width: 34ch;
-}
-.pv-band {
+.pd-band {
   margin-top: clamp(48px, 6vw, 88px);
   display: flex;
   overflow: hidden;
 }
-.pv-track {
+.pd-track {
   display: flex;
   width: max-content;
   font-family: var(--display);
-  font-size: clamp(5rem, 13vw, 13rem);
+  font-size: min(calc((100vw - 2 * var(--margin)) / 4.06), 13vw);
   line-height: 1;
   padding-top: 0.08em;
   text-transform: uppercase;
   white-space: nowrap;
 }
-.pv-names > span {
+.pd-names > span {
   display: inline-flex;
   align-items: center;
 }
-.pv-dot {
+.pd-dot {
   display: inline-block;
   width: 0.2em;
   height: 0.2em;
   margin: 0 0.35em;
-  border-radius: 50%;
-  background: currentColor;
+  background: var(--cream);
   transform: translateY(-0.06em);
 }
 
 /* ---------- The risk stays with us ---------- */
-.pv-promise {
-  margin-top: var(--gap);
-  padding: 0 var(--margin);
+.pd-promise {
+  padding: var(--pad) var(--margin);
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   column-gap: var(--col-gap);
 }
-.pv-promise-photo {
+.pd-promise-photo {
   grid-column: 1 / 6;
   display: flex;
 }
-.pv-promise-frame {
+.pd-promise-frame {
   position: relative;
   flex: 1;
   min-height: 420px;
   overflow: hidden;
-  background: var(--surface);
+  background: var(--stone);
 }
-.pv-promise-frame img {
+.pd-promise-frame img {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -609,78 +681,60 @@
   object-fit: cover;
   object-position: 62% 50%;
 }
-.pv-promise-text {
+.pd-promise-text {
   grid-column: 7 / 13;
   display: grid;
   align-content: start;
   gap: clamp(36px, 4vw, 56px);
 }
-.pv-promises {
+.pd-promises {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(36px, 4vw, 56px) var(--col-gap);
 }
-.pv-promises dt {
-  font-family: var(--display);
-  font-size: var(--step-sub);
-  line-height: 0.95;
-  text-transform: uppercase;
-  padding-top: 0.1em;
-}
-.pv-promises dd {
+.pd-promises dd {
   margin-top: 12px;
   max-width: 30ch;
 }
 
-/* ---------- Book your pour date: the reader's own date as display type ---------- */
-.pv-date {
+/* ---------- Book your pour date: the reader's date as display type ---------- */
+.pd-date {
   container-type: inline-size;
-  margin-top: var(--gap);
-  min-height: 100svh;
-  padding: clamp(48px, 6vw, 88px) var(--margin) clamp(36px, 4vw, 56px);
+  padding: var(--pad) var(--margin);
   display: grid;
-  grid-template-rows: auto 1fr auto;
-  row-gap: 40px;
-  background: var(--ink);
-  color: var(--on-dark);
+  row-gap: clamp(32px, 4vw, 56px);
 }
-.pv-date-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 32px;
-  flex-wrap: wrap;
-}
-.pv-date-intro p {
-  margin-top: 20px;
-  max-width: 38ch;
-  font-size: var(--step-lead);
-  line-height: 1.3;
-}
-.pv-date-controls {
+.pd-date-controls {
   display: flex;
   gap: var(--col-gap);
   flex-wrap: wrap;
 }
-.pv-date-controls input {
+.pd-field {
+  display: grid;
+  gap: 8px;
+  font-size: var(--step-small);
+  font-weight: 500;
+  color: var(--cream-dim);
+}
+.pd-field input {
   min-height: 56px;
   padding: 0 16px;
   border: 0;
   border-radius: 0;
-  background: var(--bg);
-  color: var(--ink);
+  background: var(--cream);
+  color: var(--night);
   font-family: inherit;
   font-size: var(--step-lead);
   color-scheme: light;
 }
-.pv-stepper {
+.pd-stepper {
   display: flex;
   align-items: stretch;
   min-height: 56px;
-  background: var(--bg);
-  color: var(--ink);
+  background: var(--cream);
+  color: var(--night);
 }
-.pv-stepper button {
+.pd-stepper button {
   width: 56px;
   border: 0;
   border-radius: 0;
@@ -694,19 +748,19 @@
     background-color 160ms ease,
     transform 160ms var(--ease-out);
 }
-.pv-stepper button:active:not(:disabled) {
+.pd-stepper button:active:not(:disabled) {
   transform: scale(0.92);
 }
-.pv-stepper button:disabled {
-  color: #8d887b;
+.pd-stepper button:disabled {
+  color: var(--line);
   cursor: default;
 }
 @media (hover: hover) and (pointer: fine) {
-  .pv-stepper button:hover:not(:disabled) {
-    background: var(--surface);
+  .pd-stepper button:hover:not(:disabled) {
+    background: var(--stone);
   }
 }
-.pv-stepper output {
+.pd-stepper output {
   min-width: 5.5em;
   padding: 0 8px;
   display: grid;
@@ -714,138 +768,219 @@
   font-size: var(--step-lead);
   font-variant-numeric: tabular-nums;
 }
-.pv-date-big {
-  align-self: end;
+.pd-knock-date {
+  align-self: stretch;
+}
+.pd-date-big {
+  position: relative;
   overflow: hidden;
+  background: #000000;
+  color: #ffffff;
+  mix-blend-mode: multiply;
   font-family: var(--display);
-  font-size: min(calc(100vw / 4.3), 36svh);
-  font-size: min(calc(100cqw / 4.06), 36svh);
-  line-height: 0.84;
-  letter-spacing: -0.03em;
+  font-size: var(--step-monument);
+  line-height: 0.8;
+  letter-spacing: -0.02em;
   white-space: nowrap;
 }
-.pv-date-big span {
+.pd-date-big span {
   display: block;
   padding-top: 0.06em;
 }
-.pv-date-actions {
+/* The planner: one row per pour day, one frame per house. */
+.pd-plan {
+  display: grid;
+  gap: 20px;
+}
+.pd-plan-answer {
+  font-size: var(--step-lead);
+  line-height: 1.35;
+  max-width: 48ch;
+}
+.pd-days {
+  display: grid;
+  gap: var(--cell-gap);
+}
+.pd-days > li {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr);
+  align-items: center;
+  gap: var(--col-gap);
+}
+.pd-day-name {
+  font-family: var(--display);
+  font-size: var(--step-sub);
+  line-height: 1;
+  padding-top: 0.08em;
+  color: var(--teal-light);
+}
+.pd-day-crews {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--col-gap);
+}
+.pd-crew {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--cell-gap);
+}
+.pd-house {
+  display: grid;
+  gap: 6px;
+}
+.pd-house img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--charcoal);
+}
+.pd-house span {
+  font-size: var(--step-small);
+  color: var(--cream-dim);
+}
+.pd-plan-note {
+  color: var(--cream-dim);
+}
+.pd-date-actions {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 16px 32px;
   flex-wrap: wrap;
 }
 
 /* ---------- Quote ---------- */
-.pv-quote {
-  padding: var(--gap) var(--margin) 0;
+.pd-quote {
+  padding: var(--pad) var(--margin);
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   column-gap: var(--col-gap);
 }
-.pv-quote > * {
+.pd-quote > * {
   min-width: 0;
 }
-.pv-quote-text {
+.pd-quote-text {
   grid-column: 1 / 6;
   display: flex;
   flex-direction: column;
 }
 /* The picture takes whatever height the form leaves beside the contact. */
-.pv-quote-photo {
+.pd-quote-photo {
   position: relative;
   flex: 1;
   min-height: 220px;
   margin-top: 48px;
   overflow: hidden;
-  background: var(--surface);
+  background: var(--stone);
 }
-.pv-quote-photo img {
+.pd-quote-photo img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.pv-quote-text .pv-lead {
+.pd-quote-text .pd-lead {
   margin-top: 28px;
   max-width: 28ch;
 }
-.pv-owner {
+.pd-owner {
   margin-top: 40px;
   display: grid;
   gap: 16px;
 }
-.pv-form {
+.pd-form {
   grid-column: 7 / 13;
-  background: var(--surface);
+  background: var(--stone);
   padding: clamp(20px, 3vw, 40px);
 }
-.pv-form form {
+.pd-form form {
   border: 0;
   box-shadow: none; /* taste-skill-ignore: removes the form's own shadow */
   border-radius: 0;
   padding: 0;
   background: transparent;
 }
-.pv-form label {
-  font-family: 'EB Garamond', Georgia, serif;
+.pd-form label {
+  font-family: inherit;
   font-size: var(--step-small);
   font-weight: 500;
-  color: var(--ink);
+  color: var(--night);
 }
-.pv-form input,
-.pv-form select,
-.pv-form textarea {
+.pd-form input,
+.pd-form select,
+.pd-form textarea {
   max-width: 100%;
   min-width: 0;
   border-radius: 0;
-  background: #fff;
+  border-color: var(--line);
+  background: var(--cream);
+  color: var(--night);
   font-family: inherit;
   font-size: var(--step-body);
+  box-shadow: none; /* taste-skill-ignore: drops the form's focus ring for the page's outline */
+}
+.pd-form input:focus,
+.pd-form select:focus,
+.pd-form textarea:focus {
+  border-color: var(--night);
 }
 /* The form's send button takes the page's action style. */
-.pv-form button[type='submit'] {
-  background: var(--accent);
-  color: var(--accent-ink);
+.pd-form button[type='submit'] {
+  background: var(--rust);
+  color: var(--cream);
   border-radius: 0;
   box-shadow: none; /* taste-skill-ignore: removes the button's own shadow */
   min-height: 52px;
   font-family: inherit;
   font-size: var(--step-body);
-  font-weight: 500;
+  font-weight: 600;
+  transition:
+    background-color 160ms ease,
+    transform 160ms var(--ease-out);
 }
-.pv-form button[type='submit']:hover {
-  background: var(--accent-press);
+.pd-form button[type='submit']:active {
+  transform: scale(0.97);
+}
+@media (hover: hover) and (pointer: fine) {
+  .pd-form button[type='submit']:hover {
+    background: var(--rust-press);
+  }
 }
 
-/* ---------- Footer: the name returns at full width, inverted ---------- */
-.pv-footer {
+/* ---------- Footer: the name returns at full width ---------- */
+.pd-footer {
   container-type: inline-size;
-  margin-top: var(--gap);
-  padding: 40px var(--margin) 0;
-  background: var(--ink);
-  color: var(--on-dark);
+  padding: clamp(48px, 6vw, 88px) var(--margin) 0;
+  background: var(--pit);
+  color: var(--cream);
   overflow: hidden;
 }
-.pv-footer-line {
-  max-width: 70ch;
-  font-size: var(--step-small);
+.pd-footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px 48px;
+  flex-wrap: wrap;
 }
-.pv-footer-name {
-  margin-top: 24px;
+.pd-footer-line {
+  max-width: 64ch;
+  color: var(--cream-dim);
+}
+.pd-footer-name {
+  margin-top: clamp(32px, 4vw, 56px);
   font-family: var(--display);
-  font-size: calc(100vw / 2.6);
   font-size: calc(100cqw / 2.48);
   line-height: 0.78;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
   white-space: nowrap;
+  color: var(--cream);
   transform: translateY(0.06em);
 }
 
-/* ---------- Action bar: call, WhatsApp and quote ---------- */
+/* ---------- Action bar: call, WhatsApp and the date ---------- */
 /* Top-right corner on a computer; across the top edge on a phone. */
-.pv-bar {
+.pd-bar {
   position: fixed;
   top: 12px;
   right: 12px;
@@ -854,189 +989,165 @@
   align-items: center;
   gap: 8px;
   padding: 8px 8px 8px 18px;
-  background: var(--ink);
-  color: var(--on-dark);
+  background: var(--night);
+  color: var(--cream);
   transform: translateY(calc(-100% - 12px));
   transition: transform 400ms var(--ease-out);
 }
-.pv-bar.pv-on {
+.pd-bar.pd-on {
   transform: none;
 }
-.pv-bar p {
+.pd-bar p {
   margin-right: 8px;
   font-size: var(--step-small);
 }
-.pv-bar .pv-action {
+.pd-bar .pd-action {
   min-height: 48px;
   padding: 0 20px;
 }
 
 /* ---------- Tablet and phone ---------- */
 @media (max-width: 820px) {
-  .pv-cost-text,
-  .pv-cost-turn,
-  .pv-builders-text h2,
-  .pv-builders-text p {
+  .pd-split > :first-child,
+  .pd-split > :nth-child(2) {
     grid-column: 1 / -1;
   }
-  .pv-cost-text h2,
-  .pv-cost-text .pv-lead {
-    grid-column: 1 / -1;
-  }
-  .pv-slip {
-    font-size: var(--step-head);
-  }
-  .pv-slip li {
+  .pd-slip li {
     --step: 7cqw;
   }
-
-  .pv-yards-label {
+  .pd-yards-label {
     max-width: 26ch;
     padding-bottom: 0;
   }
-  .pv-steps li {
+  .pd-steps li {
     grid-template-columns: minmax(0, 1fr);
     row-gap: 8px;
   }
-  .pv-process-text {
+  .pd-process-text {
     padding-left: 0;
   }
-  .pv-figures {
+  .pd-figures {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .pv-wide-frame {
+  .pd-wide-frame {
     aspect-ratio: 4 / 3;
   }
-  .pv-process,
-  .pv-work,
-  .pv-promise,
-  .pv-quote {
+  .pd-process,
+  .pd-work,
+  .pd-promise,
+  .pd-quote {
     grid-template-columns: minmax(0, 1fr);
     row-gap: 48px;
   }
-  .pv-process-media,
-  .pv-process-text,
-  .pv-work-text,
-  .pv-mosaic,
-  .pv-promise-photo,
-  .pv-promise-text,
-  .pv-quote-text,
-  .pv-form {
+  .pd-process-media,
+  .pd-process-text,
+  .pd-rail,
+  .pd-runs,
+  .pd-promise-photo,
+  .pd-promise-text,
+  .pd-quote-text,
+  .pd-form {
     grid-column: 1;
   }
-  .pv-process-media,
-  .pv-promise-photo {
+  .pd-rail {
+    position: static;
+  }
+  .pd-services {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px var(--col-gap);
+  }
+  .pd-process-media,
+  .pd-promise-photo {
     order: 2;
   }
-  .pv-process-frame {
+  .pd-process-frame {
     flex: none;
     width: 100%;
     min-height: 0;
     aspect-ratio: 1;
   }
-  .pv-mosaic {
-    grid-template-rows: auto auto;
-  }
-  .pv-tile-frame {
-    flex: none;
-    aspect-ratio: 3 / 4;
-    min-height: 0;
-  }
-  .pv-tile-wide .pv-tile-frame {
-    aspect-ratio: 4 / 3;
-  }
-  .pv-promise-frame {
+  .pd-promise-frame {
     flex: none;
     width: 100%;
     min-height: 0;
     aspect-ratio: 4 / 3;
   }
-  .pv-date {
-    min-height: auto;
-  }
-  .pv-quote-photo {
+  .pd-quote-photo {
     display: none;
   }
-  .pv-date-big {
-    margin-top: 24px;
+  .pd-days > li {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+  .pd-day-crews {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--cell-gap);
   }
 }
 
 @media (max-width: 700px) {
-  .pv-wide-only {
+  .pd {
+    --step-monument: calc(100cqw / 4.06);
+  }
+  .pd-wide-only {
     display: none;
   }
-  .pv-nav {
+  .pd-nav {
     flex-wrap: wrap;
   }
-  .pv-for {
+  .pd-for {
     order: 3;
     width: 100%;
   }
-  .pv-hero {
+  .pd-hero-top {
     min-height: auto;
-    grid-template-rows: auto auto auto auto;
-    row-gap: 20px;
+    grid-template-rows: auto auto auto;
+    row-gap: 28px;
+    padding-bottom: 36px;
   }
-  .pv-monument {
-    margin-top: 3svh;
-    font-size: calc(100cqw / 4.06);
+  .pd-knock {
+    margin-top: 2svh;
   }
-  /* Without the video in it, POUR DATE is fitted on its own line. */
-  .pv-row-top {
-    justify-content: flex-start;
-    gap: 0.2em;
-    font-size: 1.27em;
-  }
-  .pv-hero-foot {
+  .pd-hero-foot {
     grid-template-columns: minmax(0, 1fr);
     row-gap: 24px;
   }
-  .pv-hero-copy,
-  .pv-hero-actions {
+  .pd-hero-lead,
+  .pd-hero-actions {
     grid-column: 1;
   }
-  .pv-hero-lead {
+  .pd-hero-lead {
     font-size: var(--step-body);
-    line-height: 1.4;
+    line-height: 1.45;
   }
-  .pv-hero-actions {
+  .pd-hero-actions,
+  .pd-date-actions {
     flex-direction: column;
     align-items: stretch;
     gap: 16px;
     text-align: center;
   }
-  .pv-services li {
-    grid-template-columns: minmax(0, 1fr);
-    row-gap: 4px;
-  }
-  /* The names run at the monument's own size. */
-  .pv-track {
-    font-size: calc((100vw - 2 * var(--margin)) / 4.06);
-  }
-  .pv-promises {
+  .pd-promises {
     grid-template-columns: minmax(0, 1fr);
   }
-  .pv-date-controls,
-  .pv-date-controls input,
-  .pv-stepper {
+  .pd-date-controls,
+  .pd-field,
+  .pd-field input,
+  .pd-stepper {
     width: 100%;
   }
-  .pv-date-controls input {
+  .pd-field input {
     min-width: 0;
   }
-  .pv-stepper output {
+  .pd-stepper output {
     flex: 1;
   }
-  .pv-date-actions {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 16px;
-    text-align: center;
+  .pd-footer-row .pd-action {
+    width: 100%;
   }
   /* On a phone the bar spans the top edge, like a product page's buy bar,
      so it never sits over the text being read at the bottom of the screen. */
-  .pv-bar {
+  .pd-bar {
     top: 0;
     right: 0;
     left: 0;
@@ -1044,10 +1155,10 @@
     padding-top: max(8px, env(safe-area-inset-top));
     transform: translateY(-100%);
   }
-  .pv-bar p {
+  .pd-bar p {
     display: none;
   }
-  .pv-bar .pv-action {
+  .pd-bar .pd-action {
     flex: 1;
     padding: 0 10px;
   }
@@ -1056,17 +1167,38 @@
 /* ---------- Motion ---------- */
 @media (prefers-reduced-motion: no-preference) {
   /* The monument rises line by line from behind its own baseline. */
-  .js .pv-mask [data-line] {
+  .js .pd-mask [data-line] {
     transform: translateY(105%);
-    animation: pv-up 1000ms var(--ease-out) forwards;
+    animation: pd-up 1000ms var(--ease-out) forwards;
     animation-delay: calc(var(--i) * 120ms + 120ms);
   }
-  .js .pv-after {
+  .js .pd-after {
     opacity: 0;
-    animation: pv-fade 700ms var(--ease-out) 700ms forwards;
+    animation: pd-fade 700ms var(--ease-out) 700ms forwards;
   }
-  /* Signature move: the video opens from the bottom edge like concrete
-     filling the forms, settling from 1.12 scale. */
+  /* Signature move: the contact sheet is printed in grey and develops into
+     colour cell by cell, left to right, as it comes into view. */
+  .js [data-develop] .pd-cell {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 600ms var(--ease-out),
+      transform 600ms var(--ease-out);
+    transition-delay: calc(var(--i) * 60ms);
+  }
+  .js [data-develop] .pd-cell img {
+    filter: grayscale(1) brightness(0.8);
+    transition: filter 900ms ease;
+    transition-delay: calc(400ms + var(--i) * 90ms);
+  }
+  .js [data-develop].pd-in .pd-cell {
+    opacity: 1;
+    transform: none;
+  }
+  .js [data-develop].pd-in .pd-cell img {
+    filter: none;
+  }
+  /* Clips open from the bottom edge like concrete filling the forms. */
   .js [data-shutter] {
     clip-path: inset(100% 0 0 0);
     transition: clip-path 1100ms var(--ease-in-out);
@@ -1075,13 +1207,10 @@
     transform: scale(1.12);
     transition: transform 1500ms var(--ease-out);
   }
-  .js .pv-slab[data-shutter] {
-    transition-delay: 380ms;
-  }
-  .js [data-shutter].pv-in {
+  .js [data-shutter].pd-in {
     clip-path: inset(0);
   }
-  .js [data-shutter].pv-in > * {
+  .js [data-shutter].pd-in > * {
     transform: none;
   }
   /* Section parts rise once as their section enters. */
@@ -1093,55 +1222,59 @@
       transform 700ms var(--ease-out);
     transition-delay: calc(var(--d, 0) * 75ms);
   }
-  .js [data-rise].pv-in {
+  .js [data-rise].pd-in {
     opacity: 1;
     transform: none;
   }
   /* The schedule slips: the lines start in step, then each one is pushed
      one step later than the one before it. */
-  .js .pv-slip[data-rise] {
+  .js .pd-slip[data-rise] {
     transform: none;
   }
-  .js .pv-slip li {
+  .js .pd-slip li {
     transform: translateX(calc(var(--n) * var(--step) * -1));
     transition: transform 1100ms var(--ease-in-out);
     transition-delay: calc(500ms + var(--n) * 160ms);
   }
-  .js .pv-slip.pv-in li {
+  .js .pd-slip.pd-in li {
     transform: none;
   }
   /* The wide picture settles as it crosses the screen. */
   @supports (animation-timeline: view()) {
-    .pv-wide-frame img {
-      animation: pv-settle linear both;
+    .pd-wide-frame img {
+      animation: pd-settle linear both;
       animation-timeline: view();
       animation-range: entry 0% cover 60%;
     }
   }
   /* The builders run slowly to the left. */
-  .pv-track {
-    animation: pv-run 40s linear infinite;
+  .pd-track {
+    animation: pd-run 40s linear infinite;
   }
-  .pv-band:hover .pv-track {
+  .pd-band:hover .pd-track {
     animation-play-state: paused;
   }
   /* A new date drops into place. */
-  .pv-date-big span {
-    animation: pv-up-small 520ms var(--ease-out);
+  .pd-date-big span {
+    animation: pd-up-small 520ms var(--ease-out);
+  }
+  /* Each house drops into its day as it is added. */
+  .pd-house {
+    animation: pd-fade 320ms var(--ease-out);
   }
 }
-@keyframes pv-up {
+@keyframes pd-up {
   to {
     transform: none;
   }
 }
-@keyframes pv-up-small {
+@keyframes pd-up-small {
   from {
     transform: translateY(40%);
     opacity: 0;
   }
 }
-@keyframes pv-fade {
+@keyframes pd-fade {
   from {
     opacity: 0;
     transform: translateY(12px);
@@ -1151,7 +1284,7 @@
     transform: none;
   }
 }
-@keyframes pv-settle {
+@keyframes pd-settle {
   from {
     transform: scale(1.14);
   }
@@ -1159,18 +1292,20 @@
     transform: none;
   }
 }
-@keyframes pv-run {
+@keyframes pd-run {
   to {
     transform: translateX(-50%);
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .pv-bar {
+  .pd-bar,
+  .pd-run-row img,
+  .pd-run-line h3 {
     transition: none;
   }
 }
 
 /* A jump from a link lands below the action bar. */
-.pv section[id] {
+.pd section[id] {
   scroll-margin-top: 72px;
 }
