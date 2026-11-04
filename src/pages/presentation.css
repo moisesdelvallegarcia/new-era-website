@@ -1,27 +1,41 @@
-/* Company presentation (/presentation), v4. Direction "The monument" from the
-   design-taste-frontend skill: the promise POUR DATE / DOESN'T MOVE as wide as
-   the screen in Bebas Neue with the job video poured between the words, EB
-   Garamond for the text, sand ground and charcoal ink, moss green on the
-   actions and the builders field. Fields change by section (sand, charcoal,
-   a darker sand, moss) instead of lines or cards. Every class is prefixed pv-. */
+/* Company presentation (/presentation), v5 option E, "The proof sheet": the
+   monument (POUR DATE / DOESN'T MOVE in Bebas Neue, the job video between the
+   words, figures and the chosen date as display type, the builders band, the
+   name at full width) set through a contact sheet of the pour day (frames,
+   clips and facts in cells, strips along their edges, grey runs that develop
+   into colour). Newsreader for the text.
 
-.pv {
-  --bg: #ddd6c6;
-  --surface: #d2cab8;
-  --ink: #2a2a26;
-  --muted: #55534a;
-  --accent: #4f6238;
-  --accent-press: #3e4e2b;
-  --accent-ink: #ffffff;
-  --field: #3f5a2a;
-  --field-ink: #ffffff;
-  --on-dark: #ddd6c6;
+   Palette: Adobe Color "medern interior" (walnut #7B4C2E, coral #F25E44,
+   off-white #F0ECE1, sage #959D8E, tan #966A51). The ground is the off-white
+   taken one step down (#E6E1D5) so it reads as stone, not cream; the raw
+   off-white is kept for raised cells. Ink is the walnut taken to its darkest.
+   The process field is a sage tint (#BAC0B2, ink on it 8.7:1).
+   Contrast (WCAG): ink on paper 12.6:1, walnut on paper 5.4:1, paper on walnut
+   5.4:1, ink on sage 5.9:1, sage on ink 5.9:1, ink on coral 5.1:1, coral on
+   ink 5.1:1. Coral is never text on a light field (2.5:1): it fills the
+   actions and one fact, and sets large type on ink. Tan has no text on it.
+   Every class is prefixed ne-. */
+
+.ne {
+  --paper: #e6e1d5;
+  --paper-hi: #f0ece1;
+  --stone: #dcd5c7;
+  --ink: #2a1a11;
+  --walnut: #7b4c2e;
+  --walnut-hi: #8c5a3a;
+  --tan: #966a51;
+  --sage: #959d8e;
+  --sage-hi: #bac0b2;
+  --coral: #f25e44;
+  --coral-hi: #f57a63;
   --margin: clamp(16px, 2.2vw, 32px);
-  --gap: clamp(96px, 12vw, 200px);
+  --gap: clamp(96px, 11vw, 184px);
+  --g: clamp(8px, 0.9vw, 12px);
   --col-gap: clamp(16px, 1.6vw, 24px);
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   --display: 'Bebas Neue', Impact, 'Arial Narrow', sans-serif;
+  --text: 'Newsreader', Georgia, serif;
   --step-small: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
   --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
   --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
@@ -29,28 +43,32 @@
   --step-head: clamp(2.5rem, 1.6rem + 3.4vw, 4.5rem);
   --step-figure: clamp(3.5rem, 2rem + 5vw, 7.5rem);
 
-  background: var(--bg);
+  background: var(--paper);
   color: var(--ink);
-  font-family: 'EB Garamond', Georgia, serif;
+  font-family: var(--text);
   font-size: var(--step-body);
   line-height: 1.45;
   overflow-x: clip;
 }
-.pv :where(h1, h2, h3, p, figure, dl, dd, ol, ul) {
+.ne :where(h1, h2, h3, p, figure, dl, dd, ol, ul) {
   margin: 0;
 }
-.pv :where(ol, ul) {
+.ne :where(ol, ul) {
   list-style: none;
   padding: 0;
 }
-.pv img,
-.pv video {
+.ne img,
+.ne video {
   display: block;
 }
-.pv a:not(.pv-action) {
+.ne a:not(.ne-action) {
   color: inherit;
 }
-.pv-sr {
+.ne ::selection {
+  background: var(--coral);
+  color: var(--ink);
+}
+.ne-sr {
   position: absolute;
   width: 1px;
   height: 1px; /* taste-skill-ignore: visually hidden text for screen readers, not a rule */
@@ -58,7 +76,7 @@
   clip-path: inset(50%);
   white-space: nowrap;
 }
-.pv-head {
+.ne-head {
   font-family: var(--display);
   font-weight: 400;
   font-size: var(--step-head);
@@ -68,21 +86,21 @@
   text-wrap: balance;
   padding-top: 0.2em; /* keeps the glyphs inside the heading's own box */
 }
-.pv-lead {
+.ne-lead {
   font-size: var(--step-lead);
   line-height: 1.3;
   text-wrap: pretty;
 }
 
-/* Actions: solid, square, one shape on the whole page. */
-.pv-action {
+/* Actions: coral, square, ink letters; one shape on the whole page. */
+.ne-action {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 52px;
   padding: 0 28px;
-  background: var(--accent);
-  color: var(--accent-ink);
+  background: var(--coral);
+  color: var(--ink);
   font-family: inherit;
   font-size: var(--step-body);
   font-weight: 500;
@@ -93,178 +111,330 @@
     background-color 160ms ease,
     transform 160ms var(--ease-out);
 }
-.pv-action:active {
+.ne-action:active {
   transform: scale(0.97);
 }
-.pv-action-quiet {
-  background: #45453f;
+.ne-action-quiet {
+  background: var(--walnut);
+  color: var(--paper);
 }
-.pv-link {
+.ne-link {
   text-decoration: none;
   transition: color 160ms ease;
 }
-.pv-underline {
+.ne-underline {
   text-decoration: underline;
   text-decoration-thickness: 0.06em;
   text-underline-offset: 0.2em;
 }
 @media (hover: hover) and (pointer: fine) {
-  .pv-action:hover {
-    background: var(--accent-press);
+  .ne-action:hover {
+    background: var(--coral-hi);
   }
-  .pv-action-quiet:hover {
-    background: #56564f;
+  .ne-action-quiet:hover {
+    background: var(--walnut-hi);
   }
-  .pv-link:hover {
-    color: var(--accent);
+  .ne-link:hover {
+    color: var(--walnut);
   }
-  .pv-cost .pv-link:hover,
-  .pv-date .pv-link:hover,
-  .pv-footer .pv-link:hover {
-    color: #b9c99f;
+  .ne-cell .ne-link:hover,
+  .ne-cost .ne-link:hover,
+  .ne-date .ne-link:hover,
+  .ne-footer .ne-link:hover {
+    color: var(--coral);
   }
 }
-.pv a:focus-visible,
-.pv button:focus-visible,
-.pv input:focus-visible {
-  outline: 3px solid var(--accent);
+.ne a:focus-visible,
+.ne button:focus-visible,
+.ne input:focus-visible,
+.ne [tabindex]:focus-visible {
+  outline: 3px solid var(--ink);
   outline-offset: 3px;
 }
-.pv-date a:focus-visible,
-.pv-date button:focus-visible,
-.pv-date input:focus-visible,
-.pv-footer a:focus-visible,
-.pv-bar a:focus-visible,
-.pv-builders a:focus-visible {
-  outline-color: var(--on-dark);
+.ne-cell a:focus-visible,
+.ne-date a:focus-visible,
+.ne-date button:focus-visible,
+.ne-date input:focus-visible,
+.ne-footer a:focus-visible,
+.ne-bar a:focus-visible {
+  outline-color: var(--coral);
 }
 
-/* ---------- Hero: the monument ---------- */
-.pv-hero {
-  container-type: inline-size;
-  min-height: 100svh;
-  padding: 20px var(--margin) 32px;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  row-gap: 24px;
+/* ---------- The sheet: frames, strips and facts ---------- */
+.ne-frame {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
 }
-.pv-nav {
+.ne-frame-pic {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--tan);
+}
+.ne-frame-pic img,
+.ne-frame-pic video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* The strip along a frame's edge, like the frame numbers on a contact sheet. */
+.ne-strip {
+  flex: none;
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  font-family: var(--text);
+  font-size: var(--step-small);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: nowrap;
+  overflow: hidden;
+  background: var(--ink);
+  color: var(--paper);
+}
+.ne-fact {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+  min-width: 0;
+  padding: clamp(14px, 1.4vw, 22px);
+}
+.ne-fact-figure {
+  font-family: var(--display);
+  font-size: var(--step-head);
+  line-height: 0.9;
+  padding-top: 0.1em;
+  white-space: nowrap;
+}
+.ne-fact-unit {
+  max-width: 20ch;
+  line-height: 1.3;
+}
+.ne-tone-coral {
+  background: var(--coral);
+  color: var(--ink);
+}
+.ne-tone-sage {
+  background: var(--sage);
+  color: var(--ink);
+}
+.ne-tone-walnut {
+  background: var(--walnut);
+  color: var(--paper);
+}
+.ne-tone-paper {
+  background: var(--paper-hi);
+  color: var(--ink);
+}
+
+/* ---------- Hero: the promise runs through the sheet ---------- */
+.ne-hero {
+  container-type: inline-size;
+  min-height: max(680px, min(100svh, 1120px));
+  padding: 14px var(--margin) var(--margin);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto minmax(170px, 1fr) auto auto;
+  row-gap: var(--g);
+}
+.ne-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 16px;
+  min-height: 44px;
   font-size: var(--step-small);
 }
-.pv-wordmark {
+.ne-wordmark {
   display: flex;
   align-items: center;
   gap: 10px;
   font-weight: 500;
   text-decoration: none;
 }
-.pv-wordmark img {
+.ne-wordmark img {
   width: 32px;
   height: 32px;
   object-fit: contain;
 }
-.pv-for {
+.ne-for {
   font-weight: 500;
 }
-.pv-nav-links {
+.ne-nav-links {
   display: flex;
   gap: clamp(20px, 3vw, 48px);
 }
+.ne-nav-links a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* The top row of the sheet carries its strips on the top edge. */
+.ne-sheet-row {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: var(--g);
+  min-height: 0;
+}
+.ne-sheet-row .ne-frame {
+  flex-direction: column-reverse;
+}
+.ne-sheet-row .ne-frame:nth-child(4n + 2) .ne-strip,
+.ne-beside .ne-frame:nth-child(2) .ne-strip {
+  background: var(--walnut);
+}
+.ne-sheet-row .ne-frame:nth-child(4n + 3) .ne-strip {
+  background: var(--sage);
+  color: var(--ink);
+}
+.ne-sheet-row .ne-frame:nth-child(4n + 4) .ne-strip {
+  background: var(--paper-hi);
+  color: var(--ink);
+}
 
 /* Both lines share one size, fitted so DOESN'T MOVE runs margin to margin
-   (4.01em wide at this tracking); the video fills what is left of line one. */
-.pv-monument {
-  align-self: center;
+   (4.01em wide at this tracking) unless the screen is short; the video fills
+   what is left of line one and two frames close line two. */
+.ne-monument,
+.ne-beside {
+  --fs: min(calc(100cqw / 4.06), 24svh);
+}
+.ne-monument {
+  grid-row: 3;
+  grid-column: 1;
   font-family: var(--display);
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: -0.03em;
   line-height: 0.84;
-  font-size: min(calc(100vw / 4.3), 36svh);
-  font-size: min(calc(100cqw / 4.06), 36svh);
+  font-size: var(--fs);
 }
-.pv-row {
+.ne-row {
   display: flex;
   align-items: baseline;
   gap: 0.07em;
 }
-.pv-row-top {
+.ne-row-top {
   justify-content: space-between;
 }
-.pv-mask {
+.ne-mask {
   display: block;
   overflow: hidden;
   padding-top: 0.06em;
 }
-.pv-mask [data-line] {
+.ne-mask [data-line] {
   display: block;
   white-space: nowrap;
 }
-.pv-slab {
+.ne-slab {
   flex: 1;
   height: 0.7em;
   overflow: hidden;
   background: var(--ink);
 }
-.pv-slab video,
-.pv-slab-phone video {
+.ne-slab video,
+.ne-slab-phone video {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.pv-slab-phone {
+.ne-slab-phone {
   display: block;
   aspect-ratio: 16 / 10;
   overflow: hidden;
   background: var(--ink);
 }
-.pv-hero-foot {
+.ne-beside {
+  grid-row: 3;
+  grid-column: 1;
+  justify-self: end;
+  align-self: end;
+  width: max(0px, calc(100cqw - 4.32 * var(--fs)));
+  height: calc(0.7 * var(--fs));
+  margin-bottom: calc(0.04 * var(--fs));
+  display: flex;
+  gap: var(--g);
+  overflow: hidden;
+}
+.ne-beside .ne-frame {
+  flex: 1 0 0;
+  min-width: 132px;
+}
+.ne-hero-foot {
+  grid-row: 4;
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  column-gap: var(--col-gap);
-  align-items: end;
+  gap: var(--g);
 }
-.pv-hero-copy {
-  grid-column: 1 / 7;
+.ne-cell {
+  grid-column: 5 / 13;
+  grid-row: 1;
+  padding: clamp(18px, 1.8vw, 28px);
   display: grid;
-  gap: 12px;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  align-items: end;
+  gap: 16px clamp(24px, 3vw, 48px);
+  background: var(--ink);
+  color: var(--paper);
 }
-.pv-hero-lead {
-  max-width: 44ch;
+.ne-hero-lead {
+  max-width: 46ch;
   font-size: var(--step-lead);
-  line-height: 1.3;
+  line-height: 1.28;
   text-wrap: pretty;
 }
-.pv-hero-proof {
-  color: var(--muted);
+.ne-cell-side {
+  display: grid;
+  gap: 16px;
 }
-.pv-hero-actions {
-  grid-column: 8 / 13;
+.ne-hero-proof {
+  color: var(--sage);
+}
+.ne-hero-actions {
   display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-start;
   align-items: center;
   gap: 28px;
   white-space: nowrap;
 }
+.ne-foot-a {
+  grid-column: 1 / 3;
+  grid-row: 1;
+}
+.ne-foot-b {
+  grid-column: 3 / 5;
+  grid-row: 1;
+}
+.ne-hero-foot .ne-fact-figure {
+  font-size: var(--step-head);
+}
+@media (max-aspect-ratio: 7 / 5) {
+  .ne-beside {
+    display: none;
+  }
+}
 
 /* ---------- The cost of a late pour: a schedule that slips ---------- */
-.pv-cost {
+.ne-cost {
   container-type: inline-size;
-  margin-top: clamp(48px, 6vw, 96px);
   padding: var(--gap) var(--margin);
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   column-gap: var(--col-gap);
   row-gap: clamp(48px, 6vw, 88px);
   background: var(--ink);
-  color: var(--on-dark);
+  color: var(--paper);
 }
-.pv-cost-text {
+.ne-cost-text {
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -272,15 +442,15 @@
   row-gap: 28px;
   align-items: end;
 }
-.pv-cost-text h2 {
+.ne-cost-text h2 {
   grid-column: 1 / 8;
 }
-.pv-cost-text .pv-lead {
+.ne-cost-text .ne-lead {
   grid-column: 8 / 13;
   max-width: 32ch;
 }
 /* Each consequence starts one step later than the one before it. */
-.pv-slip {
+.ne-slip {
   grid-column: 1 / -1;
   display: grid;
   gap: 0.08em;
@@ -290,15 +460,15 @@
   text-transform: uppercase;
   letter-spacing: -0.01em;
 }
-.pv-slip li {
+.ne-slip li {
   --step: 13cqw;
   padding-left: calc(var(--n) * var(--step));
   white-space: nowrap;
 }
-.pv-slip li:last-child {
-  color: #b9c99f;
+.ne-slip li:last-child {
+  color: var(--coral);
 }
-.pv-cost-turn {
+.ne-cost-turn {
   grid-column: 7 / 13;
   max-width: 34ch;
   font-size: var(--step-lead);
@@ -307,15 +477,14 @@
 }
 
 /* ---------- The season in numbers ---------- */
-.pv-season {
+.ne-season {
   container-type: inline-size;
-  margin-top: var(--gap);
-  padding: 0 var(--margin);
+  padding: var(--gap) var(--margin) 0;
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   column-gap: var(--col-gap);
 }
-.pv-season-top {
+.ne-season-top {
   grid-column: 1 / -1;
   display: flex;
   justify-content: space-between;
@@ -323,11 +492,11 @@
   flex-wrap: wrap;
   gap: 16px 40px;
 }
-.pv-season-top p {
+.ne-season-top p {
   max-width: 34ch;
-  color: var(--muted);
+  color: var(--walnut);
 }
-.pv-yards {
+.ne-yards {
   grid-column: 1 / -1;
   margin-top: clamp(32px, 4vw, 56px);
   display: flex;
@@ -335,352 +504,373 @@
   flex-wrap: wrap;
   gap: 8px clamp(24px, 3vw, 48px);
 }
-.pv-yards-figure {
+.ne-yards-figure {
   font-family: var(--display);
-  font-size: min(calc(100cqw / 4.06), 36svh);
+  font-size: min(calc(100cqw / 4.06), 24svh);
   line-height: 0.8;
   letter-spacing: -0.03em;
   padding-top: 0.08em;
 }
-.pv-yards-label {
+.ne-yards-label {
   max-width: 18ch;
   padding-bottom: 0.4em;
   font-size: var(--step-lead);
   line-height: 1.25;
 }
-.pv-figures {
+.ne-season-sheet {
   grid-column: 1 / -1;
-  margin-top: clamp(56px, 7vw, 112px);
+  margin-top: clamp(48px, 6vw, 96px);
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 32px var(--col-gap);
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-auto-rows: clamp(220px, 21vw, 320px);
+  gap: var(--g);
 }
-.pv-figures dt {
-  font-family: var(--display);
-  font-size: var(--step-figure);
-  line-height: 0.9;
-  padding-top: 0.08em;
+.ne-season-sheet .ne-fact-figure {
+  font-size: var(--step-head);
 }
-.pv-figures dd {
-  margin-top: 8px;
-  max-width: 22ch;
+.ne-season-pic .ne-strip {
+  background: var(--walnut);
 }
-.pv-count {
+.ne-count {
   display: inline-grid;
   font-variant-numeric: tabular-nums;
 }
-.pv-count-room,
-.pv-count-live {
+.ne-count-room,
+.ne-count-live {
   grid-area: 1 / 1;
 }
-.pv-count-room {
+.ne-count-room {
   visibility: hidden;
 }
 
 /* ---------- The one rest: a picture the width of the screen ---------- */
-.pv-wide {
+.ne-wide {
   margin-top: var(--gap);
 }
-.pv-wide-frame {
+.ne-wide-frame {
   aspect-ratio: 21 / 9;
   overflow: hidden;
-  background: var(--surface);
+  background: var(--tan);
 }
-.pv-wide-frame img {
+.ne-wide-frame img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: 50% 60%;
 }
-.pv-wide figcaption {
-  padding: 12px var(--margin) 0;
+.ne-wide figcaption {
+  padding: 12px var(--margin) clamp(32px, 4vw, 56px);
   font-size: var(--step-small);
-  color: var(--muted);
+  color: var(--walnut);
 }
 
-/* ---------- Process: PO to invoice ---------- */
-.pv-process {
-  margin-top: var(--gap);
-  padding: var(--gap) var(--margin);
+/* ---------- Process: the job's own contact sheet, one frame per step ---------- */
+.ne-process {
+  padding: clamp(72px, 8vw, 128px) var(--margin) var(--gap);
+  background: var(--sage-hi);
+  color: var(--ink);
+}
+.ne-process-top {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   column-gap: var(--col-gap);
-  background: var(--surface);
+  row-gap: 24px;
+  align-items: end;
 }
-.pv-process-media {
-  grid-column: 1 / 6;
-  display: flex;
+.ne-process-top h2 {
+  grid-column: 1 / 8;
 }
-/* The clip takes the full height of the steps beside it. */
-.pv-process-frame {
-  position: relative;
-  flex: 1;
-  min-height: 480px;
-  overflow: hidden;
-  background: var(--ink);
-}
-.pv-process-frame video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.pv-process-text {
-  grid-column: 6 / 13;
-  padding-left: clamp(0px, 3vw, 48px);
-  display: grid;
-  align-content: start;
-  gap: 28px;
-}
-.pv-steps {
-  margin-top: 24px;
-  display: grid;
-  gap: clamp(32px, 3.4vw, 52px);
-}
-.pv-steps h3 {
-  font-family: var(--display);
-  font-weight: 400;
-  font-size: var(--step-sub);
-  line-height: 0.95;
-  text-transform: uppercase;
-  padding-top: 0.1em;
-}
-.pv-steps li {
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-  column-gap: var(--col-gap);
-  align-items: baseline;
-}
-.pv-steps p {
-  max-width: 36ch;
-}
-
-/* ---------- What we pour: the list beside the pictures ---------- */
-.pv-work {
-  margin-top: var(--gap);
-  padding: 0 var(--margin);
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  column-gap: var(--col-gap);
-}
-.pv-work-text {
-  grid-column: 1 / 7;
-  display: grid;
-  align-content: start;
-  gap: 28px;
-}
-.pv-work-text .pv-lead {
+.ne-process-top .ne-lead {
+  grid-column: 9 / 13;
   max-width: 30ch;
 }
-.pv-services {
-  margin-top: 16px;
+.ne-steps {
+  margin-top: clamp(48px, 6vw, 88px);
   display: grid;
-  gap: 22px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 40px var(--g);
 }
-.pv-services li {
-  display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  column-gap: var(--col-gap);
-  align-items: baseline;
-}
-.pv-services h3 {
-  font-family: var(--display);
-  font-weight: 400;
-  font-size: var(--step-sub);
-  line-height: 0.95;
-  text-transform: uppercase;
-  padding-top: 0.1em;
-}
-.pv-services p {
-  color: var(--muted);
-}
-/* The pictures take exactly the height of the list beside them. */
-.pv-mosaic {
-  grid-column: 7 / 13;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: minmax(0, 1fr) minmax(0, 1.3fr);
-  gap: var(--col-gap);
-}
-.pv-tile {
+.ne-step {
   display: flex;
   flex-direction: column;
-  min-height: 0;
+  min-width: 0;
 }
-.pv-tile-wide {
-  grid-column: 1 / -1;
-}
-.pv-tile-frame {
+.ne-step-pic {
   position: relative;
-  flex: 1;
-  min-height: 180px;
+  display: block;
+  aspect-ratio: 3 / 4;
   overflow: hidden;
-  background: var(--surface);
+  background: var(--tan);
 }
-.pv-tile-frame img {
+.ne-step-pic img,
+.ne-step-pic video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.pv-tile figcaption {
-  margin-top: 10px;
-  font-size: var(--step-small);
-  color: var(--muted);
+.ne-step-strip {
+  min-height: calc(2 * 1.25em + 20px);
+  padding: 10px 12px;
+  font-size: var(--step-body);
+  line-height: 1.25;
+  white-space: normal;
+  align-items: flex-start;
+}
+.ne-step:nth-child(4) .ne-step-strip {
+  background: var(--coral);
+  color: var(--ink);
+}
+.ne-step p {
+  margin-top: 14px;
+  padding-right: 8px;
+  text-wrap: pretty;
 }
 
-/* ---------- Builders: one moss field, the names running through it ---------- */
-.pv-builders {
-  margin-top: var(--gap);
-  padding: clamp(72px, 9vw, 144px) 0;
-  background: var(--field);
-  color: var(--field-ink);
+/* ---------- What we pour: the list beside runs printed in grey ---------- */
+.ne-work {
+  padding: var(--gap) var(--margin) 0;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--col-gap);
+  align-items: start;
+}
+.ne-work-rail {
+  grid-column: 1 / 5;
+  display: grid;
+  gap: 24px;
+}
+.ne-work-rail .ne-lead {
+  max-width: 26ch;
+}
+.ne-services {
+  margin-top: 12px;
+  display: grid;
+  gap: 14px;
+}
+.ne-services h3 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: var(--step-sub);
+  line-height: 0.95;
+  text-transform: uppercase;
+  padding-top: 0.1em;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.12em;
+  transition: text-decoration-color 200ms ease;
+}
+.ne-services li[data-on='true'] h3 {
+  text-decoration-color: var(--coral);
+}
+.ne-services p {
+  color: var(--walnut);
+}
+.ne-runs {
+  grid-column: 5 / 13;
+  padding-left: clamp(0px, 2vw, 32px);
+  display: grid;
+  gap: clamp(40px, 4vw, 64px);
+  min-width: 0;
+}
+.ne-run-frames {
+  display: flex;
+  gap: var(--g);
+  height: clamp(200px, 19vw, 280px);
   overflow: hidden;
 }
-.pv-builders-text {
+.ne-run-frames img {
+  flex: none;
+  height: 100%;
+  width: auto;
+  aspect-ratio: var(--r);
+  object-fit: cover;
+  background: var(--tan);
+  filter: grayscale(1) contrast(1.05);
+  transition:
+    filter 700ms ease,
+    opacity 300ms ease;
+}
+.ne-run.ne-lit img {
+  filter: none;
+}
+.ne-runs-hover .ne-run:not(.ne-lit) img {
+  opacity: 0.45;
+}
+.ne-run-line {
+  margin-top: 0;
+  min-height: 30px;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  font-size: var(--step-small);
+  font-weight: 500;
+  background: var(--stone);
+  transition:
+    background-color 300ms ease,
+    color 300ms ease;
+}
+.ne-run.ne-lit .ne-run-line {
+  background: var(--ink);
+  color: var(--paper);
+}
+.ne-run-line span:last-child {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Builders: one walnut field, the names running through it ---------- */
+.ne-builders {
+  margin-top: var(--gap);
+  padding: clamp(72px, 9vw, 144px) 0;
+  background: var(--walnut);
+  color: var(--paper);
+  overflow: hidden;
+}
+.ne-builders-text {
   padding: 0 var(--margin);
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   column-gap: var(--col-gap);
   row-gap: 20px;
+  align-items: end;
 }
-.pv-builders-text h2 {
+.ne-builders-text h2 {
   grid-column: 1 / 8;
 }
-.pv-builders-text p {
-  grid-column: 1 / 7;
-  max-width: 34ch;
+.ne-builders-text p {
+  grid-column: 9 / 13;
+  max-width: 30ch;
 }
-.pv-band {
+.ne-band {
   margin-top: clamp(48px, 6vw, 88px);
   display: flex;
   overflow: hidden;
 }
-.pv-track {
+.ne-track {
   display: flex;
   width: max-content;
   font-family: var(--display);
-  font-size: clamp(5rem, 13vw, 13rem);
+  font-size: min(calc((100vw - 2 * var(--margin)) / 4.06), 24svh);
   line-height: 1;
   padding-top: 0.08em;
   text-transform: uppercase;
   white-space: nowrap;
 }
-.pv-names > span {
+.ne-names > span {
   display: inline-flex;
   align-items: center;
 }
-.pv-dot {
+.ne-dot {
   display: inline-block;
   width: 0.2em;
   height: 0.2em;
   margin: 0 0.35em;
-  border-radius: 50%;
-  background: currentColor;
+  background: var(--coral);
   transform: translateY(-0.06em);
 }
 
 /* ---------- The risk stays with us ---------- */
-.pv-promise {
-  margin-top: var(--gap);
-  padding: 0 var(--margin);
+.ne-promise {
+  padding: var(--gap) var(--margin) 0;
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   column-gap: var(--col-gap);
 }
-.pv-promise-photo {
+.ne-promise-pics {
   grid-column: 1 / 6;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+  gap: var(--g);
+  align-items: end;
 }
-.pv-promise-frame {
-  position: relative;
-  flex: 1;
-  min-height: 420px;
-  overflow: hidden;
-  background: var(--surface);
+.ne-promise-main .ne-frame-pic {
+  flex: none;
+  aspect-ratio: 4 / 5;
 }
-.pv-promise-frame img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.ne-promise-side .ne-frame-pic {
+  flex: none;
+  aspect-ratio: 3 / 4;
+}
+.ne-promise-side .ne-strip {
+  background: var(--walnut);
+}
+.ne-promise-main img {
   object-position: 62% 50%;
 }
-.pv-promise-text {
+.ne-promise-text {
   grid-column: 7 / 13;
   display: grid;
   align-content: start;
   gap: clamp(36px, 4vw, 56px);
 }
-.pv-promises {
+.ne-promises {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(36px, 4vw, 56px) var(--col-gap);
 }
-.pv-promises dt {
+.ne-promises dt {
   font-family: var(--display);
   font-size: var(--step-sub);
   line-height: 0.95;
   text-transform: uppercase;
   padding-top: 0.1em;
 }
-.pv-promises dd {
+.ne-promises dd {
   margin-top: 12px;
   max-width: 30ch;
 }
 
 /* ---------- Book your pour date: the reader's own date as display type ---------- */
-.pv-date {
+.ne-date {
   container-type: inline-size;
   margin-top: var(--gap);
-  min-height: 100svh;
-  padding: clamp(48px, 6vw, 88px) var(--margin) clamp(36px, 4vw, 56px);
+  padding: clamp(56px, 7vw, 104px) var(--margin) clamp(40px, 4vw, 64px);
   display: grid;
-  grid-template-rows: auto 1fr auto;
-  row-gap: 40px;
+  row-gap: clamp(32px, 4vw, 56px);
   background: var(--ink);
-  color: var(--on-dark);
+  color: var(--paper);
 }
-.pv-date-top {
+.ne-date-top {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   gap: 32px;
   flex-wrap: wrap;
 }
-.pv-date-intro p {
+.ne-date-intro p {
   margin-top: 20px;
   max-width: 38ch;
   font-size: var(--step-lead);
   line-height: 1.3;
 }
-.pv-date-controls {
+.ne-date-controls {
   display: flex;
   gap: var(--col-gap);
   flex-wrap: wrap;
 }
-.pv-date-controls input {
+.ne-date-controls input {
   min-height: 56px;
   padding: 0 16px;
   border: 0;
   border-radius: 0;
-  background: var(--bg);
+  background: var(--paper);
   color: var(--ink);
   font-family: inherit;
   font-size: var(--step-lead);
   color-scheme: light;
 }
-.pv-stepper {
+.ne-stepper {
   display: flex;
   align-items: stretch;
   min-height: 56px;
-  background: var(--bg);
+  background: var(--paper);
   color: var(--ink);
 }
-.pv-stepper button {
+.ne-stepper button {
   width: 56px;
   border: 0;
   border-radius: 0;
@@ -694,19 +884,19 @@
     background-color 160ms ease,
     transform 160ms var(--ease-out);
 }
-.pv-stepper button:active:not(:disabled) {
+.ne-stepper button:active:not(:disabled) {
   transform: scale(0.92);
 }
-.pv-stepper button:disabled {
-  color: #8d887b;
+.ne-stepper button:disabled {
+  color: var(--walnut);
   cursor: default;
 }
 @media (hover: hover) and (pointer: fine) {
-  .pv-stepper button:hover:not(:disabled) {
-    background: var(--surface);
+  .ne-stepper button:hover:not(:disabled) {
+    background: var(--stone);
   }
 }
-.pv-stepper output {
+.ne-stepper output {
   min-width: 5.5em;
   padding: 0 8px;
   display: grid;
@@ -714,21 +904,65 @@
   font-size: var(--step-lead);
   font-variant-numeric: tabular-nums;
 }
-.pv-date-big {
-  align-self: end;
+.ne-date-big {
   overflow: hidden;
   font-family: var(--display);
-  font-size: min(calc(100vw / 4.3), 36svh);
   font-size: min(calc(100cqw / 4.06), 36svh);
   line-height: 0.84;
   letter-spacing: -0.03em;
   white-space: nowrap;
+  color: var(--coral);
 }
-.pv-date-big span {
+.ne-date-big span {
   display: block;
   padding-top: 0.06em;
 }
-.pv-date-actions {
+/* The planner: one row of house frames for each pour day. */
+.ne-plan {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--col-gap);
+  row-gap: 24px;
+  align-items: start;
+}
+.ne-plan-answer {
+  grid-column: 1 / 6;
+  max-width: 40ch;
+}
+.ne-days {
+  grid-column: 7 / 13;
+  display: grid;
+  gap: 8px;
+}
+.ne-days > li {
+  display: grid;
+  grid-template-columns: 4.5em minmax(0, 1fr);
+  column-gap: 16px;
+  align-items: center;
+}
+.ne-day-name {
+  color: var(--sage);
+}
+.ne-day-houses {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 4px;
+}
+.ne-house {
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--walnut);
+}
+.ne-house:nth-child(4) {
+  margin-left: 8px;
+}
+.ne-house img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.ne-date-actions {
   display: flex;
   align-items: center;
   gap: 28px;
@@ -736,77 +970,77 @@
 }
 
 /* ---------- Quote ---------- */
-.pv-quote {
+.ne-quote {
   padding: var(--gap) var(--margin) 0;
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   column-gap: var(--col-gap);
 }
-.pv-quote > * {
+.ne-quote > * {
   min-width: 0;
 }
-.pv-quote-text {
+.ne-quote-text {
   grid-column: 1 / 6;
   display: flex;
   flex-direction: column;
 }
 /* The picture takes whatever height the form leaves beside the contact. */
-.pv-quote-photo {
-  position: relative;
+.ne-quote-photo {
   flex: 1;
   min-height: 220px;
   margin-top: 48px;
-  overflow: hidden;
-  background: var(--surface);
 }
-.pv-quote-photo img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.ne-quote-photo .ne-strip {
+  background: var(--walnut);
 }
-.pv-quote-text .pv-lead {
+.ne-quote-text .ne-lead {
   margin-top: 28px;
   max-width: 28ch;
 }
-.pv-owner {
+.ne-owner {
   margin-top: 40px;
   display: grid;
   gap: 16px;
 }
-.pv-form {
+.ne-form {
   grid-column: 7 / 13;
-  background: var(--surface);
+  background: var(--stone);
   padding: clamp(20px, 3vw, 40px);
 }
-.pv-form form {
+.ne-form form {
   border: 0;
   box-shadow: none; /* taste-skill-ignore: removes the form's own shadow */
   border-radius: 0;
   padding: 0;
   background: transparent;
 }
-.pv-form label {
-  font-family: 'EB Garamond', Georgia, serif;
+.ne-form label {
+  font-family: var(--text);
   font-size: var(--step-small);
   font-weight: 500;
   color: var(--ink);
 }
-.pv-form input,
-.pv-form select,
-.pv-form textarea {
+.ne-form input,
+.ne-form select,
+.ne-form textarea {
   max-width: 100%;
   min-width: 0;
   border-radius: 0;
-  background: #fff;
+  background: var(--paper-hi);
+  color: var(--ink);
   font-family: inherit;
   font-size: var(--step-body);
 }
+.ne-form input:focus,
+.ne-form select:focus,
+.ne-form textarea:focus {
+  border-color: var(--ink);
+  --tw-ring-color: rgb(242 94 68 / 0.35);
+}
 /* The form's send button takes the page's action style. */
-.pv-form button[type='submit'] {
-  background: var(--accent);
-  color: var(--accent-ink);
+.ne-form button[type='submit'] {
+  background: var(--coral);
+  color: var(--ink);
   border-radius: 0;
   box-shadow: none; /* taste-skill-ignore: removes the button's own shadow */
   min-height: 52px;
@@ -814,24 +1048,24 @@
   font-size: var(--step-body);
   font-weight: 500;
 }
-.pv-form button[type='submit']:hover {
-  background: var(--accent-press);
+.ne-form button[type='submit']:hover {
+  background: var(--coral-hi);
 }
 
-/* ---------- Footer: the name returns at full width, inverted ---------- */
-.pv-footer {
+/* ---------- Footer: the name returns at full width, on ink ---------- */
+.ne-footer {
   container-type: inline-size;
   margin-top: var(--gap);
   padding: 40px var(--margin) 0;
   background: var(--ink);
-  color: var(--on-dark);
+  color: var(--paper);
   overflow: hidden;
 }
-.pv-footer-line {
+.ne-footer-line {
   max-width: 70ch;
   font-size: var(--step-small);
 }
-.pv-footer-name {
+.ne-footer-name {
   margin-top: 24px;
   font-family: var(--display);
   font-size: calc(100vw / 2.6);
@@ -843,9 +1077,9 @@
   transform: translateY(0.06em);
 }
 
-/* ---------- Action bar: call, WhatsApp and quote ---------- */
+/* ---------- Action bar: call, WhatsApp and the date ---------- */
 /* Top-right corner on a computer; across the top edge on a phone. */
-.pv-bar {
+.ne-bar {
   position: fixed;
   top: 12px;
   right: 12px;
@@ -855,180 +1089,235 @@
   gap: 8px;
   padding: 8px 8px 8px 18px;
   background: var(--ink);
-  color: var(--on-dark);
+  color: var(--paper);
   transform: translateY(calc(-100% - 12px));
   transition: transform 400ms var(--ease-out);
 }
-.pv-bar.pv-on {
+.ne-bar.ne-on {
   transform: none;
 }
-.pv-bar p {
+.ne-bar p {
   margin-right: 8px;
   font-size: var(--step-small);
 }
-.pv-bar .pv-action {
+.ne-bar .ne-action {
   min-height: 48px;
   padding: 0 20px;
 }
 
-/* ---------- Tablet and phone ---------- */
+/* ---------- Tablet ---------- */
+@media (max-width: 1100px) {
+  .ne-cell {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+  .ne-foot-a {
+    grid-column: 1 / 7;
+  }
+  .ne-foot-b {
+    grid-column: 7 / 13;
+  }
+  .ne-hero-actions {
+    flex-wrap: wrap;
+    gap: 12px 28px;
+  }
+  .ne-steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .ne-season-sheet {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: clamp(200px, 30vw, 300px);
+  }
+}
 @media (max-width: 820px) {
-  .pv-cost-text,
-  .pv-cost-turn,
-  .pv-builders-text h2,
-  .pv-builders-text p {
+  .ne-cost-text,
+  .ne-cost-turn,
+  .ne-cost-text h2,
+  .ne-cost-text .ne-lead,
+  .ne-builders-text h2,
+  .ne-builders-text p,
+  .ne-process-top h2,
+  .ne-process-top .ne-lead,
+  .ne-plan-answer,
+  .ne-days {
     grid-column: 1 / -1;
   }
-  .pv-cost-text h2,
-  .pv-cost-text .pv-lead {
-    grid-column: 1 / -1;
-  }
-  .pv-slip {
+  .ne-slip {
     font-size: var(--step-head);
   }
-  .pv-slip li {
+  .ne-slip li {
     --step: 7cqw;
   }
-
-  .pv-yards-label {
+  .ne-yards-label {
     max-width: 26ch;
     padding-bottom: 0;
   }
-  .pv-steps li {
-    grid-template-columns: minmax(0, 1fr);
-    row-gap: 8px;
-  }
-  .pv-process-text {
-    padding-left: 0;
-  }
-  .pv-figures {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .pv-wide-frame {
+  .ne-wide-frame {
     aspect-ratio: 4 / 3;
   }
-  .pv-process,
-  .pv-work,
-  .pv-promise,
-  .pv-quote {
+  .ne-work,
+  .ne-promise,
+  .ne-quote {
     grid-template-columns: minmax(0, 1fr);
     row-gap: 48px;
   }
-  .pv-process-media,
-  .pv-process-text,
-  .pv-work-text,
-  .pv-mosaic,
-  .pv-promise-photo,
-  .pv-promise-text,
-  .pv-quote-text,
-  .pv-form {
+  .ne-work-rail,
+  .ne-runs,
+  .ne-promise-pics,
+  .ne-promise-text,
+  .ne-quote-text,
+  .ne-form {
     grid-column: 1;
   }
-  .pv-process-media,
-  .pv-promise-photo {
+  .ne-services {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px var(--col-gap);
+  }
+  .ne-runs {
+    padding-left: 0;
+  }
+  .ne-promise-pics {
     order: 2;
   }
-  .pv-process-frame {
-    flex: none;
-    width: 100%;
-    min-height: 0;
-    aspect-ratio: 1;
-  }
-  .pv-mosaic {
-    grid-template-rows: auto auto;
-  }
-  .pv-tile-frame {
-    flex: none;
-    aspect-ratio: 3 / 4;
-    min-height: 0;
-  }
-  .pv-tile-wide .pv-tile-frame {
-    aspect-ratio: 4 / 3;
-  }
-  .pv-promise-frame {
-    flex: none;
-    width: 100%;
-    min-height: 0;
-    aspect-ratio: 4 / 3;
-  }
-  .pv-date {
-    min-height: auto;
-  }
-  .pv-quote-photo {
+  .ne-quote-photo {
     display: none;
-  }
-  .pv-date-big {
-    margin-top: 24px;
   }
 }
 
+/* ---------- Phone ---------- */
 @media (max-width: 700px) {
-  .pv-wide-only {
+  .ne-wide-only {
     display: none;
   }
-  .pv-nav {
+  .ne-nav {
     flex-wrap: wrap;
+    row-gap: 0;
   }
-  .pv-for {
+  .ne-for {
     order: 3;
     width: 100%;
   }
-  .pv-hero {
-    min-height: auto;
-    grid-template-rows: auto auto auto auto;
-    row-gap: 20px;
+  .ne-hero {
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    grid-template-rows: none;
+    row-gap: 12px;
+    padding-bottom: 0;
   }
-  .pv-monument {
-    margin-top: 3svh;
+  .ne-monument {
+    grid-row: auto;
+    margin-top: 2svh;
     font-size: calc(100cqw / 4.06);
   }
   /* Without the video in it, POUR DATE is fitted on its own line. */
-  .pv-row-top {
+  .ne-row-top {
     justify-content: flex-start;
     gap: 0.2em;
     font-size: 1.27em;
   }
-  .pv-hero-foot {
+  .ne-hero-foot {
+    grid-row: auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .ne-cell {
+    grid-column: 1 / -1;
     grid-template-columns: minmax(0, 1fr);
-    row-gap: 24px;
+    padding: 20px;
+    gap: 14px;
   }
-  .pv-hero-copy,
-  .pv-hero-actions {
-    grid-column: 1;
-  }
-  .pv-hero-lead {
+  .ne-hero-lead {
     font-size: var(--step-body);
     line-height: 1.4;
   }
-  .pv-hero-actions {
+  .ne-hero-actions {
     flex-direction: column;
     align-items: stretch;
-    gap: 16px;
+    gap: 6px;
     text-align: center;
   }
-  .pv-services li {
+  .ne-hero-actions .ne-link {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ne-cell {
+    grid-row: auto;
+  }
+  .ne-foot-a,
+  .ne-foot-b {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  .ne-hero-foot .ne-fact {
+    aspect-ratio: 1;
+  }
+  .ne-sheet-row {
+    order: 5;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .ne-sheet-row .ne-frame {
+    flex-direction: column;
+  }
+  .ne-sheet-row .ne-frame-pic {
+    flex: none;
+    aspect-ratio: 3 / 4;
+  }
+  .ne-strip {
+    padding: 0 8px;
+  }
+  .ne-season-sheet {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 180px;
+    gap: 8px;
+  }
+  .ne-season-sheet .ne-fact-figure {
+    font-size: var(--step-sub);
+  }
+  .ne-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px 8px;
+  }
+  .ne-step-strip {
+    min-height: calc(2 * 1.25em + 16px);
+    padding: 8px 10px;
+    font-size: var(--step-small);
+  }
+  .ne-services {
     grid-template-columns: minmax(0, 1fr);
-    row-gap: 4px;
+  }
+  .ne-run-frames {
+    height: 140px;
+  }
+  .ne-builders-text p {
+    max-width: 34ch;
   }
   /* The names run at the monument's own size. */
-  .pv-track {
+  .ne-track {
     font-size: calc((100vw - 2 * var(--margin)) / 4.06);
   }
-  .pv-promises {
+  .ne-promises {
     grid-template-columns: minmax(0, 1fr);
   }
-  .pv-date-controls,
-  .pv-date-controls input,
-  .pv-stepper {
+  .ne-date-controls,
+  .ne-date-controls input,
+  .ne-stepper {
     width: 100%;
   }
-  .pv-date-controls input {
+  .ne-date-controls input {
     min-width: 0;
   }
-  .pv-stepper output {
+  .ne-stepper output {
     flex: 1;
   }
-  .pv-date-actions {
+  .ne-days > li {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 6px;
+  }
+  .ne-date-actions {
     flex-direction: column;
     align-items: stretch;
     gap: 16px;
@@ -1036,7 +1325,7 @@
   }
   /* On a phone the bar spans the top edge, like a product page's buy bar,
      so it never sits over the text being read at the bottom of the screen. */
-  .pv-bar {
+  .ne-bar {
     top: 0;
     right: 0;
     left: 0;
@@ -1044,10 +1333,10 @@
     padding-top: max(8px, env(safe-area-inset-top));
     transform: translateY(-100%);
   }
-  .pv-bar p {
+  .ne-bar p {
     display: none;
   }
-  .pv-bar .pv-action {
+  .ne-bar .ne-action {
     flex: 1;
     padding: 0 10px;
   }
@@ -1056,14 +1345,26 @@
 /* ---------- Motion ---------- */
 @media (prefers-reduced-motion: no-preference) {
   /* The monument rises line by line from behind its own baseline. */
-  .js .pv-mask [data-line] {
+  .js .ne-mask [data-line] {
     transform: translateY(105%);
-    animation: pv-up 1000ms var(--ease-out) forwards;
+    animation: ne-up 1000ms var(--ease-out) forwards;
     animation-delay: calc(var(--i) * 120ms + 120ms);
   }
-  .js .pv-after {
+  .js .ne-after {
     opacity: 0;
-    animation: pv-fade 700ms var(--ease-out) 700ms forwards;
+    animation: ne-fade 700ms var(--ease-out) 650ms forwards;
+  }
+  /* The frames of the first sheet develop one after another, the way a
+     print comes up in the tray. */
+  .js .ne-hero .ne-frame,
+  .js .ne-hero .ne-fact {
+    opacity: 0;
+    animation: ne-develop 900ms var(--ease-out) forwards;
+    animation-delay: calc(var(--i) * 70ms + 200ms);
+  }
+  .js .ne-hero .ne-frame-pic > * {
+    animation: ne-settle-small 1400ms var(--ease-out) both;
+    animation-delay: calc(var(--i, 0) * 70ms + 200ms);
   }
   /* Signature move: the video opens from the bottom edge like concrete
      filling the forms, settling from 1.12 scale. */
@@ -1075,13 +1376,18 @@
     transform: scale(1.12);
     transition: transform 1500ms var(--ease-out);
   }
-  .js .pv-slab[data-shutter] {
+  .js .ne-slab[data-shutter] {
     transition-delay: 380ms;
   }
-  .js [data-shutter].pv-in {
+  /* The steps develop left to right, in the order they happen. */
+  .js .ne-step [data-shutter],
+  .js .ne-step [data-shutter] > * {
+    transition-delay: calc(var(--d) * 110ms);
+  }
+  .js [data-shutter].ne-in {
     clip-path: inset(0);
   }
-  .js [data-shutter].pv-in > * {
+  .js [data-shutter].ne-in > * {
     transform: none;
   }
   /* Section parts rise once as their section enters. */
@@ -1093,55 +1399,70 @@
       transform 700ms var(--ease-out);
     transition-delay: calc(var(--d, 0) * 75ms);
   }
-  .js [data-rise].pv-in {
+  .js [data-rise].ne-in {
     opacity: 1;
     transform: none;
   }
   /* The schedule slips: the lines start in step, then each one is pushed
      one step later than the one before it. */
-  .js .pv-slip[data-rise] {
+  .js .ne-slip[data-rise] {
     transform: none;
   }
-  .js .pv-slip li {
+  .js .ne-slip li {
     transform: translateX(calc(var(--n) * var(--step) * -1));
     transition: transform 1100ms var(--ease-in-out);
     transition-delay: calc(500ms + var(--n) * 160ms);
   }
-  .js .pv-slip.pv-in li {
+  .js .ne-slip.ne-in li {
     transform: none;
   }
   /* The wide picture settles as it crosses the screen. */
   @supports (animation-timeline: view()) {
-    .pv-wide-frame img {
-      animation: pv-settle linear both;
+    .ne-wide-frame img {
+      animation: ne-settle linear both;
       animation-timeline: view();
       animation-range: entry 0% cover 60%;
     }
   }
-  /* The builders run slowly to the left. */
-  .pv-track {
-    animation: pv-run 40s linear infinite;
+  /* A frame lifts a touch under the pointer. */
+  @media (hover: hover) and (pointer: fine) {
+    .ne-run-frames img {
+      transition:
+        filter 700ms ease,
+        opacity 300ms ease,
+        transform 300ms var(--ease-out);
+    }
+    .ne-run-frames img:hover {
+      transform: scale(0.98);
+    }
   }
-  .pv-band:hover .pv-track {
+  /* The builders run slowly to the left. */
+  .ne-track {
+    animation: ne-run 40s linear infinite;
+  }
+  .ne-band:hover .ne-track {
     animation-play-state: paused;
   }
-  /* A new date drops into place. */
-  .pv-date-big span {
-    animation: pv-up-small 520ms var(--ease-out);
+  /* A new date drops into place; each house joins its day. */
+  .ne-date-big span {
+    animation: ne-up-small 520ms var(--ease-out);
+  }
+  .ne-house {
+    animation: ne-pop 380ms var(--ease-out) both;
   }
 }
-@keyframes pv-up {
+@keyframes ne-up {
   to {
     transform: none;
   }
 }
-@keyframes pv-up-small {
+@keyframes ne-up-small {
   from {
     transform: translateY(40%);
     opacity: 0;
   }
 }
-@keyframes pv-fade {
+@keyframes ne-fade {
   from {
     opacity: 0;
     transform: translateY(12px);
@@ -1151,7 +1472,25 @@
     transform: none;
   }
 }
-@keyframes pv-settle {
+@keyframes ne-develop {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes ne-settle-small {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes ne-settle {
   from {
     transform: scale(1.14);
   }
@@ -1159,18 +1498,26 @@
     transform: none;
   }
 }
-@keyframes pv-run {
+@keyframes ne-pop {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.94);
+  }
+}
+@keyframes ne-run {
   to {
     transform: translateX(-50%);
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .pv-bar {
+  .ne-bar,
+  .ne-run-frames img,
+  .ne-run-line {
     transition: none;
   }
 }
 
 /* A jump from a link lands below the action bar. */
-.pv section[id] {
+.ne section[id] {
   scroll-margin-top: 72px;
 }
