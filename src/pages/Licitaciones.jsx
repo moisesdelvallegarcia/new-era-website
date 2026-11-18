@@ -169,6 +169,10 @@ function Licitaciones() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password: value }),
       })
+      if (response.status === 429) {
+        setError('Demasiados intentos. Espera 15 minutos.')
+        return
+      }
       if (response.status === 401) {
         storePassword('')
         setPassword('')
