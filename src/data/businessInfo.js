@@ -4,8 +4,8 @@ export const businessInfo = {
   founded: 2019,
   siteUrl: 'https://neconstructioniowa.com',
   owner: 'Christian Rubio',
-  phone: '(515) 328-4712',
-  phoneHref: 'tel:+15153284712',
+  phone: '(641) 351-9641',
+  phoneHref: 'tel:+16413519641',
   email: 'office@neweraiowa.com',
   emailHref: 'mailto:office@neweraiowa.com',
   address: {
