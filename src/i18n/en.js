@@ -26,7 +26,7 @@ const en = {
       '/contact': {
         title: 'Get a Concrete Quote | New Era Construction',
         description:
-          'Request a concrete quote in the Des Moines area. We answer within 48 hours, and the same day when it is urgent. (515) 328-4712.',
+          'Request a concrete quote in the Des Moines area. We answer within 48 hours, and the same day when it is urgent. (641) 351-9641.',
       },
     },
   },
@@ -172,7 +172,7 @@ const en = {
     otherAreas: 'Other areas we serve',
     metaTitle: 'Concrete Contractor in {city}, IA | New Era Construction',
     metaDescription:
-      'Concrete contractor in {city}, Iowa: basements, garage slabs, footings, driveways, patios and sidewalks. Family-owned, se habla español. Quotes within 48 hours: (515) 328-4712.',
+      'Concrete contractor in {city}, Iowa: basements, garage slabs, footings, driveways, patios and sidewalks. Family-owned, se habla español. Quotes within 48 hours: (641) 351-9641.',
   },
   builders: {
     eyebrow: 'Builders we work with',

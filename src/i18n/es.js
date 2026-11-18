@@ -26,7 +26,7 @@ const es = {
       '/contact': {
         title: 'Pida una cotización de concreto | New Era Construction',
         description:
-          'Pida una cotización de concreto en el área de Des Moines. Respondemos en 48 horas, y el mismo día si es urgente. (515) 328-4712.',
+          'Pida una cotización de concreto en el área de Des Moines. Respondemos en 48 horas, y el mismo día si es urgente. (641) 351-9641.',
       },
     },
   },
@@ -172,7 +172,7 @@ const es = {
     otherAreas: 'Otras zonas donde trabajamos',
     metaTitle: 'Contratista de concreto en {city}, IA | New Era Construction',
     metaDescription:
-      'Contratista de concreto en {city}, Iowa: sótanos, losas de garaje, footings, driveways, patios y banquetas. Empresa familiar, se habla español. Cotización en 48 horas: (515) 328-4712.',
+      'Contratista de concreto en {city}, Iowa: sótanos, losas de garaje, footings, driveways, patios y banquetas. Empresa familiar, se habla español. Cotización en 48 horas: (641) 351-9641.',
   },
   builders: {
     eyebrow: 'Constructores con los que trabajamos',
