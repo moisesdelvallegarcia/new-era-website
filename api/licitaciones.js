@@ -6,6 +6,10 @@
 
 import { timingSafeEqual } from 'node:crypto'
 import pg from 'pg'
+import { crearLimite, ipDe } from './_limite.js'
+
+// 5 claves fallidas por IP en 15 minutos y 30 en total; luego 429.
+const limite = crearLimite({ porIp: 5, global: 30, ventanaMs: 15 * 60 * 1000 })
 
 const BIDS_SQL = `
   SELECT project_id, titulo, descripcion, ciudad, condado, direccion, distancia_mi,
@@ -54,10 +58,15 @@ export default async function handler(req, res) {
   }
 
   const body = typeof req.body === 'object' && req.body ? req.body : {}
+  const ip = ipDe(req)
+  if (limite.bloqueada(ip)) return res.status(429).json({ success: false })
   if (!passwordMatches(body.password)) {
+    limite.anotar(ip)
+    console.warn('licitaciones: clave incorrecta desde', ip)
     return res.status(401).json({ success: false })
   }
 
+  limite.olvidar(ip)
   try {
     const db = getPool()
     const { rows: bids } = await db.query(BIDS_SQL)

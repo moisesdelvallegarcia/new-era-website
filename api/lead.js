@@ -3,6 +3,11 @@
 //   TELEGRAM_BOT_TOKEN      the NOVA bot token
 //   TELEGRAM_LEADS_CHAT_ID  chat that receives website requests
 
+import { crearLimite, ipDe } from './_limite.js'
+
+// 5 avisos por IP por hora y 40 en total: un cliente real manda uno.
+const limite = crearLimite({ porIp: 5, global: 40, ventanaMs: 60 * 60 * 1000 })
+
 const FIELDS = [
   ['name', 'Nombre'],
   ['phone', 'Teléfono'],
@@ -75,6 +80,12 @@ export default async function handler(req, res) {
     return res.status(503).json({ success: false })
   }
 
+  const ip = ipDe(req)
+  if (limite.bloqueada(ip)) {
+    console.warn('lead: demasiados envíos desde', ip)
+    return res.status(429).json({ success: false })
+  }
+
   const body = typeof req.body === 'object' && req.body ? req.body : {}
 
   // Honeypot: people never see this field; answer "ok" so bots don't retry.
@@ -86,6 +97,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ success: false })
   }
 
+  limite.anotar(ip)
   const reasons = spamReasons(data, message)
   const lines = [
     reasons.length ? '⚪ PROBABLE SPAM DESDE LA PÁGINA WEB' : '🟠 NUEVO CLIENTE DESDE LA PÁGINA WEB',
