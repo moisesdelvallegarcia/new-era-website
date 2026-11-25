@@ -40,11 +40,11 @@ export const businessInfo = {
   builders: [
     'Hubbell Homes',
     'Drake Homes',
-    'Ground Homes',
+    'Ground Breaker Homes',
     'Embarq Signature Homes',
-    'Solid Homes',
+    'DS Solid Homes',
     'Showtime Homes',
-    'Premier Spas',
+    'Premier Pools & Spas',
   ],
 }
 
